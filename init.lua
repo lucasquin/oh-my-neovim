@@ -2,7 +2,6 @@ require('core.keymappings')
 require('core.autocmds')
 require('core.nvim-config')
 
-
 require('plugins')
 require('plugins-config.dracula')
 require('plugins-config.nvim-web-devicons')
