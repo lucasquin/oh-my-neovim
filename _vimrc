@@ -28,6 +28,5 @@ set showmatch
 " enable all Python syntax highlighting features
 let python_highlight_all = 1
 
-"Font
+"Font Fixedsys
 set guifont=Fixedsys:h20:cDEFAULT
-
