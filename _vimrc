@@ -26,7 +26,7 @@ set cursorline
 set showmatch
 
 " enable all Python syntax highlighting features
-let python_highlight_all = 1
+autocmd BufRead,BufNewFile *.py let python_highlight_all=1
 
 "Font Fixedsys
 set guifont=Fixedsys:h20:cDEFAULT
