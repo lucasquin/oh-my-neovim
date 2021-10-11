@@ -8,7 +8,7 @@ syntax enable
 set number
 
 " set tabs to have 4 spaces
-set ts=4
+set ts=5
 
 " indent when moving to the next line while writing code
 set autoindent
