@@ -1,32 +1,50 @@
+" _vimrc by lucasquin  | github.com/lucasquin/
+
 set nocompatible
-source $VIMRUNTIME/mswin.vim
 
-" enable syntax highlighting
-syntax enable
+" Enable windows shortcuts
+" source $VIMRUNTIME/mswin.vim 
 
-" show line numbers
+" Gui config
+set guioptions-=T
+set guioptions-=r
+
+" Encoding with UTF-8
+set encoding=utf-8
+
+" Show line numbers
 set number
 
-" set tabs to have 4 spaces
+" Enable line and column on status bar
+set ruler
+
+" Enable syntax highlighting
+syntax enable
+
+" Search
+set is hls is scs
+
+" Font Fixedsys
+set guifont=Fixedsys:h15
+
+" Backups
+set nobackup
+set noswapfile
+set nowritebackup
+
+" Ident
+set ai
+set ci
+inoremap <S-Tab> <C-d>
 set ts=4
-
-" indent when moving to the next line while writing code
-set autoindent
-
-" expand tabs into spaces
 set expandtab
-
-" when using the >> or << commands, shift lines by 4 spaces
 set shiftwidth=4
 
-" show a visual line under the cursor's current line
+" Show a visual line under the cursor's current line
 set cursorline
 
-" show the matching part of the pair for [] {} and ()
+" Show the matching part of the pair for [] {} and ()
 set showmatch
 
-" enable all Python syntax highlighting features
-autocmd BufRead,BufNewFile *.py let python_highlight_all=1
-
-"Font Fixedsys
-set guifont=Fixedsys:h20:cDEFAULT
+" NERDTree plugin config
+" autocmd  VimEnter  * NERDTree
