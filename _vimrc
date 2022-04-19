@@ -1,16 +1,16 @@
-set nocompatible
-
 " Layout
 syntax on
-set guifont=Fixedsys:h17
+set guifont=Consolas:h15
 set ruler
 set backspace=indent,eol,start
 set guioptions-=T
-set nu
+
+set number
+
 augroup numbertoggle
-    autocmd!
-    autocmd BufEnter,FocusGained,InsertLeave * set rnu
-    autocmd BufLeave,FocusLost,InsertEnter * set nornu
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
+  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
 augroup END
 
 " Edicao
@@ -22,20 +22,10 @@ set sw=4
 set si
 
 " Remap keys
-
 inoremap <S-Tab> <C-d>
-
-inoremap { {}<Left>
 inoremap {<CR> {<CR>}<Esc>O
-inoremap {{ {
-inoremap {} {}
-
-inoremap [ []<Esc>ha
-inoremap ( ()<Esc>ha
-inoremap [ []<Esc>ha
-inoremap " ""<Esc>ha
-inoremap ' ''<Esc>ha
-inoremap ` ``<Esc>ha
+inoremap [ []<Left>
+inoremap ( ()<Left>
 
 " Encoding
 set encoding=utf-8
