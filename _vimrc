@@ -1,10 +1,27 @@
+set nocompatible              " be iMproved, required
+filetype on                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'morhetz/gruvbox'
+Plugin 'itchyny/lightline.vim' 
+Plugin 'scrooloose/nerdtree'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
 " Layout
 syntax on
-set guifont=Consolas:h15
+set guifont=DejaVuSansMono_Nerd_Font_Mono:h15
 set ruler
 set backspace=indent,eol,start
 set guioptions-=T
-
 set number
 
 augroup numbertoggle
@@ -13,13 +30,14 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
 augroup END
 
+colorscheme gruvbox
+let g:airline_powerline_fonts = 1
+
 " Edicao
-set hls
-set is
-set cb=unnamed
-set ts=4
-set sw=4
-set si
+set expandtab
+set smarttab
+set shiftwidth=4
+set tabstop=4
 
 " Remap keys
 inoremap <S-Tab> <C-d>
@@ -34,3 +52,7 @@ set encoding=utf-8
 set nobackup
 set noswapfile
 set nowritebackup
+set path+=**
+set wildmenu
+
+set laststatus=2
