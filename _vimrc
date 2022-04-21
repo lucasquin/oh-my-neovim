@@ -35,7 +35,6 @@ filetype plugin indent on    " required
 
 
 "*** Syntax and Layout ***********************************************************
-
 syntax on                                     " Enable syntax highlight
 set guifont=DejaVuSansMono_Nerd_Font_Mono:h15 " Font
 set ruler                                     " Show cursor position 
