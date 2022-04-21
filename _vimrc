@@ -39,7 +39,7 @@ syntax on                                     " Enable syntax highlight
 set guifont=DejaVuSansMono_Nerd_Font_Mono:h15 " Font
 set ruler                                     " Show cursor position 
 set backspace=indent,eol,start                " Backspace default im insert mode
-set guioptions-=T                             " Hide gui options
+set guioptions-=T                             " Hide toolbar options
 set number                                    " Enable number lines
 colorscheme gruvbox                           " colorscheme 
 
