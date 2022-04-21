@@ -62,11 +62,20 @@ set tabstop=4
 
 
 "*** Remap keys *******************************************************************
-inoremap <S-Tab> <C-d>            " Shift tab default
-inoremap {<CR> {<CR>}<Esc>O       " Autoindent {
-inoremap [ []<Left>               " Autoclose [
-inoremap ( ()<Left>               " Autoclose (
-map <C-t> :below terminal<CR>     " CTRL+t open terminal in the current directory
+" Shift tab default
+inoremap <S-Tab> <C-d>
+
+" Autoindent {
+inoremap {<CR> {<CR>}<Esc>O
+
+" Autoclose [
+inoremap [ []<Left>
+
+" Autoclose (
+inoremap ( ()<Left>
+
+" CTRL+t open terminal in the current directory
+map <C-t> :below terminal<CR>     
 "**********************************************************************************
 
 
