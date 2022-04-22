@@ -75,7 +75,7 @@ inoremap [ []<Left>
 inoremap ( ()<Left>
 
 " CTRL+t open terminal in the current directory
-map <C-t> :below terminal<CR>     
+map <C-t> :below terminal<CR>
 "**********************************************************************************
 
 
