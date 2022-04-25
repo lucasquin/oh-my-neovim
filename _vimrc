@@ -20,11 +20,8 @@ call vundle#begin()
 " All of your Plugins must be added after the following line
 "************************************************************
 Plugin 'VundleVim/Vundle.vim'                               
-Plugin 'morhetz/gruvbox'
-Plugin 'itchyny/lightline.vim' 
 Plugin 'scrooloose/nerdtree'
-Plugin 'ryanoasis/vim-devicons'
-Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plugin 'neoclide/coc.nvim'
 "************************************************************
 " All your plugins must be added in the line above
 
@@ -36,14 +33,13 @@ filetype plugin indent on    " required
 
 "*** Syntax and Layout ***********************************************************
 syntax on                                     " Enable syntax highlight
-set guifont=DejaVuSansMono_Nerd_Font_Mono:h15 " Font
-set ruler                                     " Show cursor position 
+set guifont=Fixedsys:h9			              " Font
+set ruler                                     " Show cursor position in status bar
 set backspace=indent,eol,start                " Backspace default im insert mode
-set guioptions-=T                             " Hide toolbar options
-set number                                    " Enable number lines
-colorscheme gruvbox                           " colorscheme 
+set guioptions-=T                             " Hide gui options
 
-augroup numbertoggle " Show relative line number in insert mode only 
+set number                                    " Enable number lines
+augroup numbertoggle                          " Show relative line number in normal mode mode only 
   autocmd!
   autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
   autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
@@ -68,14 +64,12 @@ inoremap <S-Tab> <C-d>
 " Autoindent {
 inoremap {<CR> {<CR>}<Esc>O
 
-" Autoclose [
-inoremap [ []<Left>
-
-" Autoclose (
-inoremap ( ()<Left>
-
 " CTRL+t open terminal in the current directory
-map <C-t> :below terminal<CR>
+map <C-t> :below vertical terminal<CR>
+imap <C-t> <Esc>:below vertical terminal<CR>
+
+" NERDTree
+nmap <silent> <F2> :execute 'NERDTreeToggle ' . getcwd()<CR>
 "**********************************************************************************
 
 
@@ -102,10 +96,6 @@ set nowritebackup
 
 
 
-"*** Lightnine Congig**************************************************************
-let g:airline_powerline_fonts = 1
-set laststatus=2
-let g:lightline = {
-      \ 'colorscheme': 'one',
-      \ }
+"*** Coc.vim setup ****************************************************************
+source C:\Program Files (x86)\Vim\coc.nvimrc
 "**********************************************************************************
