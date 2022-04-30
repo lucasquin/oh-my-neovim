@@ -74,6 +74,7 @@ nmap <silent> <F2> :execute 'NERDTreeToggle ' . getcwd()<CR>
 
 
 
+
 "*** File search ******************************************************************
 set path+=**                      " Set directory to the current file editing
 set wildmenu                      " Menu option in :find whith tab
