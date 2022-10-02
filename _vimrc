@@ -12,16 +12,24 @@
 
 " Vundle vim config ************************************************************
 set nocompatible              " be iMproved, required
-filetype on                   " required
+filetype off                  " required
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " All of your Plugins must be added after the following line
-"************************************************************
+"***********************************************************
 Plugin 'VundleVim/Vundle.vim'                               
 Plugin 'scrooloose/nerdtree'
+Plugin 'chrisbra/colorizer'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'joshdick/onedark.vim'
+Plugin 'sheerun/vim-polyglot'
 Plugin 'neoclide/coc.nvim'
+
 "************************************************************
 " All your plugins must be added in the line above
 
@@ -33,10 +41,16 @@ filetype plugin indent on    " required
 
 "*** Syntax and Layout ***********************************************************
 syntax on                                     " Enable syntax highlight
-set guifont=Fixedsys:h9			              " Font
+set guifont=RobotoMono\ NFM:h12    	          " Font
 set ruler                                     " Show cursor position in status bar
 set backspace=indent,eol,start                " Backspace default im insert mode
-set guioptions-=T                             " Hide gui options
+:set guioptions-=m                            " Remove menu bar
+:set guioptions-=T                            " Remove toolbar
+set guioptions-=r                             " Remove right-hand scroll bar
+set guioptions-=L                             " Remove left-hand scroll bar
+set noshowmode                                " Hide current mode
+set nowrap       "Don't wrap lines
+set linebreak    "Wrap lines at convenient points
 
 set number                                    " Enable number lines
 augroup numbertoggle                          " Show relative line number in normal mode mode only 
@@ -94,3 +108,17 @@ set nobackup
 set noswapfile
 set nowritebackup
 "**********************************************************************************
+
+"*** Theme ************************************************************************
+let g:airline_theme='wombat'      " Airline theme
+colorscheme onedark               " Color
+"**********************************************************************************
+
+"*** Coc **************************************************************************
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+"**********************************************************************************
+
+source ~/.vim/coc.nvimrc
