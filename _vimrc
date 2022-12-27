@@ -112,7 +112,7 @@ set smarttab                                    " insert tabs on the start of a 
 
 "*** Remap keys *********************************************************************************************
 inoremap <S-Tab> <C-d>                                          " Shift tab default
-inoremap {<CR> {<CR>}<Esc>O                                     " Autoindent {
+" inoremap {<CR> {<CR>}<Esc>O                                     " Autoindent {
 map <C-t> :below vertical terminal<CR>                          " CTRL+t open terminal in the current directory
 imap <C-t> <Esc>:below vertical terminal<CR>
 nmap <silent> <F2> :execute 'NERDTreeToggle ' . getcwd()<CR>    " NERDTree
