@@ -2,7 +2,7 @@
 " | |                               (_)            
 " | |_   _  ___ __ _ ___  __ _ _   _ _ _ __  _ __  
 " | | | | |/ __/ _` / __|/ _` | | | | | '_ \| '_ \    Lucas Lopes
-" | | |_| | (_| (_| \__ \ (_| | |_| | | | | | | | |   github.com/lucasquin/Best_vimrc
+" | | |_| | (_| (_| \__ \ (_| | |_| | | | | | | | |   github.com/lucasquin/vim-config
 " |_|\__,_|\___\__,_|___/\__, |\__,_|_|_| |_|_| |_|
 "                           | |                    
 "                           |_|   
@@ -112,7 +112,6 @@ set smarttab                                    " insert tabs on the start of a 
 
 "*** Remap keys *********************************************************************************************
 inoremap <S-Tab> <C-d>                                          " Shift tab default
-" inoremap {<CR> {<CR>}<Esc>O                                     " Autoindent {
 map <C-t> :below vertical terminal<CR>                          " CTRL+t open terminal in the current directory
 imap <C-t> <Esc>:below vertical terminal<CR>
 nmap <silent> <F2> :execute 'NERDTreeToggle ' . getcwd()<CR>    " NERDTree
@@ -181,8 +180,8 @@ endif
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
-"  nmap <silent> [g <Plug>(coc-diagnostic-prev)
-"  nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation
 nmap <silent> <F12> <Plug>(coc-definition)
