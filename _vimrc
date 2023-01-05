@@ -11,15 +11,15 @@
 
 call plug#begin()
                            
-Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'sheerun/vim-polyglot'          
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
 Plug 'jiangmiao/auto-pairs'
+Plug 'shortcuts/no-neck-pain.nvim', { 'tag': '*' }
+Plug 'preservim/nerdcommenter'
 
 " Neovim only
 if (has("nvim"))
@@ -82,9 +82,6 @@ if (has("nvim"))
     highlight EndOfBuffer guibg=NONE ctermbg=NONE
 endif
 
-
-let g:NERDTreeWinSize=50                        " NERDTree size column
-
 let g:airline#extensions#tabline#enabled = 1    " Airline config
 let g:airline_powerline_fonts = 1
 
@@ -114,7 +111,6 @@ set smarttab                                    " insert tabs on the start of a 
 inoremap <S-Tab> <C-d>                                          " Shift tab default
 map <C-t> :below vertical terminal<CR>                          " CTRL+t open terminal in the current directory
 imap <C-t> <Esc>:below vertical terminal<CR>
-nmap <silent> <F2> :execute 'NERDTreeToggle ' . getcwd()<CR>    " NERDTree
 
 " Navigate splits with CTRL + hjkl
 map <C-h> <C-w>h
@@ -184,9 +180,9 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation
-nmap <silent> <F12> <Plug>(coc-definition)
-nmap <silent> <C-F12> <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nmap <silent> <F2> <Plug>(coc-definition)
+nmap <silent> <C-F2> <Plug>(coc-references)
+nmap <silent> <C-F12> <Plug>(coc-implementation)
+nmap <silent> <F12> <Plug>(coc-type-definition)
 
 "************************************************************************************************************
