@@ -18,12 +18,13 @@ Plug 'sheerun/vim-polyglot'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
 Plug 'jiangmiao/auto-pairs'
-Plug 'shortcuts/no-neck-pain.nvim', { 'tag': '*' }
 Plug 'preservim/nerdcommenter'
+Plug 'eandrju/cellular-automaton.nvim' 
 
 " Neovim only
 if (has("nvim"))
     Plug 'nvim-lua/plenary.nvim'
+    Plug 'shortcuts/no-neck-pain.nvim', { 'tag': '*' }
     Plug 'nvim-telescope/telescope.nvim'
 endif
 
@@ -68,6 +69,7 @@ augroup END
 "*** Layout *************************************************************************************************
 let g:airline_theme='dracula'                   " Airline theme
 colorscheme dracula                             " Color
+autocmd VimEnter * NoNeckPain                   " Centralize buffer
 
 " Colors bits
 if exists('+termguicolors')
