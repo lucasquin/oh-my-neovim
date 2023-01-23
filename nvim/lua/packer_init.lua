@@ -1,14 +1,6 @@
------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
 -- Plugin manager configuration file
------------------------------------------------------------
-
--- Plugin manager: packer.nvim
--- url: https://github.com/wbthomason/packer.nvim
-
--- For information about installed plugins see the README:
--- neovim-lua/README.md
--- https://github.com/brainfucksec/neovim-lua#readme
-
+---------------------------------------------------------------------------------------------------
 
 -- Automatically install packer
 local fn = vim.fn
@@ -40,16 +32,37 @@ if not status_ok then
   return
 end
 
--- Install plugins
+---------------------------------------------------------------------------------------------------
+-- Install plugins here
+---------------------------------------------------------------------------------------------------
 return packer.startup(function(use)
-  -- Add you plugins here:
-  use 'wbthomason/packer.nvim' -- packer can manage itself
+  -- Packer, manage itself
+  use 'wbthomason/packer.nvim'
 
-  -- File explorer
-  use 'kyazdani42/nvim-tree.lua'
+  -- Dracula color scheme
+  use 'Mofiqul/dracula.nvim'
 
-  -- Indent line
-  use 'lukas-reineke/indent-blankline.nvim'
+  -- NoNeckPain for centralize buffer
+  use {"shortcuts/no-neck-pain.nvim", tag = "*" }
+
+  -- Plenary for telescope
+  use "nvim-lua/plenary.nvim"
+
+  -- Dev icons
+  use 'nvim-tree/nvim-web-devicons'
+
+  -- Nerd commenter for coment
+  use 'preservim/nerdcommenter'
+
+  -- Airline theme for statusbar
+  use 'vim-airline/vim-airline'
+  use 'vim-airline/vim-airline-themes'
+
+  -- Telescope for live grep and find files
+  use {
+    'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
 
   -- Autopair
   use {
@@ -59,25 +72,8 @@ return packer.startup(function(use)
     end
   }
 
-  -- Icons
-  use 'kyazdani42/nvim-web-devicons'
-
-  -- Tag viewer
-  use 'preservim/tagbar'
-
-  -- Treesitter interface
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-  }
-
-  -- Color schemes
-  use 'navarasu/onedark.nvim'
-  use 'tanvirtin/monokai.nvim'
-  use { 'rose-pine/neovim', as = 'rose-pine' }
-
-  -- LSP
-  use 'neovim/nvim-lspconfig'
+  -- Treesitter
+  use 'nvim-treesitter/nvim-treesitter'
 
   -- Autocomplete
   use {
@@ -91,29 +87,10 @@ return packer.startup(function(use)
     },
   }
 
-  -- Statusline
-  use {
-    'feline-nvim/feline.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons' },
-  }
-
-  -- git labels
-  use {
-    'lewis6991/gitsigns.nvim',
-    requires = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      require('gitsigns').setup{}
-    end
-  }
-
-  -- Dashboard (start screen)
-  use {
-    'goolord/alpha-nvim',
-    requires = { 'kyazdani42/nvim-web-devicons' },
-  }
+  -- LSP
+  use 'neovim/nvim-lspconfig'
 
   -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
   if packer_bootstrap then
     require('packer').sync()
   end

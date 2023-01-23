@@ -9,7 +9,7 @@ end
 
 -- Disable arrow keys.
 map('', '<up>', '<nop>')
-map('', '<down>', '<nop>') 
+map('', '<down>', '<nop>')
 map('', '<left>', '<nop>')
 map('', '<right>', '<nop>')
 
@@ -21,3 +21,9 @@ map('', '<C-l>', '<C-w>l')
 
 -- Shift tab default.
 map('i', '<S-Tab>', '<C-d>')
+
+-- Telescope
+map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
+map('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
+map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
+map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')

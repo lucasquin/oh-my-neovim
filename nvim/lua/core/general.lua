@@ -6,7 +6,7 @@ local opt = vim.opt
 ---------------------------------------------------------------------------------------------------
 opt.autoread = true -- Update vim after file update from outsite
 opt.backspace = "indent,eol,start" -- Backspace default in insert mode
-opt.clipboard = 'unnamedplus' -- Copy/paste to system clipboard
+--opt.clipboard = 'unnamedplus' -- Copy/paste to system clipboard
 opt.filetype = "on" -- Detect and set the filetype option and trigger the FileType Event
 opt.mouse = 'a'-- Enable mouse suport
 
@@ -34,13 +34,13 @@ opt.wildmenu = true -- Menu option in :find whith tab
 ---------------------------------------------------------------------------------------------------
 -- Neovim UI
 ---------------------------------------------------------------------------------------------------
-opt.cmdheight = 2 -- Give more space for displaying messages
+opt.cmdheight = 0 -- Give more space
 opt.colorcolumn = '100' -- Line lenght marker at 100 columns
 opt.ignorecase = true -- Ignore case in search
 opt.linebreak = false -- Wrap lines at convenient points
 opt.number = true -- Enable line numbers
 opt.ruler = true -- Show cursor position in satus bar
-opt.scrolloff = 10 -- Minimum number of lines to keep above and below the cursor
+opt.scrolloff = 15 -- Minimum number of lines to keep above and below the cursor
 opt.showmatch = true -- Highlight matching parenthesis
 opt.showmode = false -- Hide current mode
 opt.signcolumn = "yes" -- Add a column on the left. Useful for linting
