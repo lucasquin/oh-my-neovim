@@ -18,7 +18,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.o.runtimepath = vim.fn.stdpath('data') .. '/site/pack/*/start/*,' .. vim.o.runtimepath
 end
 
--- Autocommand that reloads neovim whenever you save the packer_init.lua file
+-- Autocommand that reloads neovim whenever you save the packer_init.lua file.
 vim.cmd [[
   augroup packer_user_config
     autocmd!
@@ -26,7 +26,7 @@ vim.cmd [[
   augroup end
 ]]
 
--- Use a protected call so we don't error out on first use
+-- Use a protected call so we don't error out on first use.
 local status_ok, packer = pcall(require, 'packer')
 if not status_ok then
   return
@@ -36,35 +36,41 @@ end
 -- Install plugins here
 ---------------------------------------------------------------------------------------------------
 return packer.startup(function(use)
-  -- Packer, manage itself
+
+  -- Packer, manage itself.
   use 'wbthomason/packer.nvim'
 
-  -- Dracula color scheme
+  -- Dracula colorscheme.
   use 'Mofiqul/dracula.nvim'
 
-  -- NoNeckPain for centralize buffer
+  -- NoNeckPain for centralize buffer.
   use {"shortcuts/no-neck-pain.nvim", tag = "*" }
 
-  -- Plenary for telescope
+  -- Plenary for telescope.
   use "nvim-lua/plenary.nvim"
 
-  -- Dev icons
+  -- Dev icons.
   use 'nvim-tree/nvim-web-devicons'
 
-  -- Nerd commenter for coment
+  -- Nerd commenter for coment.
   use 'preservim/nerdcommenter'
 
-  -- Airline theme for statusbar
+  -- Airline theme for statusbar.
   use 'vim-airline/vim-airline'
+
+  -- Themes for Airline.
   use 'vim-airline/vim-airline-themes'
 
-  -- Telescope for live grep and find files
+  -- Treesitter.
+  use 'nvim-treesitter/nvim-treesitter'
+
+  -- Telescope for live grep and find files.
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.1',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-  -- Autopair
+  -- Autopair.
   use {
     'windwp/nvim-autopairs',
     config = function()
@@ -72,10 +78,7 @@ return packer.startup(function(use)
     end
   }
 
-  -- Treesitter
-  use 'nvim-treesitter/nvim-treesitter'
-
-  -- Autocomplete
+  -- Autocomplete.
   use {
     'hrsh7th/nvim-cmp',
     requires = {
@@ -87,11 +90,12 @@ return packer.startup(function(use)
     },
   }
 
-  -- LSP
+  -- LSP.
   use 'neovim/nvim-lspconfig'
 
-  -- Automatically set up your configuration after cloning packer.nvim
+  -- Automatically set up your configuration after cloning packer.nvim.
   if packer_bootstrap then
     require('packer').sync()
   end
+
 end)
