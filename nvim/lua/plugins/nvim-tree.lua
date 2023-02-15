@@ -28,11 +28,10 @@ require("nvim-tree").setup({
     indent_markers = {
       enable = true,
       icons = {
-        corner = "└ ",
-        edge = "│ ",
-        item = "│ ",
-        none = "  ",
-      }
+        edge = "║ ",
+        item = "║ ",
+        corner = "╙",
+        none = " ",}
     }
   },
   filters = {
