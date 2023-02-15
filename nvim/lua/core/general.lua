@@ -35,7 +35,7 @@ opt.wildmenu = true -- Menu option in :find whith tab
 -- Neovim UI
 ---------------------------------------------------------------------------------------------------
 opt.cmdheight = 0 -- Give more space
-opt.colorcolumn = '100' -- Line lenght marker at 100 columns
+-- opt.colorcolumn = '100' -- Line lenght marker at 100 columns
 opt.ignorecase = true -- Ignore case in search
 opt.linebreak = false -- Wrap lines at convenient points
 opt.number = true -- Enable line numbers

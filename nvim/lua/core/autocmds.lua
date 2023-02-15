@@ -16,21 +16,16 @@ autocmd('BufWritePre', {
 augroup('setIndent', { clear = true })
 autocmd('Filetype', {
   group = 'setIndent',
-  pattern = { 'xml', 'html', 'xhtml', 'css', 'scss', 'yaml', 'lua'
+  pattern = { 'xml', 'html', 'xhtml', 'css', 'scss', 'sass', 'yaml', 'lua'
 },
 command = 'setlocal shiftwidth=2 tabstop=2'
 })
 
 -- Show relative line number in normal mode only.
 vim.cmd([[
-augroup numbertoggle
-autocmd!
-autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
-autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
-augroup END
-]])
-
--- Centralize buffer with NoNeckPain.
-vim.cmd([[
-autocmd VimEnter * NoNeckPain
+  augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
+  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
+  augroup END
 ]])

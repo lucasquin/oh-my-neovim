@@ -43,9 +43,6 @@ return packer.startup(function(use)
   -- Dracula colorscheme.
   use 'Mofiqul/dracula.nvim'
 
-  -- NoNeckPain for centralize buffer.
-  use {"shortcuts/no-neck-pain.nvim", tag = "*" }
-
   -- Plenary for telescope.
   use "nvim-lua/plenary.nvim"
 
@@ -92,6 +89,18 @@ return packer.startup(function(use)
 
   -- LSP.
   use 'neovim/nvim-lspconfig'
+
+  -- nvim-tree.
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons',
+    },
+    tag = 'nightly'
+  }
+
+  -- Colorizer
+	use 'norcalli/nvim-colorizer.lua'
 
   -- Automatically set up your configuration after cloning packer.nvim.
   if packer_bootstrap then

@@ -1,6 +1,6 @@
------------------------------------------------------------
--- Autocomplete configuration file
------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+-- Autocomplete configuration file.
+---------------------------------------------------------------------------------------------------
 local cmp_status_ok, cmp = pcall(require, 'cmp')
 if not cmp_status_ok then
   return
@@ -12,20 +12,19 @@ if not luasnip_status_ok then
 end
 
 cmp.setup {
-  -- Load snippet support
+  -- Load snippet support.
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
     end,
   },
 
--- Completion settings
+-- Completion settings.
   completion = {
-    --completeopt = 'menu,menuone,noselect'
     keyword_length = 2
   },
 
-  -- Key mapping
+  -- Key mapping.
   mapping = {
     ['<C-n>'] = cmp.mapping.select_next_item(),
     ['<C-p>'] = cmp.mapping.select_prev_item(),
@@ -38,7 +37,7 @@ cmp.setup {
       select = true,
     },
 
-    -- Tab mapping
+    -- Tab mapping.
     ['<Tab>'] = function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
