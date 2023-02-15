@@ -31,7 +31,21 @@ require("nvim-tree").setup({
         edge = "║ ",
         item = "║ ",
         corner = "╙",
-        none = " ",}
+        none = " ",
+      }
+    },
+    icons = {
+      glyphs = {
+        git = {
+          unstaged = "",
+          staged = "",
+          unmerged = "",
+          renamed = "➜",
+          untracked = "",
+          deleted = "",
+          ignored = "◌",
+        }
+      }
     }
   },
   filters = {
