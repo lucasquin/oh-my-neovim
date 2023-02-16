@@ -104,6 +104,21 @@ _G.packer_plugins = {
     path = "C:\\Users\\Lucas\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\dracula.nvim",
     url = "https://github.com/Mofiqul/dracula.nvim"
   },
+  ["mason-lspconfig.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\Lucas\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\mason-lspconfig.nvim",
+    url = "https://github.com/williamboman/mason-lspconfig.nvim"
+  },
+  ["mason-tool-installer.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\Lucas\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\mason-tool-installer.nvim",
+    url = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim"
+  },
+  ["mason.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\Lucas\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\mason.nvim",
+    url = "https://github.com/williamboman/mason.nvim"
+  },
   nerdcommenter = {
     loaded = true,
     path = "C:\\Users\\Lucas\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nerdcommenter",
@@ -126,9 +141,11 @@ _G.packer_plugins = {
     url = "https://github.com/norcalli/nvim-colorizer.lua"
   },
   ["nvim-lspconfig"] = {
+    config = { "\27LJ\2\n3\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\nmason\frequire\0" },
     loaded = true,
     path = "C:\\Users\\Lucas\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-lspconfig",
-    url = "https://github.com/neovim/nvim-lspconfig"
+    url = "https://github.com/neovim/nvim-lspconfig",
+    wants = { "mason.nvim", "mason-lspconfig.nvim", "mason-tool-installer.nvim" }
   },
   ["nvim-tree.lua"] = {
     loaded = true,
@@ -173,6 +190,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: nvim-lspconfig
+time([[Config for nvim-lspconfig]], true)
+try_loadstring("\27LJ\2\n3\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\nmason\frequire\0", "config", "nvim-lspconfig")
+time([[Config for nvim-lspconfig]], false)
 -- Config for: nvim-autopairs
 time([[Config for nvim-autopairs]], true)
 try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")

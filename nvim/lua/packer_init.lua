@@ -49,14 +49,14 @@ return packer.startup(function(use)
   -- Dev icons.
   use 'nvim-tree/nvim-web-devicons'
 
-  -- Nerd commenter for coment.
+  -- Nerd commenter for comment.
   use 'preservim/nerdcommenter'
 
-  -- Airline theme for statusbar.
-  use 'vim-airline/vim-airline'
-
-  -- Themes for Airline.
-  use 'vim-airline/vim-airline-themes'
+  -- Airline .
+  use {
+    'vim-airline/vim-airline',
+    'vim-airline/vim-airline-themes'
+  }
 
   -- Treesitter.
   use 'nvim-treesitter/nvim-treesitter'
@@ -65,6 +65,25 @@ return packer.startup(function(use)
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.1',
     requires = { {'nvim-lua/plenary.nvim'} }
+  }
+
+  -- LSP config.
+
+  use {
+    "neovim/nvim-lspconfig",
+    wants = {
+      "mason.nvim",
+      "mason-lspconfig.nvim",
+      "mason-tool-installer.nvim",
+    },
+    config = function()
+      require("mason").setup()
+    end,
+    requires = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
+    }
   }
 
   -- Autopair.
@@ -87,8 +106,6 @@ return packer.startup(function(use)
     },
   }
 
-  -- LSP.
-  use 'neovim/nvim-lspconfig'
 
   -- nvim-tree.
   use {
@@ -99,7 +116,7 @@ return packer.startup(function(use)
     tag = 'nightly'
   }
 
-  -- Colorizer
+  -- Colorizer.
 	use 'norcalli/nvim-colorizer.lua'
 
   -- Automatically set up your configuration after cloning packer.nvim.
