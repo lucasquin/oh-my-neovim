@@ -1,11 +1,7 @@
----------------------------------------------------------------------------------------------------
--- Mason configuration file.
----------------------------------------------------------------------------------------------------
-local M = {}
+local Mason = {}
 
-function M.setup(servers, options)
+function Mason.setup(servers, options)
   local lspconfig = require "lspconfig"
-  local icons = require "config.icons"
 
   require("mason").setup {
     ui = {
@@ -46,39 +42,12 @@ function M.setup(servers, options)
     ["rust_analyzer"] = function()
       local opts = vim.tbl_deep_extend("force", options, servers["rust_analyzer"] or {})
 
-      -- DAP settings - https://github.com/simrat39/rust-tools.nvim#a-better-debugging-experience
+      -- DAP settings.
       local extension_path = install_root_dir .. "/packages/codelldb/extension/"
       local codelldb_path = extension_path .. "adapter/codelldb"
       local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
-      require("rust-tools").setup {
-        tools = {
-          autoSetHints = false,
-          executor = require("rust-tools/executors").toggleterm,
-          hover_actions = { border = "solid" },
-          on_initialized = function()
-            vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter", "CursorHold", "InsertLeave" }, {
-              pattern = { "*.rs" },
-              callback = function()
-                vim.lsp.codelens.refresh()
-              end,
-            })
-          end,
-        },
-        server = opts,
-        dap = {
-          adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
-        },
-      }
-    end,
-    ["tsserver"] = function()
-      local opts = vim.tbl_deep_extend("force", options, servers["tsserver"] or {})
-      require("typescript").setup {
-        disable_commands = false,
-        debug = false,
-        server = opts,
-      }
-    end,
-  }
+    end
+    }
 end
 
-return M
+return Mason

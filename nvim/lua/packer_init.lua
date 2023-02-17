@@ -1,7 +1,3 @@
----------------------------------------------------------------------------------------------------
--- Plugin manager configuration file
----------------------------------------------------------------------------------------------------
-
 -- Automatically install packer
 local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
@@ -32,61 +28,46 @@ if not status_ok then
   return
 end
 
----------------------------------------------------------------------------------------------------
--- Install plugins here
----------------------------------------------------------------------------------------------------
 return packer.startup(function(use)
 
-  -- Packer, manage itself.
   use 'wbthomason/packer.nvim'
 
-  -- Dracula colorscheme.
   use 'Mofiqul/dracula.nvim'
 
-  -- Plenary for telescope.
-  use "nvim-lua/plenary.nvim"
-
-  -- Dev icons.
   use 'nvim-tree/nvim-web-devicons'
 
-  -- Nerd commenter for comment.
   use 'preservim/nerdcommenter'
 
-  -- Airline .
   use {
     'vim-airline/vim-airline',
     'vim-airline/vim-airline-themes'
   }
 
-  -- Treesitter.
   use 'nvim-treesitter/nvim-treesitter'
 
-  -- Telescope for live grep and find files.
   use {
+    "nvim-lua/plenary.nvim",
     'nvim-telescope/telescope.nvim', tag = '0.1.1',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-  -- LSP config.
-
   use {
-    "neovim/nvim-lspconfig",
+    'neovim/nvim-lspconfig',
     wants = {
-      "mason.nvim",
-      "mason-lspconfig.nvim",
-      "mason-tool-installer.nvim",
+      'mason.nvim',
+      'mason-lspconfig.nvim',
+      'mason-tool-installer.nvim',
     },
     config = function()
-      require("mason").setup()
+      require('mason').setup()
     end,
     requires = {
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
-      "WhoIsSethDaniel/mason-tool-installer.nvim",
+      'williamboman/mason.nvim',
+      'williamboman/mason-lspconfig.nvim',
+      'WhoIsSethDaniel/mason-tool-installer.nvim',
     }
   }
 
-  -- Autopair.
   use {
     'windwp/nvim-autopairs',
     config = function()
@@ -94,7 +75,6 @@ return packer.startup(function(use)
     end
   }
 
-  -- Autocomplete.
   use {
     'hrsh7th/nvim-cmp',
     requires = {
@@ -106,8 +86,6 @@ return packer.startup(function(use)
     },
   }
 
-
-  -- nvim-tree.
   use {
     'nvim-tree/nvim-tree.lua',
     requires = {
@@ -116,10 +94,8 @@ return packer.startup(function(use)
     tag = 'nightly'
   }
 
-  -- Colorizer.
 	use 'norcalli/nvim-colorizer.lua'
 
-  -- Automatically set up your configuration after cloning packer.nvim.
   if packer_bootstrap then
     require('packer').sync()
   end

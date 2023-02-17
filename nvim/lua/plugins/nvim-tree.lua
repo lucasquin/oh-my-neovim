@@ -1,6 +1,3 @@
----------------------------------------------------------------------------------------------------
--- Nvim-tre configuration file.
----------------------------------------------------------------------------------------------------
 -- disable netrw on start.
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -16,7 +13,7 @@ vim.cmd([[
 require("nvim-tree").setup({
   sort_by = "case_sensitive",
   view = {
-    width = 70,
+    width = 65,
     mappings = {
       list = {
         { key = "u", action = "dir_up" },
@@ -35,6 +32,12 @@ require("nvim-tree").setup({
       }
     },
     icons = {
+      show = {
+        file = false,
+        folder = true,
+        folder_arrow = true,
+        git = false
+      },
       glyphs = {
         git = {
           unstaged = "",
