@@ -1,9 +1,9 @@
--- Automatically install packer
+-- Automatically install packer.
 local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({
+  Packer_bootstrap = fn.system({
     'git',
     'clone',
     '--depth',
@@ -28,64 +28,64 @@ if not status_ok then
   return
 end
 
+-- Install plugins bellow.
 return packer.startup(function(use)
-
+  -- Packer, manage itself.
   use 'wbthomason/packer.nvim'
 
+  -- Dracula colorscheme.
   use 'Mofiqul/dracula.nvim'
 
+  -- Plenary.
+  use "nvim-lua/plenary.nvim"
+
+  -- Dev icons.
   use 'nvim-tree/nvim-web-devicons'
 
+  -- Nerd commenter for coment.
   use 'preservim/nerdcommenter'
 
+  -- Nvim statusline plugin.
   use {
-    'vim-airline/vim-airline',
-    'vim-airline/vim-airline-themes'
+    'nvim-lualine/lualine.nvim',
+    requires = {
+      'nvim-tree/nvim-web-devicons',
+      opt = true
+    }
   }
-
+  -- Nvim Treesitter configurations and abstraction layer.
   use 'nvim-treesitter/nvim-treesitter'
 
+  -- Find, Filter, Preview, Pick.
   use {
-    "nvim-lua/plenary.nvim",
     'nvim-telescope/telescope.nvim', tag = '0.1.1',
-    requires = { {'nvim-lua/plenary.nvim'} }
-  }
-
-  use {
-    'neovim/nvim-lspconfig',
-    wants = {
-      'mason.nvim',
-      'mason-lspconfig.nvim',
-      'mason-tool-installer.nvim',
-    },
-    config = function()
-      require('mason').setup()
-    end,
     requires = {
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
-      'WhoIsSethDaniel/mason-tool-installer.nvim',
+      'nvim-lua/plenary.nvim'
     }
   }
 
+  -- Autopairs for Nvim.
   use {
-    'windwp/nvim-autopairs',
-    config = function()
-      require('nvim-autopairs').setup{}
-    end
+    'windwp/nvim-autopairs'
   }
 
+  -- A completion plugin pack for Nvim.
   use {
     'hrsh7th/nvim-cmp',
-    requires = {
-      'L3MON4D3/LuaSnip',
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-buffer',
-      'saadparwaiz1/cmp_luasnip',
-    },
+    'hrsh7th/cmp-nvim-lsp',
+    'L3MON4D3/LuaSnip',
+    'saadparwaiz1/cmp_luasnip',
+    'rafamadriz/friendly-snippets'
   }
 
+  -- Configs for Nvim LSP.
+  use {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
+  }
+
+  -- A file explorer tree for Nvim.
   use {
     'nvim-tree/nvim-tree.lua',
     requires = {
@@ -94,10 +94,19 @@ return packer.startup(function(use)
     tag = 'nightly'
   }
 
-	use 'norcalli/nvim-colorizer.lua'
+  -- Nvim colorizer.
+  use 'norcalli/nvim-colorizer.lua'
 
-  if packer_bootstrap then
+  -- Git integration for buffers.
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim'
+    }
+  }
+
+  -- Automatically set up your configuration after cloning packer.nvim.
+  if Packer_bootstrap then
     require('packer').sync()
   end
-
 end)

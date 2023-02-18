@@ -1,7 +1,3 @@
----------------------------------------------------------------------------------------------------
--- Autocmds config
----------------------------------------------------------------------------------------------------
-
 -- Define autocommands with Lua APIs.
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
@@ -16,8 +12,7 @@ autocmd('BufWritePre', {
 augroup('setIndent', { clear = true })
 autocmd('Filetype', {
   group = 'setIndent',
-  pattern = { 'xml', 'html', 'xhtml', 'css', 'scss', 'sass', 'yaml', 'lua'
-},
+  pattern = { 'xml', 'html', 'xhtml', 'css', 'scss', 'sass', 'yaml', 'lua' },
 command = 'setlocal shiftwidth=2 tabstop=2'
 })
 
