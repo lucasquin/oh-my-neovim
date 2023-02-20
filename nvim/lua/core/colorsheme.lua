@@ -1,15 +1,15 @@
 local dracula = require("dracula")
 
 dracula.setup({
-  -- customize dracula color palette
+  -- customize dracula color palette.
   colors = {
-    bg = "#282A36", -- default 282A36;
+    bg = "#282A36",
     fg = "#F8F8F2",
     selection = "#44475A",
     comment = "#6272A4",
     red = "#FF5555",
     orange = "#FFB86C",
-    yellow = "#F1FA8C", -- default F1FA8C
+    yellow = "#F1FA8C",
     green = "#50fa7b",
     purple = "#BD93F9",
     cyan = "#8BE9FD",
@@ -26,20 +26,20 @@ dracula.setup({
     gutter_fg = "#4B5263",
     nontext = "#3B4048",
   },
-  -- show the '~' characters after the end of buffers
-  show_end_of_buffer = true, -- default false
-  -- use transparent background
-  transparent_bg = false, -- default false
-  -- set custom lualine background color
-  lualine_bg_color = "#44475a", -- default nil
-  -- set italic comment
-  italic_comment = true, -- default false
-  -- overrides the default highlights see `:h synIDattr`
+  -- show the '~' characters after the end of buffers.
+  show_end_of_buffer = true, -- default false.
+  -- use transparent background.
+  transparent_bg = false, -- default false.
+  -- set custom lualine background color.
+  lualine_bg_color = "#44475a", -- default nil.
+  -- set italic comment.
+  italic_comment = true, -- default false.
+  -- overrides the default highlights see `:h synIDattr`.
   overrides = {
     -- Examples
-    -- NonText = { fg = dracula.colors().white }, -- set NonText fg to white
-    -- NvimTreeIndentMarker = { link = "NonText" }, -- link to NonText highlight
-    -- Nothing = {} -- clear highlight of Nothing
+    -- NonText = { fg = dracula.colors().white }, -- set NonText fg to white.
+    -- NvimTreeIndentMarker = { link = "NonText" }, -- link to NonText highlight.
+    -- Nothing = {} -- clear highlight of Nothing.
   },
 })
 
