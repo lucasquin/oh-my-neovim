@@ -104,6 +104,19 @@ return packer.startup(function(use)
       'nvim-lua/plenary.nvim'
     }
   }
+  -- Modicator.
+  use {
+    'mawkler/modicator.nvim',
+    after = 'dracula.nvim',
+    setup = function()
+      vim.o.cursorline = true
+      vim.o.number = true
+      vim.o.termguicolors = true
+    end,
+    config = function()
+      require('plugins.modicator')
+    end
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim.
   if Packer_bootstrap then
