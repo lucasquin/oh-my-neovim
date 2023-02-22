@@ -3,7 +3,7 @@ require('packer_init')
 require('core/keymaps')
 require('core/autocmds')
 require('core/options')
-require('core/colorsheme')
+require('core/colorscheme')
 
 
 require('plugins/nvim-web-devicons')
