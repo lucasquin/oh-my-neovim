@@ -1,50 +1,53 @@
-local cmp = require("cmp")
+local cmp = require('cmp')
+local luasnip = require('luasnip')
 
 require("luasnip.loaders.from_vscode").lazy_load()
 
 cmp.setup {
 
-  snippet = {
-    expand = function(args)
-      require('luasnip').lsp_expand(args.body)
-    end,
-  },
+	snippet = {
+		expand = function(args)
+			luasnip.lsp_expand(args.body)
+		end,
+	},
 
-  mapping = cmp.mapping.preset.insert({
-    ['<C-b>'] = cmp.mapping.scroll_docs( -4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+	mapping = cmp.mapping.preset.insert({
 
-    -- Tab  mapping
-    ['<Tab>'] = function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        fallback()
-      end
-    end,
-    ['<S-Tab>'] = function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable( -1) then
-        luasnip.jump( -1)
-      else
-        fallback()
-      end
-    end
-  }),
+		-- Mapping keys to autocomplete.
+		['<C-Space>'] = cmp.mapping.complete(),
+		['<C-e>'] = cmp.mapping.abort(),
+		['<CR>'] = cmp.mapping.confirm({ select = true }),
 
-  completion = {
-    keyword_length = 2
-  },
+		-- Tab  mapping.
+		['<Tab>'] = function(fallback)
+			if cmp.visible() then
+				cmp.select_next_item()
+			elseif luasnip.expand_or_jumpable() then
+				luasnip.expand_or_jump()
+			else
+				fallback()
+			end
+		end,
 
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
-    { name = 'buffer' },
-  },
+		-- ShiftTab mapping.
+		['<S-Tab>'] = function(fallback)
+			if cmp.visible() then
+				cmp.select_prev_item()
+			elseif luasnip.jumpable( -1) then
+				luasnip.jump( -1)
+			else
+				fallback()
+			end
+		end
+	}),
+
+	completion = {
+		keyword_length = 2
+	},
+
+	sources = {
+		{ name = 'nvim_lsp' },
+		{ name = 'luasnip' },
+		{ name = 'buffer' }
+	}
 }
