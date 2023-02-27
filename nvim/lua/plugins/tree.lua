@@ -66,6 +66,9 @@ require("nvim-tree").setup(
 				warning = "",
 				error = "",
 			},
+		},
+		modified = {
+			enable = true
 		}
 	}
 )
