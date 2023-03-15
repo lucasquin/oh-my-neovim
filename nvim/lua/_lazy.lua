@@ -12,38 +12,36 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-	'Mofiqul/dracula.nvim',
-	'nvim-tree/nvim-web-devicons',
-	'nvim-lualine/lualine.nvim',
-	'preservim/nerdcommenter',
-	'windwp/nvim-autopairs',
-	'nvim-tree/nvim-tree.lua',
-	'norcalli/nvim-colorizer.lua',
-	'nvim-treesitter/nvim-treesitter',
-	'lewis6991/gitsigns.nvim',
-	'tzachar/local-highlight.nvim',
-
-	-- Telescope.
-	{
-		'nvim-telescope/telescope.nvim',
-		tag = '0.1.1',
-		dependencies = { {
-			'nvim-lua/plenary.nvim'
-		} }
-	},
-
-	-- LSP.
-	'williamboman/mason.nvim',
-	'williamboman/mason-lspconfig.nvim',
-	'neovim/nvim-lspconfig',
-
-	-- Completion and snippets.
-	'hrsh7th/nvim-cmp',
-	'hrsh7th/cmp-nvim-lsp',
-	'L3MON4D3/LuaSnip',
-	'saadparwaiz1/cmp_luasnip',
-	'rafamadriz/friendly-snippets'
+	{ 'hrsh7th/cmp-nvim-lsp' }, 
+	{ 'hrsh7th/nvim-cmp' },
+	{ 'jay-babu/mason-null-ls.nvim' },
+	{ 'jose-elias-alvarez/null-ls.nvim' },
+	{ 'jose-elias-alvarez/null-ls.nvim' },
+	{ 'L3MON4D3/LuaSnip' },
+	{ 'lewis6991/gitsigns.nvim' }, 
+	{ 'Mofiqul/dracula.nvim' }, 
+	{ 'neovim/nvim-lspconfig' },
+	{ 'NMAC427/guess-indent.nvim' },
+	{ 'norcalli/nvim-colorizer.lua' }, 
+	{ 'nvim-lua/plenary.nvim' },
+	{ 'nvim-lualine/lualine.nvim' }, 
+	{ 'nvim-telescope/telescope.nvim' },
+	{ 'nvim-tree/nvim-tree.lua' },
+	{ 'nvim-tree/nvim-web-devicons' },
+	{ 'nvim-treesitter/nvim-treesitter' },
+	{ 'onsails/lspkind.nvim' },
+	{ 'preservim/nerdcommenter' },
+	{ 'rafamadriz/friendly-snippets' },
+	{ 'saadparwaiz1/cmp_luasnip' },
+	{ 'Shatur/neovim-session-manager' },
+	{ 'stevearc/aerial.nvim' },
+	{ 'tzachar/local-highlight.nvim' },
+	{ 'williamboman/mason-lspconfig.nvim' },
+	{ 'williamboman/mason.nvim' },
+	{ 'windwp/nvim-autopairs' },
+	{ 'windwp/nvim-ts-autotag' }, 
 }
+
 
 local opts = {}
 
