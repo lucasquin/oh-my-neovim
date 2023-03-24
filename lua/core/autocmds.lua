@@ -6,18 +6,17 @@ autocmd('BufWritePre', {
   command = ":%s/\\s\\+$//e"
 })
 
--- Set indentation to 2 spaces.
-local autogroup = vim.api.nvim_create_augroup
+-- Show relative line number in normal mode only.
+vim.cmd([[
+	augroup numbertoggle
+	autocmd!
+	autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
+	autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
+	augroup END
+]])
 
-autogroup('setIndent', {
-	clear = true
-})
-
-local languages = { 'xml', 'html', 'xhtml', 'css', 'scss', 'sass', 'yaml', 'lua' }
-
-autocmd('Filetype', {
-  group = 'setIndent',
-  pattern = languages,
-command = 'setlocal shiftwidth=2 tabstop=2'
-})
+-- Set colorscheme.
+vim.cmd([[
+	autocmd VimEnter * colorscheme dracula
+]])
 

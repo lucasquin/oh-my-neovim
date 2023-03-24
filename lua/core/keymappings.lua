@@ -21,6 +21,3 @@ Map('', '<C-l>', '<C-w>l')
 
 -- Shift tab default.
 Map('i', '<S-Tab>', '<C-d>')
-
--- Search word.
-Map('n', '<leader>h', ':nohlsearch<CR>')

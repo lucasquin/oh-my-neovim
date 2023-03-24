@@ -1,6 +1,4 @@
-require('mason').setup()
-
-local servers = { 'lua_ls', 'tsserver', 'cssls', 'html', 'jsonls', 'angularls' }
+local servers = { 'lua_ls', 'tsserver', 'cssls', 'html', 'angularls', 'jsonls' }
 
 require('mason-lspconfig').setup({
 	ensure_installed = servers
@@ -18,16 +16,11 @@ local on_attach = function(client)
 	Map('n', 'K', vim.lsp.buf.hover, {})
 end
 
-local root_dir = function()
-	return vim.fn.getcwd()
-end
-
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 for _, lsp in ipairs(servers) do
 	require("lspconfig")[lsp].setup {
 		on_attach = on_attach,
-		root_dir = root_dir,
 		capabilities = capabilities,
 		settings = {
 			Lua = {
