@@ -28,6 +28,12 @@ local plugins = {
 	-- Web devicons
 	{ "nvim-tree/nvim-web-devicons", enabled = vim.g.icons_enabled },
 
+	-- Auto tags
+	{ "windwp/nvim-ts-autotag" },
+
+	-- Local highlight
+	{ 'tzachar/local-highlight.nvim' },
+
 	-- Lualine
 	{ 'nvim-lualine/lualine.nvim' },
 
@@ -78,6 +84,7 @@ local plugins = {
 	{
 		"jose-elias-alvarez/null-ls.nvim",
 		dependencies = {
+			{ "nvim-lua/plenary.nvim" },
 			{
 				"jay-babu/mason-null-ls.nvim",
 				opts = {
