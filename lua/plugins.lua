@@ -28,6 +28,15 @@ local plugins = {
 	-- Web devicons
 	{ "nvim-tree/nvim-web-devicons", enabled = vim.g.icons_enabled },
 
+	-- Lualine
+	{ 'nvim-lualine/lualine.nvim' },
+
+	-- Nerdcommenter
+	{ 'preservim/nerdcommenter' },
+
+	-- Colorizer
+	{ 'norcalli/nvim-colorizer.lua' },
+
 	-- Git
 	{
 		"lewis6991/gitsigns.nvim",
@@ -82,7 +91,7 @@ local plugins = {
 	{ "onsails/lspkind.nvim", enabled = vim.g.icons_enabled },
 
 	-- Luasnip
-	{ "L3MON4D3/LuaSnip", dependencies = { "rafamadriz/friendly-snippets" } },
+	{ "L3MON4D3/LuaSnip",     dependencies = { "rafamadriz/friendly-snippets" } },
 
 	-- CMP
 	{

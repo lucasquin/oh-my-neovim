@@ -3,9 +3,9 @@ local neotree = require("neo-tree")
 neotree.setup({
 	close_if_last_window = true,
 	popup_border_style = "rounded",
-	enable_git_status = true,
+	enable_git_status = false,
 	enable_diagnostics = true,
-	open_files_do_not_replace_types = { "terminal", "trouble", "qf" },     -- when opening files, do not use windows containing these filetypes or buftypes
+	open_files_do_not_replace_types = { "terminal", "trouble", "qf" }, -- when opening files, do not use windows containing these filetypes or buftypes
 	sort_case_insensitive = false,
 	sort_function = nil,
 	default_component_configs = {
@@ -32,7 +32,7 @@ neotree.setup({
 			highlight = "NeoTreeFileIcon"
 		},
 		modified = {
-			symbol = "[+]",
+			symbol = "",
 			highlight = "NeoTreeModified",
 		},
 		name = {
@@ -119,9 +119,9 @@ neotree.setup({
 	filesystem = {
 		filtered_items = {
 			visible = false,
-			hide_dotfiles = false,
-			hide_gitignored = false,
-			hide_hidden = false,
+			hide_dotfiles = true,
+			hide_gitignored = true,
+			hide_hidden = true,
 			hide_by_name = {},
 			hide_by_pattern = {},
 			always_show = {},

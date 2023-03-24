@@ -27,13 +27,13 @@ dracula.setup({
 		nontext = "#3B4048",
 	},
 	-- Show the '~' characters after the end of buffers
-	show_end_of_buffer = false, -- default false
+	show_end_of_buffer = false,  -- default false
 	-- Use transparent background
-	transparent_bg = false,     -- default false
+	transparent_bg = false,      -- default false
 	-- Set custom lualine background color
 	lualine_bg_color = "#44475a", -- default nil
 	-- Set italic comment
-	italic_comment = true,      -- default false
+	italic_comment = true,       -- default false
 	-- Overrides the default highlights see `:h synIDattr`
 	overrides = {
 		-- Examples
