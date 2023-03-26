@@ -18,6 +18,16 @@ local plugins = {
 	{ 'Mofiqul/dracula.nvim' },
 
 	{
+		'mawkler/modicator.nvim',
+		dependencies = 'Mofiqul/dracula.nvim',
+		init = function()
+			vim.o.cursorline = true
+			vim.o.number = true
+			vim.o.termguicolors = true
+		end,
+	},
+
+	{
 		'nvim-treesitter/nvim-treesitter',
 		dependencies = { "windwp/nvim-ts-autotag", "JoosepAlviste/nvim-ts-context-commentstring" },
 		build = ':TSUpdate'
@@ -80,7 +90,6 @@ local plugins = {
 	},
 
 	{ "onsails/lspkind.nvim", enabled = vim.g.icons_enabled },
-
 	{ "L3MON4D3/LuaSnip",     dependencies = { "rafamadriz/friendly-snippets" } },
 
 	{

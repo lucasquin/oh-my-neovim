@@ -52,3 +52,4 @@ v.syntax = 'on'
 v.number = true
 v.wrap = false
 v.termguicolors = true
+v.cursorline = true
