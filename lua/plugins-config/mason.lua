@@ -9,3 +9,9 @@ mason.setup({
 		}
 	}
 })
+
+local lspconfig = require('mason-lspconfig')
+
+lspconfig.setup({
+	automatic_installation = true
+})

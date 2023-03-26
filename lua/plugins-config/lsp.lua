@@ -6,10 +6,8 @@ require('mason-lspconfig').setup({
 
 local on_attach = function(client)
 	client.server_capabilities.semanticTokensProvider = nil -- Disable LSP syntax highlight.
-
 	local Map = vim.keymap.set
 	Map('n', '<leader>rn', vim.lsp.buf.rename, {})
-	Map('n', '<leader>ca', vim.lsp.buf.code_action, {})
 	Map('n', '<space>f', function() vim.lsp.buf.format { async = true } end, {})
 	Map('n', '<F2>', vim.lsp.buf.definition, {})
 	Map('n', '<C-F2>', require('telescope.builtin').lsp_references, {})

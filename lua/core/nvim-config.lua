@@ -44,7 +44,7 @@ v.smarttab = true
 
 -- UI
 v.title = true
-v.cmdheight = 1
+v.cmdheight = 0
 v.wildmenu = true
 v.showmode = false
 v.signcolumn = 'yes'
