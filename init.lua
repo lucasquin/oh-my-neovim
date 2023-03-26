@@ -1,7 +1,6 @@
 require('core.keymappings')
 require('core.autocmds')
 require('core.nvim-config')
-
 require('plugins')
 require('plugins-config.dracula')
 require('plugins-config.nvim-web-devicons')
@@ -18,4 +17,4 @@ require('plugins-config.lspkind')
 require('plugins-config.cmp')
 require('plugins-config.lsp')
 require('plugins-config.local-highlight')
-require('plugins-config.autotags')
+require('plugins-config.bufferline')

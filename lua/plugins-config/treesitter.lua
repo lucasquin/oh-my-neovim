@@ -11,11 +11,14 @@ treesitter.setup({
 			end
 		end,
 	},
-	incremental_selection = {
-		enable = true
-	},
+	incremental_selection = { enable = true },
+	indent = { enable = true },
 	autotag = {
-		enable = true
+		enable = true,
+		filetypes = {
+			'html', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'svelte', 'vue',
+			'tsx', 'jsx', 'rescript', 'xml', 'php', 'markdown', 'glimmer', 'handlebars', 'hbs'
+		}
 	},
 	context_commentstring = {
 		enable = true,
