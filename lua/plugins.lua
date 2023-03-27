@@ -35,6 +35,8 @@ local plugins = {
 
 	{ "nvim-tree/nvim-web-devicons", enabled = vim.g.icons_enabled },
 
+	{ "MunifTanjim/nui.nvim" },
+
 	{ "akinsho/bufferline.nvim" },
 
 	{ 'tzachar/local-highlight.nvim' },

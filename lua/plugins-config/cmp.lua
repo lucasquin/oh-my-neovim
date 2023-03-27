@@ -29,7 +29,7 @@ cmp.setup {
 	},
 
 	formatting = {
-		fields = { "kind", "abbr", "menu" },
+		fields = { "abbr", "menu", "kind" },
 		format = lspkind_status_ok and lspkind.cmp_format(lspkind) or nil
 	},
 
