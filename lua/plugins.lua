@@ -27,6 +27,10 @@ local plugins = {
 		end,
 	},
 
+	{ 'jackMort/ChatGPT.nvim' },
+
+	{ 'james1236/backseat.nvim' },
+
 	{
 		'nvim-treesitter/nvim-treesitter',
 		dependencies = { "windwp/nvim-ts-autotag", "JoosepAlviste/nvim-ts-context-commentstring" },
