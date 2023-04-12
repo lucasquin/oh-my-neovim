@@ -15,6 +15,17 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
 
+	{
+		"chrisgrieser/nvim-early-retirement",
+		config = true,
+		event = "VeryLazy",
+		opts = {
+			retirementAgeMins = 10,
+			ignoredFiletypes = {'neo-tree'},
+			ignoreUnsavedChangesBufs = false,
+		},
+	},
+
 	{ 'Mofiqul/dracula.nvim' },
 
 	{
