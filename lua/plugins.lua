@@ -29,8 +29,6 @@ local plugins = {
 
 	{ 'jackMort/ChatGPT.nvim' },
 
-	{ 'james1236/backseat.nvim' },
-
 	{
 		'nvim-treesitter/nvim-treesitter',
 		dependencies = { "windwp/nvim-ts-autotag", "JoosepAlviste/nvim-ts-context-commentstring" },
@@ -40,8 +38,6 @@ local plugins = {
 	{ "nvim-tree/nvim-web-devicons", enabled = vim.g.icons_enabled },
 
 	{ "MunifTanjim/nui.nvim" },
-
-	{ "akinsho/bufferline.nvim" },
 
 	{ 'tzachar/local-highlight.nvim' },
 
