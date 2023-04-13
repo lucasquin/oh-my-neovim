@@ -21,7 +21,7 @@ local plugins = {
 		event = "VeryLazy",
 		opts = {
 			retirementAgeMins = 10,
-			ignoredFiletypes = {'neo-tree'},
+			ignoredFiletypes = { 'neo-tree' },
 			ignoreUnsavedChangesBufs = false,
 		},
 	},

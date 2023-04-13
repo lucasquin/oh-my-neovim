@@ -1,5 +1,9 @@
 local dracula = require("dracula")
 
+vim.cmd([[
+	autocmd VimEnter * set fillchars+=vert:\ 
+]])
+
 dracula.setup({
 	-- Palette
 	colors = {
