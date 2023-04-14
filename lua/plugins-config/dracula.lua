@@ -31,7 +31,7 @@ dracula.setup({
 		nontext = "#3B4048",
 	},
 	-- Show the '~' characters after the end of buffers
-	show_end_of_buffer = false,  -- default false
+	show_end_of_buffer = true,  -- default false
 	-- Use transparent background
 	transparent_bg = false,      -- default false
 	-- Set custom lualine background color
@@ -41,8 +41,8 @@ dracula.setup({
 	-- Overrides the default highlights see `:h synIDattr`
 	overrides = {
 		-- Examples
-		-- NonText = { fg = dracula.colors().white }, -- set NonText fg to white
-		-- NvimTreeIndentMarker = { link = "NonText" }, -- link to NonText highlight
-		-- Nothing = {} -- clear highlight of Nothing
+		 NonText = { fg = dracula.colors().white }, -- set NonText fg to white
+		 NvimTreeIndentMarker = { link = "NonText" }, -- link to NonText highlight
+		 Nothing = {} -- clear highlight of Nothing
 	},
 })
