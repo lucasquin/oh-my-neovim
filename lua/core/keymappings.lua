@@ -21,3 +21,6 @@ Map('', '<C-l>', '<C-w>l')
 
 -- Shift tab default.
 Map('i', '<S-Tab>', '<C-d>')
+
+-- Save with CTRL S.
+Map('', '<C-s>', '<cmd>w<cr><esc>', { desc = 'Save file' })

@@ -15,7 +15,7 @@ vim.cmd([[
 	augroup END
 ]])
 
--- Set colorscheme.
+-- Set colorscheme
 vim.cmd([[
 	autocmd VimEnter * colorscheme dracula
 ]])

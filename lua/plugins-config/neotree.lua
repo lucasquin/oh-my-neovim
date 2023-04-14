@@ -8,6 +8,10 @@ neotree.setup({
 	open_files_do_not_replace_types = { "terminal", "trouble", "qf" }, -- when opening files, do not use windows containing these filetypes or buftypes
 	sort_case_insensitive = false,
 	sort_function = nil,
+	source_selector = {
+		winbar = false,
+		statusline = true
+	},
 	default_component_configs = {
 		container = {
 			enable_character_fade = true
