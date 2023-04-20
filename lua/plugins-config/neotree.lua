@@ -1,7 +1,7 @@
 local neotree = require("neo-tree")
 
 neotree.setup({
-	close_if_last_window = true,
+	close_if_last_window = false,
 	popup_border_style = "rounded",
 	enable_git_status = false,
 	enable_diagnostics = true,
@@ -31,7 +31,7 @@ neotree.setup({
 		icon = {
 			folder_closed = "",
 			folder_open = "",
-			folder_empty = "ﰊ",
+			folder_empty = "",
 			default = "*",
 			highlight = "NeoTreeFileIcon"
 		},

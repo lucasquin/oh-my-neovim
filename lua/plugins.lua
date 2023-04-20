@@ -28,6 +28,8 @@ local plugins = {
 
 	{ 'Mofiqul/dracula.nvim' },
 
+	{ 'anuvyklack/pretty-fold.nvim' },
+
 	{
 		'mawkler/modicator.nvim',
 		dependencies = 'Mofiqul/dracula.nvim',
