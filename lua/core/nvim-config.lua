@@ -12,6 +12,7 @@ v.autoread = true
 v.history = 1000
 v.undolevels = 1000
 v.updatetime = 750
+v.clipboard = 'unnamedplus'
 
 -- Backup
 v.backup = false
