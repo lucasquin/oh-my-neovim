@@ -24,3 +24,6 @@ Map('i', '<S-Tab>', '<C-d>')
 
 -- Save with CTRL S.
 Map('', '<C-s>', '<cmd>w<cr><esc>', { desc = 'Save file' })
+
+-- Select all.
+Map('n', '<C-a>', 'ggVG', { desc = 'Select all' })
