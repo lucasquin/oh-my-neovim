@@ -53,8 +53,8 @@ v.number = true
 v.wrap = false
 v.termguicolors = true
 v.cursorline = true
-
-v.foldcolumn = "1"
+vim.o.fillchars = "eob: "
+v.foldcolumn = "5"
 v.foldlevel = 99
 v.foldlevelstart = -1
 v.foldenable = true
