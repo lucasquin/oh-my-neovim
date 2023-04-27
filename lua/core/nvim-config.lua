@@ -12,7 +12,6 @@ v.autoread = true
 v.history = 1000
 v.undolevels = 1000
 v.updatetime = 750
-v.clipboard = 'unnamedplus'
 
 -- Backup
 v.backup = false
@@ -54,3 +53,8 @@ v.number = true
 v.wrap = false
 v.termguicolors = true
 v.cursorline = true
+
+v.foldcolumn = "1"
+v.foldlevel = 99
+v.foldlevelstart = -1
+v.foldenable = true

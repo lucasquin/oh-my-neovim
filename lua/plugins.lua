@@ -28,7 +28,8 @@ local plugins = {
 
 	{ 'Mofiqul/dracula.nvim' },
 
-	{ 'anuvyklack/pretty-fold.nvim' },
+
+	{ 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' },
 
 	{
 		'mawkler/modicator.nvim',
