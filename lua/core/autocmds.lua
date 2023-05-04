@@ -17,7 +17,7 @@ vim.cmd([[
 
 -- Set colorscheme
 vim.cmd([[
-	autocmd VimEnter * colorscheme dracula
+	autocmd VimEnter * colorscheme dracula-soft
 ]])
 
 -- Set indentation to 2 spaces.
