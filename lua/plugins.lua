@@ -39,6 +39,7 @@ local plugins = {
 	{ 'windwp/nvim-autopairs' },
 	{ 'Mofiqul/dracula.nvim' },
 	{ 'williamboman/mason.nvim' },
+	{ 'fedepujol/move.nvim'},
 
 	{
 		"nvim-telescope/telescope.nvim",

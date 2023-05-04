@@ -19,6 +19,7 @@
   "mason-null-ls.nvim": { "branch": "main", "commit": "54d702020bf94e4eefd357f0b738317af30217eb" },
   "mason.nvim": { "branch": "main", "commit": "057ac5ca159c83e302a55bd839a96ff1ea2396db" },
   "modicator.nvim": { "branch": "main", "commit": "28042ea94db52e19d02eb97cfc7f792d8f61f37a" },
+  "move.nvim": { "branch": "main", "commit": "d663b74b4e38f257aae757541c9076b8047844d6" },
   "neo-tree.nvim": { "branch": "v2.x", "commit": "8d485aab32da9b8841d4af977f992b82b14af469" },
   "nerdcommenter": { "branch": "master", "commit": "1fe9e1cfea9bb0dbc77174d776759ed67899ee50" },
   "nui.nvim": { "branch": "main", "commit": "698e75814cd7c56b0dd8af4936bcef2d13807f3c" },
