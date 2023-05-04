@@ -12,6 +12,7 @@ v.autoread = true
 v.history = 1000
 v.undolevels = 1000
 v.updatetime = 750
+g.icons_enabled = true
 
 -- Backup
 v.backup = false
@@ -54,7 +55,7 @@ v.wrap = false
 v.termguicolors = true
 v.cursorline = true
 vim.o.fillchars = "eob: "
-v.foldcolumn = "5"
+v.foldcolumn = "6"
 v.foldlevel = 99
 v.foldlevelstart = -1
 v.foldenable = true

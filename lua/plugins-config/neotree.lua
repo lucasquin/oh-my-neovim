@@ -1,5 +1,7 @@
 local neotree = require("neo-tree")
 
+vim.g.neo_tree_remove_legacy_commands = true
+
 neotree.setup({
 	close_if_last_window = false,
 	popup_border_style = "rounded",

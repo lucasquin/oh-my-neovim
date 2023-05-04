@@ -15,71 +15,34 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
 
-	{
-		"chrisgrieser/nvim-early-retirement",
-		config = true,
-		event = "VeryLazy",
-		opts = {
-			retirementAgeMins = 10,
-			ignoredFiletypes = { 'neo-tree' },
-			ignoreUnsavedChangesBufs = false,
-		},
-	},
-
-	{ 'Mofiqul/dracula.nvim' },
-
-
-	{ 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' },
-
-	{
-		'mawkler/modicator.nvim',
-		dependencies = 'Mofiqul/dracula.nvim',
-		init = function()
-			vim.o.cursorline = true
-			vim.o.number = true
-			vim.o.termguicolors = true
-		end,
-	},
-
-	{ 'jackMort/ChatGPT.nvim' },
-
-	{
-		'nvim-treesitter/nvim-treesitter',
-		dependencies = { "windwp/nvim-ts-autotag", "JoosepAlviste/nvim-ts-context-commentstring" },
-		build = ':TSUpdate'
-	},
-
-	{ "nvim-tree/nvim-web-devicons", enabled = vim.g.icons_enabled },
-
+	-- Dependencies
+	{ 'nvim-lua/plenary.nvim' },
+	{ 'nvim-tree/nvim-web-devicons' },
 	{ "MunifTanjim/nui.nvim" },
 
+	{ 'samodostal/image.nvim',           dependencies = 'm00qek/baleia.nvim' },
+	{ 'kevinhwang91/nvim-ufo',           dependencies = 'kevinhwang91/promise-async' },
+	{ 'neovim/nvim-lspconfig',           dependencies = { 'williamboman/mason-lspconfig.nvim' } },
+	{ 'L3MON4D3/LuaSnip',                dependencies = { 'rafamadriz/friendly-snippets' } },
+	{ 'mawkler/modicator.nvim',          dependencies = 'Mofiqul/dracula.nvim' },
+	{ "jose-elias-alvarez/null-ls.nvim", dependencies = { { 'jay-babu/mason-null-ls.nvim' } } },
+	{ 'nvim-treesitter/nvim-treesitter', dependencies = { 'windwp/nvim-ts-autotag',	'JoosepAlviste/nvim-ts-context-commentstring' } },
+	{ 'lewis6991/gitsigns.nvim',         enabled = vim.fn.executable 'git' == 1, ft =	'gitcommit' },
+	{ 'nvim-neo-tree/neo-tree.nvim',     cmd = 'Neotree' },
+	{ 'onsails/lspkind.nvim' },
+	{ 'jackMort/ChatGPT.nvim' },
+	{ 'sindrets/diffview.nvim' },
 	{ 'tzachar/local-highlight.nvim' },
-
 	{ 'nvim-lualine/lualine.nvim' },
-
 	{ 'preservim/nerdcommenter' },
-
 	{ 'norcalli/nvim-colorizer.lua' },
-
-	{
-		"lewis6991/gitsigns.nvim",
-		enabled = vim.fn.executable "git" == 1,
-		ft = "gitcommit",
-	},
-
-	{
-		"nvim-neo-tree/neo-tree.nvim",
-		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons" },
-		cmd = "Neotree",
-		init = function() vim.g.neo_tree_remove_legacy_commands = true end,
-	},
-
-	{ "windwp/nvim-autopairs" },
+	{ 'windwp/nvim-autopairs' },
+	{ 'Mofiqul/dracula.nvim' },
+	{ 'williamboman/mason.nvim' },
 
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
-			{ 'nvim-lua/plenary.nvim' },
 			{
 				"nvim-telescope/telescope-fzf-native.nvim",
 				enabled = vim.fn.executable "make" == 1,
@@ -87,26 +50,6 @@ local plugins = {
 			},
 		},
 	},
-
-	{ "williamboman/mason.nvim" },
-
-	{ "neovim/nvim-lspconfig",  dependencies = { "williamboman/mason-lspconfig.nvim" } },
-
-	{
-		"jose-elias-alvarez/null-ls.nvim",
-		dependencies = {
-			{ "nvim-lua/plenary.nvim" },
-			{
-				"jay-babu/mason-null-ls.nvim",
-				opts = {
-					automatic_setup = true
-				}
-			}
-		}
-	},
-
-	{ "onsails/lspkind.nvim", enabled = vim.g.icons_enabled },
-	{ "L3MON4D3/LuaSnip",     dependencies = { "rafamadriz/friendly-snippets" } },
 
 	{
 		"hrsh7th/nvim-cmp",
