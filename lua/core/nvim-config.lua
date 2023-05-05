@@ -55,7 +55,8 @@ v.wrap = false
 v.termguicolors = true
 v.cursorline = true
 vim.o.fillchars = "eob: "
-v.foldcolumn = "6"
+
+v.foldcolumn = "5"
 v.foldlevel = 99
 v.foldlevelstart = -1
 v.foldenable = true
