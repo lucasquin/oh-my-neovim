@@ -21,7 +21,6 @@ local plugins = {
 	{ "MunifTanjim/nui.nvim" },
   --
 	{ 'samodostal/image.nvim',           dependencies = 'm00qek/baleia.nvim' },
-	{ 'kevinhwang91/nvim-ufo',           dependencies = 'kevinhwang91/promise-async' },
 	{ 'neovim/nvim-lspconfig',           dependencies = { 'williamboman/mason-lspconfig.nvim' } },
 	{ 'L3MON4D3/LuaSnip',                dependencies = { 'rafamadriz/friendly-snippets' } },
 	{ 'mawkler/modicator.nvim',          dependencies = 'Mofiqul/dracula.nvim' },
@@ -41,6 +40,8 @@ local plugins = {
 	{ 'williamboman/mason.nvim' },
 	{ 'fedepujol/move.nvim'},
 	{ 'sindrets/diffview.nvim' },
+	{ 'AckslD/muren.nvim', config = true },
+	{ 'VidocqH/lsp-lens.nvim' },
 
 	{
 		"nvim-telescope/telescope.nvim",
