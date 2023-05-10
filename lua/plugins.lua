@@ -23,7 +23,6 @@ local plugins = {
 	{ 'samodostal/image.nvim',           dependencies = 'm00qek/baleia.nvim' },
 	{ 'neovim/nvim-lspconfig',           dependencies = { 'williamboman/mason-lspconfig.nvim' } },
 	{ 'L3MON4D3/LuaSnip',                dependencies = { 'rafamadriz/friendly-snippets' } },
-	{ 'mawkler/modicator.nvim',          dependencies = 'Mofiqul/dracula.nvim' },
 	{ "jose-elias-alvarez/null-ls.nvim", dependencies = { { 'jay-babu/mason-null-ls.nvim' } } },
 	{ 'nvim-treesitter/nvim-treesitter', dependencies = { 'windwp/nvim-ts-autotag',	'JoosepAlviste/nvim-ts-context-commentstring' } },
 	{ 'lewis6991/gitsigns.nvim',         enabled = vim.fn.executable 'git' == 1, ft =	'gitcommit' },
@@ -40,8 +39,6 @@ local plugins = {
 	{ 'williamboman/mason.nvim' },
 	{ 'fedepujol/move.nvim'},
 	{ 'sindrets/diffview.nvim' },
-	{ 'AckslD/muren.nvim', config = true },
-	{ 'VidocqH/lsp-lens.nvim' },
 
 	{
 		"nvim-telescope/telescope.nvim",

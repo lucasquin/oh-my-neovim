@@ -9,9 +9,9 @@ local on_attach = function(client)
 	local Map = vim.keymap.set
 	Map('n', '<leader>rn', vim.lsp.buf.rename, {})
 	Map('n', '<space>f', function() vim.lsp.buf.format { async = true } end, {})
-	Map('n', '<F2>', require('telescope.builtin').lsp_definitions, {})
-	Map('n', '<C-F2>', require('telescope.builtin').lsp_references, {})
-	Map('n', 'K', vim.lsp.buf.hover, {})
+	Map('n', '<F10>', require('telescope.builtin').lsp_definitions, {})
+	Map('n', '<C-F10>', require('telescope.builtin').lsp_references, {})
+	Map('n', '<S-F10', vim.lsp.buf.hover, {})
 end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()

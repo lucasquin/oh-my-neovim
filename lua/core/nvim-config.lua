@@ -14,7 +14,7 @@
 --vim.cmd.colorscheme('darkblue') -- Doc: https://vimdoc.sourceforge.net/htmldoc/syntax.html#:colorscheme
 
 -- If in Insert, Replace or Visual mode put a message on the last line.
-vim.opt.showmode = true -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'showmode'
+vim.opt.showmode = false-- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'showmode'
 
 -- Show (partial) command in the last line of the screen.
 vim.opt.showcmd = true -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'showcmd'
