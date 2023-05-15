@@ -1,6 +1,4 @@
-local gitsigns = require('gitsigns')
-
-gitsigns.setup({
+require("gitsigns").setup({
 	signs = {
 		add = { text = "▎" },
 		change = { text = "▎" },
@@ -8,5 +6,5 @@ gitsigns.setup({
 		topdelete = { text = "契" },
 		changedelete = { text = "▎" },
 		untracked = { text = "▎" },
-	}
+	},
 })

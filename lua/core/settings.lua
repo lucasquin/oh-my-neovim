@@ -11,10 +11,10 @@
 -- ##################
 
 -- Colorscheme.
---vim.cmd.colorscheme('darkblue') -- Doc: https://vimdoc.sourceforge.net/htmldoc/syntax.html#:colorscheme
+-- vim.cmd.colorscheme('darkblue') -- Doc: https://vimdoc.sourceforge.net/htmldoc/syntax.html#:colorscheme
 
 -- If in Insert, Replace or Visual mode put a message on the last line.
-vim.opt.showmode = false-- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'showmode'
+vim.opt.showmode = false -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'showmode'
 
 -- Show (partial) command in the last line of the screen.
 vim.opt.showcmd = true -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'showcmd'
@@ -26,10 +26,10 @@ vim.opt.cursorline = true -- Doc: https://vimdoc.sourceforge.net/htmldoc/options
 vim.opt.title = true -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'title'
 
 -- Name of title.
-vim.opt.titlestring = '' -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'title'
+vim.opt.titlestring = "" -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'title'
 
 -- Enable syntax highlight.
-vim.opt.syntax = 'on' -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'syntax'
+vim.opt.syntax = "on" -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'syntax'
 
 -- Enable number line.
 vim.opt.number = true -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'number'
@@ -41,7 +41,7 @@ vim.opt.relativenumber = true -- Doc: https://vimdoc.sourceforge.net/htmldoc/opt
 vim.opt.termguicolors = true -- Doc: https://neovim.io/doc/user/term.html
 
 -- Extra column, util for plugins.
-vim.opt.signcolumn = 'yes' -- Doc: https://neovim.io/doc/user/sign.html
+vim.opt.signcolumn = "yes" -- Doc: https://neovim.io/doc/user/sign.html
 
 -- Number of screen lines to use for the command-line.
 vim.opt.cmdheight = 1 -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'cmdheight'
@@ -50,7 +50,7 @@ vim.opt.cmdheight = 1 -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.htm
 vim.g.icons_enabled = true
 
 -- Characters to fill the statuslines and vertical separators. Currently blank.
-vim.o.fillchars = 'eob: ' -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'fillchars'
+vim.o.fillchars = "eob: " -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'fillchars'
 
 -- Suggestion menu to complete commands in cmd.
 vim.opt.wildmenu = true -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'wildmenu'
@@ -79,7 +79,7 @@ vim.opt.history = 50 -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html
 vim.opt.undolevels = 1000 -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'undolevels'
 
 -- Execution of automatic commands in ms.
-vim.opt.updatetime = 250 -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'updatetime'
+vim.opt.updatetime = 500 -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'updatetime'
 
 -- Copy the structure of the existing lines indent when autoindenting a new line.
 vim.opt.copyindent = true -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'copyindent'
@@ -107,13 +107,13 @@ vim.opt.wrap = false -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html
 -- ############
 
 -- File enconding.
-vim.opt.encoding = 'utf-8' -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'encoding'
+vim.opt.encoding = "utf-8" -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'encoding'
 
 -- File encoding.
-vim.opt.fileencoding = 'utf-8' -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'fileencoding'
+vim.opt.fileencoding = "utf-8" -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'fileencoding'
 
 -- File encoding.
-vim.scriptencoding = 'utf-8' -- Doc: https://vimdoc.sourceforge.net/htmldoc/repeat.html#:scriptencoding
+vim.scriptencoding = "utf-8" -- Doc: https://vimdoc.sourceforge.net/htmldoc/repeat.html#:scriptencoding
 
 -- #########
 -- Tab's ######
@@ -135,8 +135,7 @@ vim.opt.softtabstop = 4 -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.h
 vim.opt.shiftwidth = 4 -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'shiftwidth'
 
 -- Tab with spaces.
-vim.opt.backspace = 'indent,eol,start' -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'backspace'
+vim.opt.backspace = "indent,eol,start" -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'backspace'
 
 -- Insert tabs on the start of a line according to shiftwidth.
 vim.opt.smarttab = true -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'smarttab'
-
