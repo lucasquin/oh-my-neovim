@@ -15,6 +15,7 @@ require("plugins.config.telescope")
 require("plugins.config.colorizer")
 require("plugins.config.autopairs")
 require("plugins.config.cmp")
+require("plugins.config.chatgpt")
 
 require("plugins.config.lsp.mason")
 require("plugins.config.lsp.lspsaga")
