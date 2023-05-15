@@ -14,3 +14,7 @@ vim.cmd([[
 	autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
 	augroup END
 ]])
+
+if vim.fn.has("win32" or "win64") == 1 then
+	vim.o.shell = "powershell.exe"
+end
