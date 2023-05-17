@@ -85,10 +85,13 @@ local plugins = {
 
 	-- Formatting & Linting
 	{ "jose-elias-alvarez/null-ls.nvim" },
-    { "jay-babu/mason-null-ls.nvim" },
+	{ "jay-babu/mason-null-ls.nvim" },
 
-    -- ChatGPT
-    {'jackMort/ChatGPT.nvim'},
+	-- ChatGPT
+	{ "jackMort/ChatGPT.nvim" },
+
+	-- Highlight local cursor
+	{ "tzachar/local-highlight.nvim" },
 }
 
 local opts = {}

@@ -17,10 +17,9 @@ end
 local keymap = vim.keymap -- for conciseness
 
 local on_attach = function(client, bufnr)
-	client.server_capabilities.semanticTokensProvider = nil
+	--client.server_capabilities.semanticTokensProvider = nil
 	local opts = { noremap = true, silent = true, buffer = bufnr }
-	keymap.set("n", "gf", "<cmd>Lspsaga lsp_finder<CR>", opts) -- show definition, references
-	keymap.set("n", "<C-F12>", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- got to declaration
+	keymap.set("n", "<C-F12>", "<cmd>Lspsaga lsp_finder<CR>", opts) -- show definition, references
 	keymap.set("n", "<F12>", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
 	keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- go to implementation
 	keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) -- see available code actions
@@ -54,6 +53,12 @@ end
 
 -- configure html server
 lspconfig["html"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
+--
+-- configure angular server
+lspconfig["angularls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 })
