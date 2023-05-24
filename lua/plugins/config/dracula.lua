@@ -18,7 +18,7 @@ require("dracula").setup({
 		bright_magenta = "#FF92DF",
 		bright_cyan = "#A4FFFF",
 		bright_white = "#FFFFFF",
-		menu = "#342449",
+		menu = "#2E203F",
 		visual = "#3E4452",
 		gutter_fg = "#4B5263",
 		nontext = "#3B4048",
@@ -31,3 +31,7 @@ require("dracula").setup({
 })
 
 vim.cmd.colorscheme("dracula") -- Doc: https://vimdoc.sourceforge.net/htmldoc/syntax.html#:colorscheme
+
+vim.cmd([[
+    autocmd VimEnter * set fillchars+=vert:\ 
+]])
