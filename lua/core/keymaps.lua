@@ -31,9 +31,9 @@ function Resize_buffer(direction)
 	elseif direction == "down" then
 		vim.cmd("resize +1")
 	elseif direction == "left" then
-		vim.cmd("vertical resize +1")
+		vim.cmd("vertical resize +2")
 	elseif direction == "right" then
-		vim.cmd("vertical resize -1")
+		vim.cmd("vertical resize -2")
 	end
 end
 Map("", "<C-Up>", ":lua Resize_buffer('up')<CR>", { noremap = true })

@@ -140,4 +140,4 @@ vim.opt.backspace = "indent,eol,start" -- Doc: https://vimdoc.sourceforge.net/ht
 -- Insert tabs on the start of a line according to shiftwidth.
 vim.opt.smarttab = true -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'smarttab'
 
-vim.opt.scrolloff = 15
+vim.opt.scrolloff = 5
