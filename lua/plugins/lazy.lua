@@ -92,6 +92,9 @@ local plugins = {
 
 	-- Highlight local cursor
 	{ "tzachar/local-highlight.nvim" },
+
+	-- Autoclose inative buffer'
+	{ "axkirillov/hbac.nvim" },
 }
 
 local opts = {}
