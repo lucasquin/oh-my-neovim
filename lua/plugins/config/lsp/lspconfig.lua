@@ -14,6 +14,12 @@ if not typescript_setup then
 	return
 end
 
+-- import rust plugin safely
+local rust_setup, rust = pcall(require, "rust-tools")
+if not rust_setup then
+	return
+end
+
 local keymap = vim.keymap -- for conciseness
 
 local on_attach = function(client, bufnr)
@@ -71,6 +77,7 @@ lspconfig["emmet_ls"].setup({
 	filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
 })
 
+-- configure lua language server
 lspconfig["lua_ls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
@@ -86,5 +93,18 @@ lspconfig["lua_ls"].setup({
 				},
 			},
 		},
+	},
+})
+
+-- configure rust-analyzer server with plugin
+rust.setup({
+	server = {
+		on_attach = function(_, bufnr)
+			-- Hover actions
+			vim.keymap.set("n", "<C-space>", rust.hover_actions.hover_actions, { buffer = bufnr })
+			-- Code action groups
+			vim.keymap.set("n", "<Leader>a", rust.code_action_group.code_action_group, { buffer = bufnr })
+		end,
+		capabilities = capabilities,
 	},
 })

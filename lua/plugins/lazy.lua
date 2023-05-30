@@ -82,6 +82,7 @@ local plugins = {
 	{ "onsails/lspkind.nvim" },
 	{ "nvimdev/lspsaga.nvim" },
 	{ "jose-elias-alvarez/typescript.nvim" },
+	{ "simrat39/rust-tools.nvim" },
 
 	-- Formatting & Linting
 	{ "jose-elias-alvarez/null-ls.nvim" },
