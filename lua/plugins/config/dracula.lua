@@ -24,7 +24,7 @@ require("dracula").setup({
 		nontext = "#3B4048",
 	},
 	show_end_of_buffer = false,
-	transparent_bg = false,
+	transparent_bg = true,
 	lualine_bg_color = nil,
 	italic_comment = true,
 	overrides = {},
@@ -33,5 +33,5 @@ require("dracula").setup({
 vim.cmd.colorscheme("dracula") -- Doc: https://vimdoc.sourceforge.net/htmldoc/syntax.html#:colorscheme
 
 vim.cmd([[
-    autocmd VimEnter * set fillchars+=vert:\ 
+    autocmd VimEnter * set fillchars+=vert:│
 ]])
