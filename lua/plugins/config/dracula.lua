@@ -35,3 +35,7 @@ vim.cmd.colorscheme("dracula") -- Doc: https://vimdoc.sourceforge.net/htmldoc/sy
 vim.cmd([[
     autocmd VimEnter * set fillchars+=vert:│
 ]])
+
+vim.cmd([[
+    autocmd VimEnter * hi MatchParen guifg=#FFFFFF guibg=#FF0000
+]])
