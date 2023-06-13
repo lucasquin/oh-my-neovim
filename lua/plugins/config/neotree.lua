@@ -1,3 +1,5 @@
+local fc = require("neo-tree.sources.filesystem.components")
+
 require("neo-tree").setup({
 	close_if_last_window = false,
 	popup_border_style = "rounded",
@@ -106,6 +108,15 @@ require("neo-tree").setup({
 	},
 	nesting_rules = {},
 	filesystem = {
+		components = {
+			name = function(config, node, state)
+				local result = fc.name(config, node, state)
+				if node:get_depth() == 1 and node.type ~= "message" then
+					result.text = vim.fn.fnamemodify(node.path, ":t")
+				end
+				return result
+			end,
+		},
 		filtered_items = {
 			visible = false, -- when true, they will just be displayed differently than normal items
 			hide_dotfiles = true,
