@@ -115,6 +115,9 @@ vim.opt.fileencoding = "utf-8" -- Doc: https://vimdoc.sourceforge.net/htmldoc/op
 -- File encoding.
 vim.scriptencoding = "utf-8" -- Doc: https://vimdoc.sourceforge.net/htmldoc/repeat.html#:scriptencoding
 
+-- Term encoding.
+vim.termeconfing = "utf-8"
+
 -- #########
 -- Tab's ######
 -- #########
