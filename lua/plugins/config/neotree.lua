@@ -63,7 +63,11 @@ require("neo-tree").setup({
 	commands = {},
 	window = {
 		position = "left",
-		width = 40,
+		width = function()
+			local columns = vim.api.nvim_get_option("columns")
+			local percentage = 20
+			return math.floor(columns / 100 * percentage)
+		end,
 		auto_expand_width = false,
 		mapping_options = {
 			noremap = true,
