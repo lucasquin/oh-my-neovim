@@ -1,6 +1,6 @@
 require("dracula").setup({
 	colors = {
-		bg = "#342449",
+		bg = "#282A36",
 		fg = "#F8F8F2",
 		selection = "#44475A",
 		comment = "#6272A4",
@@ -18,13 +18,13 @@ require("dracula").setup({
 		bright_magenta = "#FF92DF",
 		bright_cyan = "#A4FFFF",
 		bright_white = "#FFFFFF",
-		menu = "#2E203F",
+		menu = "#21222C",
 		visual = "#3E4452",
 		gutter_fg = "#4B5263",
 		nontext = "#3B4048",
 	},
 	show_end_of_buffer = false,
-	transparent_bg = true,
+	transparent_bg = false,
 	lualine_bg_color = nil,
 	italic_comment = true,
 	overrides = {},
@@ -32,8 +32,9 @@ require("dracula").setup({
 
 vim.cmd.colorscheme("dracula") -- Doc: https://vimdoc.sourceforge.net/htmldoc/syntax.html#:colorscheme
 
+--char: │
 vim.cmd([[
-    autocmd VimEnter * set fillchars+=vert:│
+    autocmd VimEnter * set fillchars+=vert:\ 
 ]])
 
 vim.cmd([[
