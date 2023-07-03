@@ -14,9 +14,21 @@ if not typescript_setup then
 end
 
 local on_attach = function(client, bufnr)
-	local opts = { noremap = true, silent = true, buffer = bufnr }
-	client.server_capabilities.semanticTokensProvider = nil
 	client.server_capabilities.documentFormattingProvider = false
+
+	if not client.server_capabilities.semanticTokensProvider then
+		local semantic = client.config.capabilities.textDocument.semanticTokens
+		client.server_capabilities.semanticTokensProvider = {
+			full = true,
+			legend = {
+				tokenTypes = semantic.tokenTypes,
+				tokenModifiers = semantic.tokenModifiers,
+			},
+			range = true,
+		}
+	end
+
+	local opts = { noremap = true, silent = true, buffer = bufnr }
 	vim.keymap.set("n", "<F12>", "<cmd>Lspsaga peek_definition<CR>", opts) -- go to implementation
 	vim.keymap.set("n", "<C-F12>", "<cmd>Lspsaga lsp_finder<CR>", opts) -- show definition, references
 	vim.keymap.set("n", "<S-F12>", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
@@ -89,11 +101,15 @@ typescript.setup({
 })
 
 lspconfig["omnisharp"].setup({
-	capabilities = capabilities,
-	enable_roslyn_analyzers = true,
-	organize_imports_on_format = true,
-	enable_import_completion = true,
 	analyze_open_documents_only = true,
+	capabilities = capabilities,
+	enable_editorconfig_support = true,
+	enable_import_completion = false,
+	enable_ms_build_load_projects_on_demand = false,
+	enable_roslyn_analyzers = false,
+	organize_imports_on_format = false,
+	sdk_include_prereleases = true,
+	filetypes = { "cs", "vb" },
 	on_attach = function(client, bufnr)
 		on_attach(client, bufnr)
 		client.server_capabilities.semanticTokensProvider.legend = {

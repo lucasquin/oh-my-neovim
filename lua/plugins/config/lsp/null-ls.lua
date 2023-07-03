@@ -11,6 +11,7 @@ null_ls.setup({
 		formatting.prettier,
 		formatting.stylua,
 		formatting.sql_formatter,
+		formatting.csharpier,
 		diagnostics.eslint_d.with({
 			condition = function(utils)
 				return utils.root_has_file(".eslintrc.js")
