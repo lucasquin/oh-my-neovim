@@ -99,6 +99,9 @@ local plugins = {
 	-- DataBase
 	{ "tpope/vim-dadbod" },
 	{ "kristijanhusak/vim-dadbod-completion" },
+
+	-- Debugging
+	{ "mfussenegger/nvim-dap" },
 }
 
 local opts = {}
