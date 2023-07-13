@@ -1,5 +1,5 @@
 -- Connection string
-vim.g.db = "mysql://user:password@localhost:3306/database"
+vim.g.db = "mysql://root:masterkey@localhost:3306/gestaoescolar"
 
 vim.cmd([[
     func! DBExe(...)
