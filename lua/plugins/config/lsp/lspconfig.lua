@@ -33,7 +33,7 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "<F12>", "<cmd>Lspsaga peek_definition<CR>", opts) -- go to implementation
 	vim.keymap.set("n", "<C-F12>", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- show definition, references
 	vim.keymap.set("n", "<S-F12>", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
-	vim.keymap.set("n", "<C-S-F12>", "<cmd>Lspsaga lsp_finder<CR>", opts) -- show documentation for what is under cursor
+	vim.keymap.set("n", "<C-S-F12>", "<cmd>Lspsaga finder<CR>", opts) -- show documentation for what is under cursor
 	vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) -- see available code actions
 	vim.keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts) -- smart rename
 	vim.keymap.set("n", "<leader>fm", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", {}) -- format
@@ -45,24 +45,24 @@ for type, icon in pairs(signs) do
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
--- Diagnostic settings
-vim.diagnostic.config({
-	update_in_insert = true,
-	underline = false,
-	float = {
-		focusable = false,
-		style = "minimal",
-		border = "rounded",
-		source = "always",
-		header = "",
-		prefix = "",
-	},
-})
+---- Diagnostic settings
+--vim.diagnostic.config({
+	--update_in_insert = true,
+	--underline = false,
+	--float = {
+		--focusable = false,
+		--style = "minimal",
+		--border = "rounded",
+		--source = "always",
+		--header = "",
+		--prefix = "",
+	--},
+--})
 
--- Show line diagnostics automatically in hover window
-vim.cmd([[
-  autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, { focus = false })
-]])
+---- Show line diagnostics automatically in hover window
+--vim.cmd([[
+  --autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, { focus = false })
+--]])
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = cmp_nvim_lsp.default_capabilities(capabilities)

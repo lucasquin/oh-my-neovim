@@ -80,7 +80,7 @@ local plugins = {
 	{ "neovim/nvim-lspconfig" },
 	{ "hrsh7th/cmp-nvim-lsp" },
 	{ "onsails/lspkind.nvim" },
-	{ "nvimdev/lspsaga.nvim", commit = "a224b2ac682fddd894f665a474a4c31fa0f138c2" },
+	{ "nvimdev/lspsaga.nvim" },
 	{ "jose-elias-alvarez/typescript.nvim" },
 
 	-- Formatting & Linting
