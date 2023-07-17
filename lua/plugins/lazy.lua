@@ -5,7 +5,7 @@ if not vim.loop.fs_stat(lazypath) then
 		"clone",
 		"--filter=blob:none",
 		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
+		"--branch=stable",
 		lazypath,
 	})
 end
@@ -17,12 +17,7 @@ local plugins = {
 	{ "nvim-lua/plenary.nvim" },
 
 	-- Status bar
-	{
-		"nvim-lualine/lualine.nvim",
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-		},
-	},
+	{ "nvim-lualine/lualine.nvim" },
 
 	-- Colorscheme
 	{ "Mofiqul/dracula.nvim" },
@@ -39,8 +34,6 @@ local plugins = {
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons",
 			"MunifTanjim/nui.nvim",
 			"s1n7ax/nvim-window-picker",
 		},
@@ -50,9 +43,6 @@ local plugins = {
 	{
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.1",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
 	},
 
 	-- Editor
@@ -92,13 +82,6 @@ local plugins = {
 
 	-- Highlight local cursor
 	{ "tzachar/local-highlight.nvim" },
-
-	-- Autoclose inative buffer'
-	{ "axkirillov/hbac.nvim" },
-
-	-- DataBase
-	{ "tpope/vim-dadbod" },
-	{ "kristijanhusak/vim-dadbod-completion" },
 }
 
 local opts = {}

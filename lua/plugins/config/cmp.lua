@@ -23,7 +23,6 @@ local sources = {
 	{ name = "luasnip" },
 	{ name = "buffer" },
 	{ name = "path" },
-	{ name = "vim-dadbod-completion" },
 }
 
 vim.opt.completeopt = "menu,menuone,noselect"

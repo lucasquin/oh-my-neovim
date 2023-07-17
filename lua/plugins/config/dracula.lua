@@ -30,11 +30,11 @@ require("dracula").setup({
 	overrides = {},
 })
 
-vim.cmd.colorscheme("dracula") -- Doc: https://vimdoc.sourceforge.net/htmldoc/syntax.html#:colorscheme
+vim.cmd.colorscheme("dracula")
 
 --char: │
 vim.cmd([[
-    autocmd VimEnter * set fillchars+=vert:\ 
+    autocmd VimEnter * set fillchars+=vert:\
 ]])
 
 vim.cmd([[

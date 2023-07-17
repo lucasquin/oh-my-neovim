@@ -18,8 +18,6 @@ require("plugins.config.cmp")
 require("plugins.config.chatgpt")
 require("plugins.config.local-highlight")
 require("plugins.config.diffview")
-require("plugins.config.hbac")
-require("plugins.config.vim-daadbod")
 
 require("plugins.config.lsp.mason")
 require("plugins.config.lsp.lspsaga")
