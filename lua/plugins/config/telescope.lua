@@ -1,4 +1,9 @@
-require("telescope").setup({
+local telescope_status_ok, telescope = pcall(require, "telescope")
+if not telescope_status_ok then
+	return
+end
+
+telescope.setup({
 	defaults = {
 		prompt_prefix = string.format("%s ", ""),
 		selection_caret = string.format("%s ", "❯"),

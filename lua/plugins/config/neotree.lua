@@ -1,6 +1,11 @@
+local neotree_status_ok, neotree = pcall(require, "neo-tree")
+if not neotree_status_ok then
+	return
+end
+
 local fc = require("neo-tree.sources.filesystem.components")
 
-require("neo-tree").setup({
+neotree.setup({
 	close_if_last_window = false,
 	popup_border_style = "rounded",
 	enable_git_status = true,

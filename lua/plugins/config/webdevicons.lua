@@ -1,4 +1,9 @@
-require("nvim-web-devicons").setup({
+local devicon_status_ok, devicon = pcall(require, "nvim-web-devicons")
+if not devicon_status_ok then
+	return
+end
+
+devicon.setup({
 	override = {
 		zsh = {
 			icon = "",

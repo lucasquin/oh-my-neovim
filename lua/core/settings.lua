@@ -102,6 +102,10 @@ vim.opt.smartcase = true -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.
 -- Line break.
 vim.opt.wrap = false -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'wrap'
 
+vim.opt.scrolloff = 5
+
+vim.opt.completeopt = "menu,menuone,noselect"
+
 -- ############
 -- Encoding ######
 -- ############
@@ -143,4 +147,3 @@ vim.opt.backspace = "indent,eol,start" -- Doc: https://vimdoc.sourceforge.net/ht
 -- Insert tabs on the start of a line according to shiftwidth.
 vim.opt.smarttab = true -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'smarttab'
 
-vim.opt.scrolloff = 5

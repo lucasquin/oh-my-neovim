@@ -1,4 +1,9 @@
-require("window-picker").setup({
+local picker_status_ok, picker = pcall(require, "window-picker")
+if not picker_status_ok then
+	return
+end
+
+picker.setup({
 	autoselect_one = true,
 	include_current = false,
 	filter_rules = {

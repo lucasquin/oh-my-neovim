@@ -1,4 +1,9 @@
-require("dracula").setup({
+local dracula_status_ok, dracula = pcall(require, "dracula")
+if not dracula_status_ok then
+	return
+end
+
+dracula.setup({
 	--colors = {
 		--bg = "#282A36",
 		--fg = "#F8F8F2",

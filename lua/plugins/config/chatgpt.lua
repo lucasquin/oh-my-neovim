@@ -1,4 +1,9 @@
-require("chatgpt").setup({
+local chatgpt_status_ok, chatgpt = pcall(require, "chatgpt")
+if not chatgpt_status_ok then
+	return
+end
+
+chatgpt.setup({
 	yank_register = "+",
 	edit_with_instructions = {
 		diff = false,
@@ -11,7 +16,7 @@ require("chatgpt").setup({
 		},
 	},
 	chat = {
-		welcome_message = "Olá lucas...",
+		welcome_message = "Hellou there Lucas...",
 		loading_text = "Loading, please wait ...",
 		question_sign = "", -- 🙂
 		answer_sign = "ﮧ", -- 🤖
