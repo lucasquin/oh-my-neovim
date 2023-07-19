@@ -25,9 +25,6 @@ local plugins = {
 	-- Syntax
 	{
 		"nvim-treesitter/nvim-treesitter",
-		dependencies = {
-			"windwp/nvim-ts-autotag",
-		},
 	},
 
 	-- File explorer
@@ -50,6 +47,7 @@ local plugins = {
 	{ "fedepujol/move.nvim" },
 	{ "norcalli/nvim-colorizer.lua" },
 	{ "windwp/nvim-autopairs" },
+	{ "windwp/nvim-ts-autotag" },
 
 	-- Git
 	{ "sindrets/diffview.nvim" },
