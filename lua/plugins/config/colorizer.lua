@@ -4,5 +4,21 @@ if not status_ok then
 end
 
 colorizer.setup({
-	"*", -- All files
+	"html",
+	"javascript",
+	"typescript",
+	"javascriptreact",
+	"typescriptreact",
+	"svelte",
+	"vue",
+	"tsx",
+	"jsx",
+	"rescript",
+	"xml",
+	"php",
+	"markdown",
+	"astro",
+	"glimmer",
+	"handlebars",
+	"hbs",
 })
