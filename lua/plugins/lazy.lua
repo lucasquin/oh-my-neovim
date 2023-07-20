@@ -48,7 +48,6 @@ local plugins = {
 	{ "norcalli/nvim-colorizer.lua" },
 	{ "windwp/nvim-autopairs" },
 	{ "windwp/nvim-ts-autotag" },
-    { "lukas-reineke/indent-blankline.nvim" },
 
 	-- Git
 	{ "sindrets/diffview.nvim" },
