@@ -1,5 +1,5 @@
-local diffview_status_ok = pcall(require, "diffview")
-if not diffview_status_ok then
+local status_ok = pcall(require, "diffview")
+if not status_ok then
 	return
 end
 

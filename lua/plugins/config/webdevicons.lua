@@ -1,5 +1,5 @@
-local devicon_status_ok, devicon = pcall(require, "nvim-web-devicons")
-if not devicon_status_ok then
+local status_ok, devicon = pcall(require, "nvim-web-devicons")
+if not status_ok then
 	return
 end
 

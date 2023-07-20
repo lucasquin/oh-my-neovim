@@ -1,5 +1,5 @@
-local picker_status_ok, picker = pcall(require, "window-picker")
-if not picker_status_ok then
+local status_ok, picker = pcall(require, "window-picker")
+if not status_ok then
 	return
 end
 

@@ -5,17 +5,17 @@ end
 
 mason.setup()
 
-local mason_lsp_config_status, mason_lsp_config = pcall(require, "mason-lspconfig")
-if not mason_lsp_config_status then
+local mason_lspconfig_status_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
+if not mason_lspconfig_status_ok then
 	return
 end
 
-mason_lsp_config.setup({
+mason_lspconfig.setup({
 	automatic_installation = true,
 })
 
-local mason_null_ls_status, mason_null_ls = pcall(require, "mason-null-ls")
-if not mason_null_ls then
+local mason_null_ls_status_ok, mason_null_ls = pcall(require, "mason-null-ls")
+if not mason_null_ls_status_ok then
 	return
 end
 

@@ -1,9 +1,9 @@
-local saga_status_ok, saga = pcall(require, "lspsaga")
-if not saga_status_ok then
+local status_ok, lspsaga = pcall(require, "lspsaga")
+if not status_ok then
 	return
 end
 
-saga.setup({
+lspsaga.setup({
 	scroll_preview = { scroll_down = "<C-f>", scroll_up = "<C-b>" },
 	definition = {
 		keys = {

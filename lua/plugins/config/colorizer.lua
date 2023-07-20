@@ -1,5 +1,5 @@
-local colorizer_status_ok, colorizer = pcall(require, "colorizer")
-if not colorizer_status_ok then
+local status_ok, colorizer = pcall(require, "colorizer")
+if not status_ok then
 	return
 end
 
