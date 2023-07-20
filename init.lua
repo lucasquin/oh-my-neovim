@@ -19,9 +19,9 @@ require("plugins.config.cmp")
 require("plugins.config.chatgpt")
 require("plugins.config.local-highlight")
 require("plugins.config.diffview")
+require("plugins.config.indent-blankline")
 
 require("plugins.config.lsp.mason")
 require("plugins.config.lsp.lspsaga")
 require("plugins.config.lsp.lspconfig")
 require("plugins.config.lsp.null-ls")
-
