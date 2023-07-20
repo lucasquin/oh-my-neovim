@@ -24,7 +24,7 @@ Map("n", "<C-a>", "ggVG", { desc = "Select all" })
 --
 Map("n", "<leader>nh", ":nohl<CR>", { desc = "No search highlight" })
 
--- Resize buffer
+-- Function for resize buffer
 function Resize_buffer(direction)
 	if direction == "up" then
 		vim.cmd("resize -1")
@@ -36,6 +36,7 @@ function Resize_buffer(direction)
 		vim.cmd("vertical resize -2")
 	end
 end
+
 Map("", "<C-Up>", ":lua Resize_buffer('up')<CR>", { noremap = true })
 Map("", "<C-Down>", ":lua Resize_buffer('down')<CR>", { noremap = true })
 Map("", "<C-Left>", ":lua Resize_buffer('left')<CR>", { noremap = true })

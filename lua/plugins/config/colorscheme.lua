@@ -1,15 +1,5 @@
--- Char default: │
-vim.cmd([[
-    autocmd VimEnter * set fillchars+=vert:\ 
-]])
-
--- Highlight paren pair
-vim.cmd([[
-    autocmd VimEnter * hi MatchParen guifg=#FFFFFF guibg=#FF0000
-]])
-
-local dracula_status_ok, dracula = pcall(require, "dracula")
-if not dracula_status_ok then
+local status_ok, dracula = pcall(require, "dracula")
+if not status_ok then
 	return
 end
 

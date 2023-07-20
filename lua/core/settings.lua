@@ -1,149 +1,146 @@
---###########
---# Autor ###############################################
---###########                                         ###
---# Website: lucasquin.dev                            ###
---# Github: https://github.com/lucasquin              ###
---# Linkedin: https://www.linkedin.com/in/lucasquin/  ###
---#######################################################
---
--- ##################
--- User Interface ######
--- ##################
+local v = vim.opt
 
--- Colorscheme.
--- vim.cmd.colorscheme('darkblue') -- Doc: https://vimdoc.sourceforge.net/htmldoc/syntax.html#:colorscheme
+local has = vim.fn.has
+local is_mac = has("macunix")
+local is_win = has("win32")
+local is_wsl = has("wsl")
 
--- If in Insert, Replace or Visual mode put a message on the last line.
-vim.opt.showmode = false -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'showmode'
+if is_mac == 1 then
+	v.clipboard:append({ "unnamedplus" })
+end
+if is_win == 1 then
+	v.clipboard:prepend({ "unnamed", "unnamedplus" })
+end
+
+-- Settings #######################################################################################
+
+-- Hide mode
+v.showmode = false
 
 -- Show (partial) command in the last line of the screen.
-vim.opt.showcmd = true -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'showcmd'
+v.showcmd = true
 
 -- Highlight the screen line of the cursor.
-vim.opt.cursorline = true -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'cursorline'
+v.cursorline = true
 
 -- Title of the window is 'titlestring' (if it is not empty), or: filename [ =-] (path) - VIM.
-vim.opt.title = true -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'title'
+v.title = true
 
 -- Name of title.
-vim.opt.titlestring = "" -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'title'
+v.titlestring = ""
 
 -- Enable syntax highlight.
-vim.opt.syntax = "on" -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'syntax'
+v.syntax = "on"
 
 -- Enable number line.
-vim.opt.number = true -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'number'
+v.number = true
 
 -- Enable relative line number.
-vim.opt.relativenumber = true -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'relativenumber'
+v.relativenumber = true
 
 -- Nvim emits true (24-bit) colours in the terminal, if 'termguicolors' is set.
-vim.opt.termguicolors = true -- Doc: https://neovim.io/doc/user/term.html
+v.termguicolors = true
 
 -- Extra column, util for plugins.
-vim.opt.signcolumn = "yes" -- Doc: https://neovim.io/doc/user/sign.html
+v.signcolumn = "yes"
 
 -- Number of screen lines to use for the command-line.
-vim.opt.cmdheight = 1 -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'cmdheight'
+v.cmdheight = 1
 
 -- Enable icons for Neovim.
 vim.g.icons_enabled = true
 
 -- Characters to fill the statuslines and vertical separators. Currently blank.
-vim.o.fillchars = "eob: " -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'fillchars'
+vim.o.fillchars = "eob: "
 
+-- Characters to fill the statuslines and vertical separators. Currently blank.
+vim.o.fillchars = "vert: " -- Char default: │
+--
 -- Suggestion menu to complete commands in cmd.
-vim.opt.wildmenu = true -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'wildmenu'
+v.wildmenu = true
 
--- ##########
--- Backup ######
--- ##########
+-- Backup ##########################################################################################
 
 -- Disable backup file.
-vim.opt.backup = false -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'backup'
+v.backup = false
 
 -- Disable swapfile in all buffers.
-vim.opt.swapfile = false -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'swapfile'
+v.swapfile = false
 
 -- Make a backup before overwriting a file.
-vim.opt.writebackup = false -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'writebackup'
+v.writebackup = false
 
--- ##########
--- Editor ######
--- ##########
+-- Editor #########################################################################################
 
 -- History of cmd commands.
-vim.opt.history = 50 -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'history'
+v.history = 50
 
 -- Levels of undo.
-vim.opt.undolevels = 1000 -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'undolevels'
+v.undolevels = 1000
 
 -- Execution of automatic commands in ms.
-vim.opt.updatetime = 500 -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'updatetime'
+v.updatetime = 500
 
 -- Copy the structure of the existing lines indent when autoindenting a new line.
-vim.opt.copyindent = true -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'copyindent'
+v.copyindent = true
 
 --
-vim.opt.autowrite = true -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'autowrite'
+v.autowrite = true
 
 -- When a file have been changed outside of Vim, automatically read it again.
-vim.opt.autoread = true -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'autoread'
+v.autoread = true
 
 -- Incremental search on write command in cmd mode.
-vim.opt.incsearch = true -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'incsearch'
+v.incsearch = true
 
 -- Ignore case in search patterns with '/' or '?'.
-vim.opt.ignorecase = true -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'ignorecase'
+v.ignorecase = true
 
 -- Override the 'ignorecase' option if the search pattern contains upper case characters.
-vim.opt.smartcase = true -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'smartcase'
+v.smartcase = true
 
 -- Line break.
-vim.opt.wrap = false -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'wrap'
+v.wrap = false
 
-vim.opt.scrolloff = 5
+--
+v.scrolloff = 5
 
-vim.opt.completeopt = "menu,menuone,noselect"
+--
+v.completeopt = "menu,menuone,noselect"
 
--- ############
--- Encoding ######
--- ############
+-- Encoding #######################################################################################
 
 -- File enconding.
-vim.opt.encoding = "utf-8" -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'encoding'
+v.encoding = "utf-8"
 
 -- File encoding.
-vim.opt.fileencoding = "utf-8" -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'fileencoding'
+v.fileencoding = "utf-8"
 
 -- File encoding.
-vim.scriptencoding = "utf-8" -- Doc: https://vimdoc.sourceforge.net/htmldoc/repeat.html#:scriptencoding
+vim.scriptencoding = "utf-8"
 
 -- Term encoding.
 vim.termeconfing = "utf-8"
 
--- #########
--- Tab's ######
--- #########
+-- Tab's ##########################################################################################
 
 -- Automatic identation.
-vim.opt.autoindent = true -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'ai'
+v.autoindent = true
 
 -- On pressing tab, insert 4 spaces.
-vim.opt.expandtab = true -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'expandtab'
+v.expandtab = true
 
 -- Show existing tab with 4 spaces width.
-vim.opt.tabstop = 4 -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'tabstop'
+v.tabstop = 4
 
 -- Show existing tab with 4 spaces width.
-vim.opt.softtabstop = 4 -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'softtabstop'
+v.softtabstop = 4
 
 -- When indenting with '>', use 4 spaces width.
-vim.opt.shiftwidth = 4 -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'shiftwidth'
+v.shiftwidth = 4
 
 -- Tab with spaces.
-vim.opt.backspace = "indent,eol,start" -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'backspace'
+v.backspace = "indent,eol,start"
 
 -- Insert tabs on the start of a line according to shiftwidth.
-vim.opt.smarttab = true -- Doc: https://vimdoc.sourceforge.net/htmldoc/options.html#'smarttab'
-
+v.smarttab = true
