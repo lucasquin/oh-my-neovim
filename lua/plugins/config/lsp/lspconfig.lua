@@ -67,10 +67,27 @@ lspconfig["lua_ls"].setup({
 	filetypes = { "lua" },
 })
 
-lspconfig["emmet_ls"].setup({
+lspconfig["html"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
-	filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
+})
+
+lspconfig["cssls"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
+
+typescript.setup({
+	server = {
+		capabilities = capabilities,
+		on_attach = on_attach,
+	},
+})
+
+lspconfig["jsonls"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+	filetypes = { "json" },
 })
 
 lspconfig["angularls"].setup({
@@ -82,25 +99,6 @@ lspconfig["angularls"].setup({
 lspconfig["clangd"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
-})
-
-lspconfig["jsonls"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-	filetypes = { "json" },
-})
-
-lspconfig["sqlls"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-	filetypes = { "sql" },
-})
-
-typescript.setup({
-	server = {
-		capabilities = capabilities,
-		on_attach = on_attach,
-	},
 })
 
 lspconfig["omnisharp"].setup({
