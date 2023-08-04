@@ -1,5 +1,3 @@
-local autocmd = vim.api.nvim_create_autocmd
-
 -- Show relative line number in normal mode only.
 vim.cmd([[
     augroup numbertoggle
@@ -14,12 +12,3 @@ vim.cmd([[
     autocmd VimEnter * hi MatchParen guifg=#FFFFFF guibg=#FF0000
 ]])
 
-local has = vim.fn.has
-if has("wsl") == 1 then
-    vim.cmd([[
-        augroup Yank
-        autocmd!
-        autocmd TextYankPost * :call system('/mnt/c/windows/system32/clip.exe ',@")
-        augroup END
-    ]])
-end

@@ -23,7 +23,6 @@ mason_null_ls.setup({
 	ensure_installed = {
 		"prettier",
 		"stylua",
-		"sql_formatter",
 		"eslint_d",
 	},
 })

@@ -23,9 +23,7 @@ local plugins = {
 	{ "Mofiqul/dracula.nvim" },
 
 	-- Syntax
-	{
-		"nvim-treesitter/nvim-treesitter",
-	},
+    { "nvim-treesitter/nvim-treesitter" },
 
 	-- File explorer
 	{
@@ -37,10 +35,7 @@ local plugins = {
 	},
 
 	-- Fuzzy finder
-	{
-		"nvim-telescope/telescope.nvim",
-		tag = "0.1.1",
-	},
+	{ "nvim-telescope/telescope.nvim", tag = "0.1.1" },
 
 	-- Editor
 	{ "preservim/nerdcommenter" },
