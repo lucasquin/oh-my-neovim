@@ -1,6 +1,7 @@
 require("core.settings")
 require("core.keymaps")
 require("core.autocmds")
+require("core.neovide")
 
 require("plugins.lazy")
 require("plugins.config.colorscheme")
@@ -24,3 +25,6 @@ require("plugins.config.lsp.mason")
 require("plugins.config.lsp.lspsaga")
 require("plugins.config.lsp.lspconfig")
 require("plugins.config.lsp.null-ls")
+
+vim.cmd('highlight NeoTreeTabActive guibg=#202022')
+vim.cmd('highlight NeoTreeTabInactive guibg=#202022')

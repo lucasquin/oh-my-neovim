@@ -4,6 +4,9 @@ if not status_ok then
 end
 
 dracula.setup({
+	colors = {
+		bg = "#0A0A0A",
+	},
 	show_end_of_buffer = false,
 	transparent_bg = false,
 	lualine_bg_color = nil,
@@ -11,4 +14,3 @@ dracula.setup({
 })
 
 vim.cmd.colorscheme("dracula")
-
