@@ -1,6 +1,6 @@
 local v = vim.opt
 
-v.guifont = "CaskaydiaCove NFM:h10"
+v.guifont = "CaskaydiaCove NFM:h9"
 v.showmode = false
 v.showcmd = true
 v.cursorline = true

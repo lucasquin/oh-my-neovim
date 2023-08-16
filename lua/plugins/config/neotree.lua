@@ -23,7 +23,7 @@ neotree.setup({
 		},
 		indent = {
 			indent_size = 2,
-			padding = 1,
+			padding = 2,
 			with_markers = true,
 			indent_marker = "│",
 			last_indent_marker = "└",
