@@ -5,7 +5,7 @@ end
 
 dracula.setup({
 	colors = {
-		bg = "#0A0A0A",
+		bg = "#0C0C0C",
 	},
 	show_end_of_buffer = false,
 	transparent_bg = false,
@@ -14,5 +14,6 @@ dracula.setup({
 })
 
 vim.cmd.colorscheme("dracula")
+
 vim.cmd("highlight NeoTreeNormal guibg=#202022")
 vim.cmd("highlight NeoTreeNormalNC guibg=#202022")

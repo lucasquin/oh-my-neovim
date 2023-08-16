@@ -1,80 +1,97 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable",
-		lazypath,
-	})
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable",
+        lazypath,
+    })
 end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-	-- Commons
-	{ "nvim-tree/nvim-web-devicons" },
-	{ "nvim-lua/plenary.nvim" },
+    -- Commons
+    { "nvim-tree/nvim-web-devicons" },
+    { "nvim-lua/plenary.nvim" },
 
-	-- Status bar
-	{ "nvim-lualine/lualine.nvim" },
+    -- Status bar
+    { "nvim-lualine/lualine.nvim" },
 
-	-- Colorscheme
-	{ "Mofiqul/dracula.nvim" },
+    -- Colorscheme
+    { "Mofiqul/dracula.nvim" },
 
-	-- Syntax
+    -- Syntax
     { "nvim-treesitter/nvim-treesitter" },
 
-	-- File explorer
-	{
-		"nvim-neo-tree/neo-tree.nvim",
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"s1n7ax/nvim-window-picker",
-		},
-	},
+    -- File explorer
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "s1n7ax/nvim-window-picker",
+        },
+    },
 
-	-- Fuzzy finder
-	{ "nvim-telescope/telescope.nvim", tag = "0.1.1" },
+    -- Fuzzy finder
+    { "nvim-telescope/telescope.nvim", tag = "0.1.1" },
 
-	-- Editor
-	{ "preservim/nerdcommenter" },
-	{ "fedepujol/move.nvim" },
-	{ "norcalli/nvim-colorizer.lua" },
-	{ "windwp/nvim-autopairs" },
-	{ "windwp/nvim-ts-autotag" },
+    -- Editor
+    { "preservim/nerdcommenter" },
+    { "fedepujol/move.nvim" },
+    { "norcalli/nvim-colorizer.lua" },
+    { "windwp/nvim-autopairs" },
+    { "windwp/nvim-ts-autotag" },
 
-	-- Git
-	{ "sindrets/diffview.nvim" },
-	{ "lewis6991/gitsigns.nvim", enabled = vim.fn.executable("git") == 1, ft = "gitcommit" },
+    -- Git
+    { "sindrets/diffview.nvim" },
+    { "lewis6991/gitsigns.nvim",       enabled = vim.fn.executable("git") == 1,          ft = "gitcommit" },
 
-	-- Autocompletion
-	{ "hrsh7th/nvim-cmp" },
-	{ "hrsh7th/cmp-buffer" },
-	{ "hrsh7th/cmp-path" },
+    -- Autocompletion
+    { "hrsh7th/nvim-cmp" },
+    { "hrsh7th/cmp-buffer" },
+    { "hrsh7th/cmp-path" },
 
-	-- Snippets
-	{ "L3MON4D3/LuaSnip", dependencies = { "rafamadriz/friendly-snippets" } },
-	{ "saadparwaiz1/cmp_luasnip" },
+    -- Snippets
+    { "L3MON4D3/LuaSnip",              dependencies = { "rafamadriz/friendly-snippets" } },
+    { "saadparwaiz1/cmp_luasnip" },
 
-	-- LSP
-	{ "williamboman/mason.nvim" },
-	{ "williamboman/mason-lspconfig.nvim" },
-	{ "neovim/nvim-lspconfig" },
-	{ "hrsh7th/cmp-nvim-lsp" },
-	{ "onsails/lspkind.nvim" },
-	{ "nvimdev/lspsaga.nvim" },
-	{ "jose-elias-alvarez/typescript.nvim" },
+    -- LSP
+    { "onsails/lspkind.nvim" },
+    { "nvimdev/lspsaga.nvim" },
+    { "jay-babu/mason-null-ls.nvim" },
+    {
+        "VonHeikemen/lsp-zero.nvim",
+        dependencies = {
+            -- LSP Support
+            { "neovim/nvim-lspconfig" },
+            { "williamboman/mason.nvim" },
+            { "williamboman/mason-lspconfig.nvim" },
 
-	-- Formatting & Linting
-	{ "jose-elias-alvarez/null-ls.nvim" },
-	{ "jay-babu/mason-null-ls.nvim" },
+            -- Autocompletion
+            { "hrsh7th/nvim-cmp" },
+            { "hrsh7th/cmp-buffer" },
+            { "hrsh7th/cmp-path" },
+            { "saadparwaiz1/cmp_luasnip" },
+            { "hrsh7th/cmp-nvim-lsp" },
+            { "hrsh7th/cmp-nvim-lua" },
 
-	-- ChatGPT
-	{ "jackMort/ChatGPT.nvim" },
+            -- Signature
+            { "hrsh7th/cmp-nvim-lsp-signature-help" },
 
-	-- Highlight local cursor
-	{ "tzachar/local-highlight.nvim" },
+            -- Snippets
+            { "L3MON4D3/LuaSnip" },
+            { "rafamadriz/friendly-snippets" },
+            { "jose-elias-alvarez/null-ls.nvim" },
+        }
+    },
+
+    -- ChatGPT
+    { "jackMort/ChatGPT.nvim" },
+
+    -- Highlight local cursor
+    { "tzachar/local-highlight.nvim" },
 }
 
 local opts = {}

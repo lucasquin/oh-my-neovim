@@ -1,5 +1,5 @@
-local status_ok, lspsaga = pcall(require, "lspsaga")
-if not status_ok then
+local ok, lspsaga = pcall(require, "lspsaga")
+if not ok then
 	return
 end
 

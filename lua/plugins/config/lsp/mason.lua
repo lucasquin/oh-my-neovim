@@ -20,6 +20,7 @@ if not mason_null_ls_status_ok then
 end
 
 mason_null_ls.setup({
+	automatic_installation = true,
 	ensure_installed = {
 		"prettier",
 		"stylua",

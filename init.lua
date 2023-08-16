@@ -21,8 +21,7 @@ require("plugins.config.local-highlight")
 require("plugins.config.diffview")
 
 require("plugins.config.lsp.mason")
+require("plugins.config.lsp.lspzero")
 require("plugins.config.lsp.lspsaga")
-require("plugins.config.lsp.lspconfig")
-require("plugins.config.lsp.null-ls")
 
 require("core.colorscheme")
