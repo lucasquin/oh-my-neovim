@@ -44,6 +44,9 @@ local plugins = {
     { "windwp/nvim-autopairs" },
     { "windwp/nvim-ts-autotag" },
 
+    -- Terminal
+    { 'akinsho/toggleterm.nvim' },
+
     -- Git
     { "sindrets/diffview.nvim" },
     { "lewis6991/gitsigns.nvim",       enabled = vim.fn.executable("git") == 1,          ft = "gitcommit" },
