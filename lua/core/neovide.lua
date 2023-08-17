@@ -22,3 +22,8 @@ vim.g.neovide_remember_window_size = true
 vim.g.neovide_cursor_vfx_mode = "railgun"
 vim.opt.number = true
 vim.opt.relativenumber = false
+
+vim.cmd([[
+  autocmd FileType neotree setlocal guifont=CaskaydiaCove\ NFM:h2
+]])
+

@@ -12,6 +12,14 @@ for option, value in pairs(powershell_options) do
     vim.opt[option] = value
 end
 
-require 'toggleterm'.setup({
-    shade_terminals = false
+require("toggleterm").setup({
+    shade_terminals = false,
+    highlights = {
+        Normal = {
+            guibg = "#202022"
+        }
+    }
 })
+
+local opts = { noremap = true, silent = true }
+vim.keymap.set("n", "<C-t>", "<cmd>ToggleTerm<CR>", opts)
