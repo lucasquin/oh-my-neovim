@@ -1,14 +1,15 @@
 -- Show relative line number in normal mode only.
-vim.cmd([[
-    augroup numbertoggle
-    autocmd!
-    autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
-    autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
-    augroup END
-]])
+if not vim.g.neovide then
+    vim.cmd([[
+        augroup numbertoggle
+        autocmd!
+        autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
+        autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
+        augroup END
+    ]])
+end
 
 -- Highlight paren pair
 vim.cmd([[
     autocmd VimEnter * hi MatchParen guifg=#FFFFFF guibg=#FF0000
 ]])
-
