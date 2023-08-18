@@ -19,8 +19,13 @@ local plugins = {
     -- Status bar
     { "nvim-lualine/lualine.nvim" },
 
-    -- Colorscheme
+    -- Colorschemes
     { "Mofiqul/dracula.nvim" },
+    { "catppuccin/nvim" },
+    { "folke/tokyonight.nvim" },
+    { "ellisonleao/gruvbox.nvim" },
+    { "tanvirtin/monokai.nvim" },
+    { "Mofiqul/vscode.nvim" },
 
     -- Syntax
     { "nvim-treesitter/nvim-treesitter" },
