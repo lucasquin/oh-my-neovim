@@ -26,6 +26,11 @@ local plugins = {
     { "ellisonleao/gruvbox.nvim" },
     { "tanvirtin/monokai.nvim" },
     { "Mofiqul/vscode.nvim" },
+    { "rebelot/kanagawa.nvim" },
+    { "navarasu/onedark.nvim" },
+    { "shaunsingh/nord.nvim" },
+    { "projekt0n/github-nvim-theme" },
+    { "rose-pine/neovim" },
 
     -- Syntax
     { "nvim-treesitter/nvim-treesitter" },
@@ -40,7 +45,7 @@ local plugins = {
     },
 
     -- Fuzzy finder
-    { "nvim-telescope/telescope.nvim", tag = "0.1.1" },
+    { "nvim-telescope/telescope.nvim",      tag = "0.1.1" },
 
     -- Editor
     { "preservim/nerdcommenter" },
@@ -48,13 +53,14 @@ local plugins = {
     { "norcalli/nvim-colorizer.lua" },
     { "windwp/nvim-autopairs" },
     { "windwp/nvim-ts-autotag" },
+    { "lukas-reineke/indent-blankline.nvim" },
 
     -- Terminal
     { 'akinsho/toggleterm.nvim' },
 
     -- Git
     { "sindrets/diffview.nvim" },
-    { "lewis6991/gitsigns.nvim",       enabled = vim.fn.executable("git") == 1,          ft = "gitcommit" },
+    { "lewis6991/gitsigns.nvim",            enabled = vim.fn.executable("git") == 1,          ft = "gitcommit" },
 
     -- Autocompletion
     { "hrsh7th/nvim-cmp" },
@@ -62,7 +68,7 @@ local plugins = {
     { "hrsh7th/cmp-path" },
 
     -- Snippets
-    { "L3MON4D3/LuaSnip",              dependencies = { "rafamadriz/friendly-snippets" } },
+    { "L3MON4D3/LuaSnip",                   dependencies = { "rafamadriz/friendly-snippets" } },
     { "saadparwaiz1/cmp_luasnip" },
 
     -- LSP

@@ -19,6 +19,7 @@ require("plugins.config.chatgpt")
 require("plugins.config.local-highlight")
 require("plugins.config.diffview")
 require("plugins.config.toggleterm")
+require("plugins.config.indent-blankline")
 
 require("plugins.config.lsp.mason")
 require("plugins.config.lsp.lspzero")
