@@ -13,3 +13,6 @@ end
 vim.cmd([[
     autocmd VimEnter * hi MatchParen guifg=#FFFFFF guibg=#FF0000
 ]])
+
+vim.cmd([[ autocmd VimEnter * ToggleTerm]])
+vim.cmd([[ autocmd VimEnter * Neotree]])
