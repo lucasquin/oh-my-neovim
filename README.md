@@ -17,7 +17,7 @@
 - [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
 - [Neovim 0.8+](https://github.com/neovim/neovim/releases/tag/stable)
 - [Tree-sitter CLI](https://github.com/tree-sitter/tree-sitter/blob/master/cli/README.md)
-- [ripgrep](https://github.com/BurntSushi/ripgrep) - live grep telescope search (`<leader>fw`)
+- [ripgrep](https://github.com/BurntSushi/ripgrep) - live grep telescope search (`<leader>fg`)
 - [C compiler](https://gcc.gnu.org/)
 - [NodeJs](https://nodejs.org/en/download)
 - [Python 3](https://www.python.org/downloads/)
