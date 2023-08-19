@@ -27,30 +27,8 @@
 
 ## 📦 Basic Setup 
 
-#### Install LSP
+Enter `:Mason` for UI and select your lang for enable LSP
 
-Enter `:LspInstall` followed by the name of the server you want to install<br>
-Example: `:LspInstall pyright`
+## Screenshots
+![image](https://github.com/lucasquin/AsteroidVim/assets/65108092/bc812442-f6cd-4f71-aab0-31a2c62da545)
 
-or 
-
-Enter `:Mason` for UI
-
-#### Install language parser
-
-Enter `:TSInstall` followed by the name of the language you want to install<br>
-Example: `:TSInstall python`
-
-#### Manage plugins
-
-Run `:Lazy check` to check for plugin updates
-
-Run `:Lazy update` to apply any pending plugin updates
-
-Run `:Lazy clean` to remove any disabled or unused plugins
-
-Run `:Lazy sync` to update and clean plugins
-
-or 
-
-Enter `:Lazy` for UI
