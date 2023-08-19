@@ -1,17 +1,3 @@
-## ✨ Plugins List 
-
-- Auto close tag with [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag)
-- Autocompletion with [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
-- ChatGPT with [ChatGPT.nvim](https://github.com/jackMort/ChatGPT.nvim)
-- File explorer with [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim)
-- Formatting and Linting with [null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim)
-- Fuzzy finding with [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
-- Git with [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
-- Language Server Protocol with [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
-- Pair completion with [nvim-autopairs](https://github.com/windwp/nvim-autopairs)
-- Statusline with [nvim-lualine](https://github.com/nvim-lualine/lualine.nvim)
-- Syntax highlighting with [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
-
 ## ⚡ Requirements
 
 - [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
@@ -24,6 +10,21 @@
 
 - A clipboard tool is necessary for the integration with the system clipboard (see [`:help clipboard-tool`](https://neovim.io/doc/user/provider.html#clipboard-tool) for supported solutions)
 - Terminal with true color support (for the default theme, otherwise it is dependent on the theme you are using)
+
+## Keymaps
+
+These are the default keymaps, in the following shortcuts, the `<leader>` key is set up to `\` character, see: [keymaps.lua](./lua/core/keymaps.lua).
+
+| Shortcut             | Mode          | Description                                       |
+|----------------------|---------------|---------------------------------------------------|
+| `<leader>fm`         | Normal        | Format file                                       |
+| `<leader>nh`         | Normal        | Clear search highlights                           |
+| `<leader>ff`         | Normal        | Find files                                        |
+| `<leader>fg`         | Normal        | File grep                                         |
+| `<Ctrl> + {h,j,k,l}` | Normal        | Move around splits windows                        |
+| `<Ctrl> + a`         | Normal        | Select all                                        |
+| `<Ctrl> + s`         | Normal        | Save file                                         |
+| `<Ctrl> + t`         | Normal        | Toggle terminal                                   |
 
 ## 📦 Basic Setup 
 
