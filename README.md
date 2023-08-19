@@ -29,10 +29,11 @@
 
 Enter `:Mason` for UI and select your lang for enable LSP
 
-## Screenshots
-![image](https://github.com/lucasquin/AsteroidVim/assets/65108092/bc812442-f6cd-4f71-aab0-31a2c62da545)
-![image](https://github.com/lucasquin/AsteroidVim/assets/65108092/248b08f3-9763-4c23-8047-05b3a40f9390)
-![image](https://github.com/lucasquin/AsteroidVim/assets/65108092/209bd48c-a0bc-4396-b7d3-cd21e422b6ff)
-![image](https://github.com/lucasquin/AsteroidVim/assets/65108092/4b2383a0-9c6a-4e18-81fc-ac7a06005df7)
+## 🖼️ Screenshots with different colorschemes
+![neovim](https://github.com/lucasquin/AsteroidVim/assets/65108092/48b3461c-4efc-4157-9a4c-3c5e0cc7c47b)
+![image](https://github.com/lucasquin/AsteroidVim/assets/65108092/5096ee93-cf8f-4819-8182-7d43450feb9b)
+![image](https://github.com/lucasquin/AsteroidVim/assets/65108092/5b8c6592-b32f-4900-b691-891dde7b948e)
+![image](https://github.com/lucasquin/AsteroidVim/assets/65108092/60f9bb09-fbaf-47f9-adc6-2a958c5e40ad)
+
 
 
