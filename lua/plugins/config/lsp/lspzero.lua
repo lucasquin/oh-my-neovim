@@ -1,28 +1,45 @@
-local ok, lsp = pcall(require, "lsp-zero")
-if not ok then
+local _, lspzero = pcall(require, "lsp-zero")
+if not _ then
     return
 end
 
-local sources = lsp.defaults.cmp_sources()
-local luasnip = require("luasnip")
-local lspkind = require("lspkind")
-local cmp = require("cmp")
-local lspsaga = require("lspsaga")
+local _, luasnip = pcall(require, "luasnip")
+if not _ then
+    return
+end
+
+local _, lspkind = pcall(require, "lspkind")
+if not _ then
+    return
+end
+
+
+local _, lspsaga = pcall(require, "lspsaga")
+if not _ then
+    return
+end
+
+local _, cmp = pcall(require, "cmp")
+if not _ then
+    return
+end
+
+local sources = lspzero.defaults.cmp_sources()
 
 local border_opts = {
     border = "single",
     winhighlight = "Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None",
 }
 
-lsp.preset("recommended")
+lspzero.preset("recommended")
 
-lsp.set_preferences({
+lspzero.set_preferences({
     sign_icons = { error = " ", warn = " ", hint = "ﴞ ", info = " " }
 })
 
 table.insert(sources, { name = "nvim_lsp_signature_help" })
 
-lsp.configure("lua_ls", {
+lspzero.configure("lua_ls", {
     settings = {
         Lua = {
             diagnostics = {
@@ -35,7 +52,7 @@ lsp.configure("lua_ls", {
     },
 })
 
-lsp.setup()
+lspzero.setup()
 
 require("luasnip/loaders/from_vscode").lazy_load()
 
@@ -106,13 +123,3 @@ lspsaga.setup({
         },
     },
 })
-
-local opts = { noremap = true, silent = true }
-vim.keymap.set("n", "<F12>", "<cmd>Lspsaga peek_definition<CR>", opts)
-vim.keymap.set("n", "<C-F12>", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-vim.keymap.set("n", "<S-F12>", "<cmd>Lspsaga hover_doc<CR>", opts)
-vim.keymap.set("n", "<C-S-F12>", "<cmd>Lspsaga finder<CR>", opts)
-vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
-vim.keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts)
-vim.keymap.set("n", "<leader>fm", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", {})
-

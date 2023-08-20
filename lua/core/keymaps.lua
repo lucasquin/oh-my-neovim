@@ -1,43 +1,87 @@
+-- Leader key
+vim.g.mapleader = " " -- space
+
+-- Function for create maps
 function Map(mode, lhs, rhs, opts)
-	local options = { noremap = true }
-	if opts then
-		options = vim.tbl_extend("force", options, opts)
-	end
-	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+    local options = { noremap = true, silent = true }
+    if opts then
+        options = vim.tbl_extend("force", options, opts)
+    end
+    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+end
+
+-- Function for resize buffer
+function Resize_buffer(direction)
+    if direction == "up" then
+        vim.cmd("resize -1")
+    elseif direction == "down" then
+        vim.cmd("resize +1")
+    elseif direction == "left" then
+        vim.cmd("vertical resize +1")
+    elseif direction == "right" then
+        vim.cmd("vertical resize -1")
+    end
 end
 
 -- Navigate splits with CTRL + hjkl.
-Map("", "<C-h>", "<C-w>h")
-Map("", "<C-j>", "<C-w>j")
-Map("", "<C-k>", "<C-w>k")
-Map("", "<C-l>", "<C-w>l")
+Map("n", "<C-h>", "<C-w>h", { desc = "Left buffer" })
+Map("n", "<C-l>", "<C-w>l", { desc = "Right buffer" })
+Map("n", "<C-k>", "<C-w>k", { desc = "Up buffer" })
+Map("n", "<C-j>", "<C-w>j", { desc = "Down buffer" })
 
 -- Shift tab default.
-Map("i", "<S-Tab>", "<C-d>")
+Map("i", "<S-Tab>", "<C-d>", { desc = "Back tab" })
 
 -- Save with CTRL S.
-Map("", "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
+Map("n", "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
 
 -- Select all.
 Map("n", "<C-a>", "ggVG", { desc = "Select all" })
 
---
+-- Disable search highlight
 Map("n", "<leader>nh", ":nohl<CR>", { desc = "No search highlight" })
 
--- Function for resize buffer
-function Resize_buffer(direction)
-	if direction == "up" then
-		vim.cmd("resize -1")
-	elseif direction == "down" then
-		vim.cmd("resize +1")
-	elseif direction == "left" then
-		vim.cmd("vertical resize +1")
-	elseif direction == "right" then
-		vim.cmd("vertical resize -1")
-	end
-end
+-- Resize buffer
+Map("n", "<C-Up>", ":lua Resize_buffer('up')<CR>", { desc = "Resize buffer to up" })
+Map("n", "<C-Down>", ":lua Resize_buffer('down')<CR>", { desc = "Resize buffer to down" })
+Map("n", "<C-Left>", ":lua Resize_buffer('left')<CR>", { desc = "Resize buffer to left" })
+Map("n", "<C-Right>", ":lua Resize_buffer('right')<CR>", { desc = "Resize buffer to right" })
 
-Map("", "<C-Up>", ":lua Resize_buffer('up')<CR>", { noremap = true })
-Map("", "<C-Down>", ":lua Resize_buffer('down')<CR>", { noremap = true })
-Map("", "<C-Left>", ":lua Resize_buffer('left')<CR>", { noremap = true })
-Map("", "<C-Right>", ":lua Resize_buffer('right')<CR>", { noremap = true })
+-- Move line
+Map("n", "<A-k>", ":MoveLine(-1)<CR>", { desc = "Move to up" })
+Map("n", "<A-j>", ":MoveLine(1)<CR>", { desc = "Move to down" })
+Map("n", "<A-h>", ":MoveHChar(-1)<CR>", { desc = "Move to left" })
+Map("n", "<A-l>", ":MoveHChar(1)<CR>", { desc = "Move to right" })
+Map("v", "<A-h>", ":MoveHBlock(-1)<CR>", { desc = "Move selection to up" })
+Map("v", "<A-j>", ":MoveBlock(1)<CR>", { desc = "Move selection to down" })
+Map("v", "<A-k>", ":MoveBlock(-1)<CR>", { desc = "Move selection to left" })
+Map("v", "<A-l>", ":MoveHBlock(1)<CR>", { desc = "Move selection to right" })
+
+-- Telescope
+Map("n", "<leader>ff", ":Telescope find_files<CR>", { desc = "Find files" })
+Map("n", "<leader>fg", ":Telescope live_grep<CR>", { desc = "Live grep" })
+Map("n", "<leader>fb", ":Telescope current_buffer_fuzzy_find<CR>", { desc = "Find in buffer" })
+Map("n", "<leader>fh", ":Telescope help_tags<CR>", { desc = "Find help" })
+
+-- Terminal key to navigate and set Normal mode
+Map("n", "<C-t>", "<cmd>Neotree toggle<CR><cmd>ToggleTerm<CR><cmd>Neotree<CR>", { desc = "Toggle term" })
+Map('t', '<esc>', [[<C-\><C-n>]])
+Map('t', 'jk', [[<C-\><C-n>]])
+Map('t', '<C-h>', [[<Cmd>wincmd h<CR>]])
+Map('t', '<C-j>', [[<Cmd>wincmd j<CR>]])
+Map('t', '<C-k>', [[<Cmd>wincmd k<CR>]])
+Map('t', '<C-l>', [[<Cmd>wincmd l<CR>]])
+Map('t', '<C-w>', [[<C-\><C-n><C-w>]])
+
+-- Diff view
+Map("n", "<leader>do", "<cmd>DiffviewOpen<CR>", { desc = "Git diff view open" })
+Map("n", "<leader>dc", "<cmd>DiffviewClose<CR>", { desc = "Git diff view close" })
+
+-- LSP
+Map("n", "<F12>", "<cmd>Lspsaga peek_definition<CR>", { desc = "Peek definition" })
+Map("n", "<C-F12>", "<cmd>lua vim.lsp.buf.implementation()<CR>", { desc = "Go to implementation" })
+Map("n", "<S-F12>", "<cmd>Lspsaga hover_doc<CR>", { desc = "View hover doc" })
+Map("n", "<C-S-F12>", "<cmd>Lspsaga finder<CR>", { desc = "Find references" })
+Map("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { desc = "View code actions" })
+Map("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", { desc = "Rename" })
+Map("n", "<leader>fm", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", { desc = "Format" })

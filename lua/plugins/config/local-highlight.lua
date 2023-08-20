@@ -1,5 +1,5 @@
-local status_ok, local_highlight = pcall(require, "local-highlight")
-if not status_ok then
+local _, local_highlight = pcall(require, "local-highlight")
+if not _ then
 	return
 end
 
