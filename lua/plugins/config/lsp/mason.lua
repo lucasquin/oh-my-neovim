@@ -21,9 +21,11 @@ end
 
 mason_null_ls.setup({
     automatic_installation = true,
-    ensure_installed = {
-        "prettier",
-        "stylua",
-        "eslint_d",
-    },
 })
+
+local _, null_ls = pcall(require, "null-ls")
+if not _ then
+    return
+end
+
+null_ls.setup()

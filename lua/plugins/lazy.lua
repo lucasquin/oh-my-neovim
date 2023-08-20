@@ -32,6 +32,7 @@ local plugins = {
     { "shaunsingh/nord.nvim" },
     { "projekt0n/github-nvim-theme" },
     { "rose-pine/neovim" },
+    { "shaunsingh/solarized.nvim", },
 
     -- Syntax
     { "nvim-treesitter/nvim-treesitter" },
