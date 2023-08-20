@@ -56,6 +56,8 @@ local plugins = {
     { "windwp/nvim-autopairs" },
     { "windwp/nvim-ts-autotag" },
     { "lukas-reineke/indent-blankline.nvim" },
+    { "kevinhwang91/nvim-ufo",              dependencies = { "kevinhwang91/promise-async" } },
+    { "luukvbaal/statuscol.nvim" },
 
     -- Terminal
     { 'akinsho/toggleterm.nvim' },

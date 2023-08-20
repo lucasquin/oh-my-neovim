@@ -19,6 +19,7 @@ require("plugins.config.toggleterm")
 require("plugins.config.indent-blankline")
 require("plugins.config.lsp.mason")
 require("plugins.config.lsp.lspzero")
+require("plugins.config.nvim-ufo")
 
 require("core.colorscheme")
 require("core.keymaps")

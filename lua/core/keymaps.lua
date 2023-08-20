@@ -64,13 +64,13 @@ Map("n", "<leader>fb", ":Telescope current_buffer_fuzzy_find<CR>", { desc = "Fin
 Map("n", "<leader>fh", ":Telescope help_tags<CR>", { desc = "Find help" })
 
 -- Terminal key to navigate and set Normal mode
-Map("n", "<C-t>", "<cmd>Neotree toggle<CR><cmd>ToggleTerm<CR><cmd>Neotree<CR>", { desc = "Toggle term" })
+Map("n", "<C-t>", ":Neotree toggle<CR>:ToggleTerm<CR>:Neotree<CR>", { desc = "Toggle term" })
 Map('t', '<esc>', [[<C-\><C-n>]])
 Map('t', 'jk', [[<C-\><C-n>]])
-Map('t', '<C-h>', [[<Cmd>wincmd h<CR>]])
-Map('t', '<C-j>', [[<Cmd>wincmd j<CR>]])
-Map('t', '<C-k>', [[<Cmd>wincmd k<CR>]])
-Map('t', '<C-l>', [[<Cmd>wincmd l<CR>]])
+Map('t', '<C-h>', [[:wincmd h<CR>]])
+Map('t', '<C-j>', [[:wincmd j<CR>]])
+Map('t', '<C-k>', [[:wincmd k<CR>]])
+Map('t', '<C-l>', [[:wincmd l<CR>]])
 Map('t', '<C-w>', [[<C-\><C-n><C-w>]])
 
 -- Diff view
@@ -78,10 +78,14 @@ Map("n", "<leader>do", "<cmd>DiffviewOpen<CR>", { desc = "Git diff view open" })
 Map("n", "<leader>dc", "<cmd>DiffviewClose<CR>", { desc = "Git diff view close" })
 
 -- LSP
-Map("n", "<F12>", "<cmd>Lspsaga peek_definition<CR>", { desc = "Peek definition" })
-Map("n", "<C-F12>", "<cmd>lua vim.lsp.buf.implementation()<CR>", { desc = "Go to implementation" })
-Map("n", "<S-F12>", "<cmd>Lspsaga hover_doc<CR>", { desc = "View hover doc" })
-Map("n", "<C-S-F12>", "<cmd>Lspsaga finder<CR>", { desc = "Find references" })
-Map("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { desc = "View code actions" })
-Map("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", { desc = "Rename" })
-Map("n", "<leader>fm", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", { desc = "Format" })
+Map("n", "<F12>", ":Lspsaga peek_definition<CR>", { desc = "Peek definition" })
+Map("n", "<C-F12>", ":lua vim.lsp.buf.implementation()<CR>", { desc = "Go to implementation" })
+Map("n", "<S-F12>", ":Lspsaga hover_doc<CR>", { desc = "View hover doc" })
+Map("n", "<C-S-F12>", ":Lspsaga finder<CR>", { desc = "Find references" })
+Map("n", "<leader>ca", ":Lspsaga code_action<CR>", { desc = "View code actions" })
+Map("n", "<leader>rn", ":Lspsaga rename<CR>", { desc = "Rename" })
+Map("n", "<leader>fm", ":lua vim.lsp.buf.format({ async = true })<CR>", { desc = "Format" })
+
+-- Code folding
+Map('n', 'zr', ":lua require('ufo').openAllFolds()<CR>")
+Map('n', 'zm', ":lua require('ufo').closeAllFolds()<CR>")
