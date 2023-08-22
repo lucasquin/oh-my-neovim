@@ -63,8 +63,13 @@ Map("n", "<leader>fg", ":Telescope live_grep<CR>", { desc = "Live grep" })
 Map("n", "<leader>fb", ":Telescope current_buffer_fuzzy_find<CR>", { desc = "Find in buffer" })
 Map("n", "<leader>fh", ":Telescope help_tags<CR>", { desc = "Find help" })
 
+-- Open Neotree
+Map("n", "<F2>", ":Neotree toggle<CR>", { desc = "Toggle Neotree" })
+
+-- Open Terminal
+Map("n", "<C-t>", ":ToggleTerm<CR>", { desc = "Toggle terminal" })
+
 -- Terminal key to navigate and set Normal mode
-Map("n", "<C-t>", ":Neotree toggle<CR>:ToggleTerm<CR>:Neotree<CR>", { desc = "Toggle term" })
 Map('t', '<esc>', [[<C-\><C-n>]])
 Map('t', 'jk', [[<C-\><C-n>]])
 Map('t', '<C-h>', [[:wincmd h<CR>]])
