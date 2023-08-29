@@ -9,7 +9,3 @@ if not vim.g.neovide then
     ]])
 end
 
--- Highlight paren pair
-vim.cmd([[
-    autocmd VimEnter * hi MatchParen guifg=#FFFFFF guibg=#FF0000
-]])
