@@ -64,7 +64,7 @@ Map("n", "<leader>fb", ":Telescope current_buffer_fuzzy_find<CR>", { desc = "Fin
 Map("n", "<leader>fh", ":Telescope help_tags<CR>", { desc = "Find help" })
 
 -- Open Neotree
-Map("n", "<F2>", ":Neotree toggle<CR>", { desc = "Toggle Neotree" })
+Map("n", "<C-F2>", ":Neotree toggle<CR>", { desc = "Toggle Neotree" })
 
 -- Open Terminal
 Map("n", "<C-t>", ":ToggleTerm<CR>", { desc = "Toggle terminal" })

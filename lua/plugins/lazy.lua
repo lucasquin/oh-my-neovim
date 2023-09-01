@@ -17,6 +17,9 @@ local plugins = {
     { "nvim-tree/nvim-web-devicons" },
     { "nvim-lua/plenary.nvim" },
 
+    -- Startup screen
+    { "startup-nvim/startup.nvim" },
+
     -- Status bar
     { "nvim-lualine/lualine.nvim" },
 
