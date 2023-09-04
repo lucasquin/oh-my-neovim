@@ -1,5 +1,5 @@
 -- Leader key
-vim.g.mapleader = " " -- space
+vim.g.mapleader = "\\" -- Leader key 
 
 -- Function for create maps
 function Map(mode, lhs, rhs, opts)
@@ -10,7 +10,6 @@ function Map(mode, lhs, rhs, opts)
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
--- Function for resize buffer
 function Resize_buffer(direction)
     if direction == "up" then
         vim.cmd("resize -1")
@@ -22,6 +21,10 @@ function Resize_buffer(direction)
         vim.cmd("vertical resize -1")
     end
 end
+
+-- Paste
+Map("n", "<S-Insert>", "<C-R>+", { desc = "Paste" })
+Map("i", "<S-Insert>", "<C-R>+", { desc = "Paste" })
 
 -- Navigate splits with CTRL + hjkl.
 Map("n", "<C-h>", "<C-w>h", { desc = "Left buffer" })
