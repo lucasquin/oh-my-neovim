@@ -61,6 +61,9 @@ local plugins = {
     { "lukas-reineke/indent-blankline.nvim" },
     { "kevinhwang91/nvim-ufo",              dependencies = { "kevinhwang91/promise-async" } },
     { "luukvbaal/statuscol.nvim" },
+    { "axelvc/template-string.nvim" },
+    { "axelvc/template-string.nvim" },
+    { "godlygeek/tabular" },
 
     -- Terminal
     { 'akinsho/toggleterm.nvim' },
