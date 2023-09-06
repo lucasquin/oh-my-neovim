@@ -17,6 +17,9 @@ local plugins = {
     { "nvim-tree/nvim-web-devicons" },
     { "nvim-lua/plenary.nvim" },
 
+    -- Change colorschemes
+    { "folke/styler.nvim" },
+
     -- Startup screen
     { "startup-nvim/startup.nvim" },
 

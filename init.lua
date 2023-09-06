@@ -22,6 +22,7 @@ require("plugins.config.lsp.lspzero")
 require("plugins.config.nvim-ufo")
 require("plugins.config.startup")
 require("plugins.config.template-string")
+require("plugins.config.styler")
 
 require("core.colorscheme")
 require("core.keymaps")
