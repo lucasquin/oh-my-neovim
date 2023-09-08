@@ -95,5 +95,5 @@ Map("n", "<leader>rn", ":Lspsaga rename<CR>", { desc = "Rename" })
 Map("n", "<leader>fm", ":lua vim.lsp.buf.format({ async = true })<CR>", { desc = "Format" })
 
 -- Code folding
-Map('n', 'zr', ":lua require('ufo').openAllFolds()<CR>")
-Map('n', 'zm', ":lua require('ufo').closeAllFolds()<CR>")
+Map('n', '<C-m><C-p>', ":lua require('ufo').openAllFolds()<CR>")
+Map('n', '<A-m><A-p>', ":lua require('ufo').closeAllFolds()<CR>")
