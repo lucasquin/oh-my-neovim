@@ -16,6 +16,7 @@ local plugins = {
     -- Commons
     { "nvim-tree/nvim-web-devicons" },
     { "nvim-lua/plenary.nvim" },
+    { "rcarriga/nvim-notify" },
 
     -- Change colorschemes
     { "folke/styler.nvim" },
@@ -119,6 +120,9 @@ local plugins = {
 
     -- Highlight local cursor
     { "tzachar/local-highlight.nvim" },
+
+    -- Keep hydrated while you code
+    { "stefanlogue/hydrate.nvim" },
 }
 
 local opts = {}
