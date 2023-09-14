@@ -24,7 +24,6 @@ require("plugins.config.nvim-ufo")
 require("plugins.config.startup")
 require("plugins.config.template-string")
 require("plugins.config.styler")
-require("plugins.config.hydrate")
 
 require("core.colorscheme")
 require("core.keymaps")

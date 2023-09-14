@@ -120,9 +120,6 @@ local plugins = {
 
     -- Highlight local cursor
     { "tzachar/local-highlight.nvim" },
-
-    -- Keep hydrated while you code
-    { "stefanlogue/hydrate.nvim" },
 }
 
 local opts = {}
