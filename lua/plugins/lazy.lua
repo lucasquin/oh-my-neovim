@@ -68,6 +68,7 @@ local plugins = {
     { "axelvc/template-string.nvim" },
     { "axelvc/template-string.nvim" },
     { "godlygeek/tabular" },
+    { "sontungexpt/url-open" },
 
     -- Terminal
     { 'akinsho/toggleterm.nvim' },
@@ -114,6 +115,7 @@ local plugins = {
             { "jose-elias-alvarez/null-ls.nvim" },
         }
     },
+    { "Wansmer/symbol-usage.nvim" },
 
     -- ChatGPT
     { "jackMort/ChatGPT.nvim" },
