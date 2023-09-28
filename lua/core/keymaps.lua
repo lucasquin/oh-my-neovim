@@ -69,17 +69,9 @@ Map("n", "<leader>fh", ":Telescope help_tags<CR>", { desc = "Find help" })
 -- Open Neotree
 Map("n", "<C-F2>", ":Neotree toggle<CR>", { desc = "Toggle Neotree" })
 
--- Open Terminal
-Map("n", "<C-t>", ":ToggleTerm<CR>", { desc = "Toggle terminal" })
-
--- Terminal key to navigate and set Normal mode
-Map('t', '<esc>', [[<C-\><C-n>]])
-Map('t', 'jk', [[<C-\><C-n>]])
-Map('t', '<C-h>', [[:wincmd h<CR>]])
-Map('t', '<C-j>', [[:wincmd j<CR>]])
-Map('t', '<C-k>', [[:wincmd k<CR>]])
-Map('t', '<C-l>', [[:wincmd l<CR>]])
-Map('t', '<C-w>', [[<C-\><C-n><C-w>]])
+-- Toggle Terminal
+Map("n", "<C-t>", "<cmd>Lspsaga term_toggle<CR>", { desc = "Toggle Neotree" })
+Map("t", "<C-t>", "<cmd>Lspsaga term_toggle<CR>", { desc = "Toggle Neotree" })
 
 -- Diff view
 Map("n", "<leader>do", "<cmd>DiffviewOpen<CR>", { desc = "Git diff view open" })

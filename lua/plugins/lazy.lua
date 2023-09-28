@@ -40,7 +40,6 @@ local plugins = {
     { "projekt0n/github-nvim-theme" },
     { "rose-pine/neovim" },
     { "shaunsingh/solarized.nvim", },
-    { "carlobaldassi/charcoal.vim" },
     { "cranberry-clockworks/coal.nvim" },
 
     -- Syntax
@@ -68,12 +67,8 @@ local plugins = {
     { "kevinhwang91/nvim-ufo",              dependencies = { "kevinhwang91/promise-async" } },
     { "luukvbaal/statuscol.nvim" },
     { "axelvc/template-string.nvim" },
-    { "axelvc/template-string.nvim" },
     { "godlygeek/tabular" },
     { "sontungexpt/url-open" },
-
-    -- Terminal
-    { 'akinsho/toggleterm.nvim' },
 
     -- Git
     { "sindrets/diffview.nvim" },
@@ -117,7 +112,6 @@ local plugins = {
             { "jose-elias-alvarez/null-ls.nvim" },
         }
     },
-    { "Wansmer/symbol-usage.nvim" },
 
     -- ChatGPT
     { "jackMort/ChatGPT.nvim" },
