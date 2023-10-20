@@ -18,12 +18,6 @@ local plugins = {
     { "nvim-lua/plenary.nvim" },
     { "rcarriga/nvim-notify" },
 
-    -- Change colorschemes
-    { "folke/styler.nvim" },
-
-    -- Startup screen
-    { "startup-nvim/startup.nvim" },
-
     -- Status bar
     { "nvim-lualine/lualine.nvim" },
 
@@ -71,7 +65,6 @@ local plugins = {
     { "sontungexpt/url-open" },
 
     -- Git
-    { "sindrets/diffview.nvim" },
     { "lewis6991/gitsigns.nvim",            enabled = vim.fn.executable("git") == 1,          ft = "gitcommit" },
 
     -- Autocompletion

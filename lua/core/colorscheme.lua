@@ -1,1 +1,1 @@
-vim.cmd.colorscheme("coal")
+vim.cmd.colorscheme("dracula")
