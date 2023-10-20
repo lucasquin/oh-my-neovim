@@ -1,5 +1,6 @@
 local v = vim.opt
 
+v.shortmess:append({ I = true })
 v.guifont = "CaskaydiaCove NFM:h8"
 v.showmode = false
 v.showcmd = true
