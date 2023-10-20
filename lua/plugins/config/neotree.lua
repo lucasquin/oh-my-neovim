@@ -67,7 +67,7 @@ neotree.setup({
     },
     commands = {},
     window = {
-        position = "left",
+        position = "float",
         width = function()
             local columns = vim.api.nvim_get_option("columns")
             local percentage = 25
