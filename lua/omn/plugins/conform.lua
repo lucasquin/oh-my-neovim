@@ -18,6 +18,7 @@ return {
         lua = { "stylua" },
         go = { "gofumpt", "goimports" },
         robot = { "robotframework_ls" },
+        sh = { "shfmt" },
       },
     }
   end,

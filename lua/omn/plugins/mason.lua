@@ -45,6 +45,7 @@ return {
         "stylua",
         "gofumpt",
         "goimports",
+        "shfmt",
 
         -- Debug Adapters
         "delve",
