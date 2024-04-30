@@ -30,12 +30,13 @@ local plugins = {
   require "omn.plugins.nvim-dap",
   require "omn.plugins.lualine",
   require "omn.plugins.bufferline",
-  require "omn.plugins.dracula",
+  require "omn.plugins.tokyonight",
   require "omn.plugins.nvim-ts-autotag",
   require "omn.plugins.move",
   require "omn.plugins.template-string",
   require "omn.plugins.nvim-lint",
   require "omn.plugins.nvim-ufo",
+  require "omn.plugins.statuscol",
 }
 
 local opts = {
