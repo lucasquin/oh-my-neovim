@@ -12,7 +12,7 @@ local maps = {
       ["<C-j>"] = { "<C-w>j", "Move to window below" },
       ["<C-k>"] = { "<C-w>k", "Move to window above" },
       ["<C-l>"] = { "<C-w>l", "Move to window on the right" },
-      ["<C-a>"] = { "<ggVG", "Select all text" },
+      ["<C-a>"] = { "ggVG", "Select all text" },
       ["<C-s>"] = { "<cmd>w<CR>", "Save the current file" },
       ["<leader>b"] = { "<cmd>enew<CR>", "Create a new buffer" },
     },
@@ -29,8 +29,7 @@ local maps = {
     n = {
       ["<F12>"] = { "<cmd>Lspsaga peek_definition<CR>", "View the definition of the symbol under the cursor" },
       ["<S-F12>"] = { "<cmd>Lspsaga hover_doc<CR>", "Show documentation for the symbol under the cursor" },
-      ["<C-F12>"] = { "<cmd>Lspsaga goto_definition<CR>", "Jump to the definition of the symbol under the cursor" },
-      ["<C-S-F12>"] = { "<cmd>Lspsaga finder<CR>", "Open finder" },
+
       ["<leader>ca"] = { "<cmd>Lspsaga code_action<CR>", "Execute code actions on the current line(s)" },
       ["<leader>rn"] = { "<cmd>Lspsaga rename<CR>", "Rename the symbol under the cursor" },
     },
@@ -100,7 +99,10 @@ local maps = {
     n = {
       ["<leader>ff"] = { "<cmd>Telescope find_files<CR>", "Search for files" },
       ["<leader>fg"] = { "<cmd>Telescope live_grep<CR>", "Search text within files" },
-      ["<leader>fb"] = { "<cmd>Telescope current_buffer_fuzzy_find<CR>", "Fuzzy search within the current buffer" },
+      ["<leader>fb"] = {
+        "<cmd>Telescope current_buffer_fuzzy_find<CR>",
+        "Fuzzy search within the current buffer",
+      },
       ["<leader>fh"] = { "<cmd>Telescope help_tags<CR>", "Search help topics" },
     },
   },
@@ -148,6 +150,55 @@ local maps = {
           require("ufo").closeAllFolds()
         end,
         "Close all folded code blocks",
+      },
+    },
+  },
+
+  Trouble = {
+    n = {
+      ["<leader>xx"] = {
+        function()
+          require("trouble").toggle()
+        end,
+        "Toggle trouble.",
+      },
+      ["<leader>xw"] = {
+        function()
+          require("trouble").toggle "workspace_diagnostics"
+        end,
+        "Toggle workspace diagnostics.",
+      },
+      ["<leader>xd"] = {
+        function()
+          require("trouble").toggle "document_diagnostics"
+        end,
+        "Toggle document diagnostics.",
+      },
+      ["<leader>xq"] = {
+        function()
+          require("trouble").toggle "quickfix"
+        end,
+        "Toggle quickfix.",
+      },
+      ["<leader>xl"] = {
+        function()
+          require("trouble").toggle "loclist"
+        end,
+        "Toggle loclist.",
+      },
+      ["<C-S-F12>"] = {
+        function()
+          require("trouble").toggle "lsp_references"
+        end,
+        "Toggle lsp references.",
+      },
+    },
+  },
+  LSP = {
+    n = {
+      ["<C-F12>"] = {
+        vim.lsp.buf.implementation,
+        "Jump to the implementation of the symbol under the cursor",
       },
     },
   },

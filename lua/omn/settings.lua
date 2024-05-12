@@ -81,3 +81,6 @@ o.updatetime = 250
 
 -- Enables cursor movement to wrap to the previous/next line when reaching the beginning/end of a line. Includes h, l, and arrow keys.
 o.whichwrap:append "<>[]hl"
+
+-- Enable mouse movement
+o.mousemoveevent = true

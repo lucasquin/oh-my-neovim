@@ -21,8 +21,13 @@ return {
           quit = { "q", "<ESC>" },
         },
       },
+      lightbulb = {
+        sign = false,
+      },
       ui = {
         sign = false,
+        border = "rounded",
+        code_action = "",
       },
       symbol_in_winbar = {
         enable = false,

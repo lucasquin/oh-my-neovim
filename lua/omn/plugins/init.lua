@@ -37,10 +37,12 @@ local plugins = {
   require "omn.plugins.nvim-lint",
   require "omn.plugins.nvim-ufo",
   require "omn.plugins.statuscol",
+  require "omn.plugins.eagle",
+  require "omn.plugins.trouble",
 }
 
 local opts = {
-  install = { colorscheme = { "dracula" } },
+  install = { colorscheme = { "tokyonight-night" } },
   ui = {
     icons = {
       ft = "",
