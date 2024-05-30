@@ -1,12 +1,16 @@
 return {
   "lukas-reineke/indent-blankline.nvim",
   config = function()
+    local hooks = require "ibl.hooks"
+    hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_space_indent_level)
     require("ibl").setup {
       scope = {
+        char = "│",
         enabled = false,
-        show_start = false,
       },
-      indent = { char = "│" },
+      indent = {
+        char = "│",
+      },
       exclude = {
         filetypes = {
           "log",

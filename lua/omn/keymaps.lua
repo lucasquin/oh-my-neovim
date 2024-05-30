@@ -24,17 +24,6 @@ local maps = {
       ["<S-Tab>"] = { "<C-d>", "Move one indentation level back" },
     },
   },
-
-  Lspsaga = {
-    n = {
-      ["<F12>"] = { "<cmd>Lspsaga peek_definition<CR>", "View the definition of the symbol under the cursor" },
-      ["<S-F12>"] = { "<cmd>Lspsaga hover_doc<CR>", "Show documentation for the symbol under the cursor" },
-
-      ["<leader>ca"] = { "<cmd>Lspsaga code_action<CR>", "Execute code actions on the current line(s)" },
-      ["<leader>rn"] = { "<cmd>Lspsaga rename<CR>", "Rename the symbol under the cursor" },
-    },
-  },
-
   Conform = {
     n = {
       ["<leader>fm"] = {
@@ -53,7 +42,6 @@ local maps = {
       },
     },
   },
-
   DAP = {
     n = {
       ["<F5>"] = {
@@ -94,112 +82,27 @@ local maps = {
       },
     },
   },
-
   Telescope = {
     n = {
       ["<leader>ff"] = { "<cmd>Telescope find_files<CR>", "Search for files" },
       ["<leader>fg"] = { "<cmd>Telescope live_grep<CR>", "Search text within files" },
-      ["<leader>fb"] = {
-        "<cmd>Telescope current_buffer_fuzzy_find<CR>",
-        "Fuzzy search within the current buffer",
-      },
+      ["<leader>fb"] = { "<cmd>Telescope current_buffer_fuzzy_find<CR>", "Fuzzy search within the current buffer" },
       ["<leader>fh"] = { "<cmd>Telescope help_tags<CR>", "Search help topics" },
     },
   },
-
-  Moveline = {
+  NvimTree = {
     n = {
-      ["<A-k>"] = { "<cmd>MoveLine(-1)<CR>", "Move the current line up" },
-      ["<A-j>"] = { "<cmd>MoveLine(1)<CR>", "Move the current line down" },
-      ["<A-h>"] = { "<cmd>MoveWord(-1)<CR>", "Move the cursor one word backward" },
-      ["<A-l>"] = { "<cmd>MoveWord(1)<CR>", "Move the cursor one word forward" },
-    },
-    v = {
-      ["<A-k>"] = { "<cmd>MoveBlock(-1)<CR>", "Move the selected block up" },
-      ["<A-j>"] = { "<cmd>MoveBlock(1)<CR>", "Move the selected block down" },
-    },
-  },
-
-  Toggleterm = {
-    t = {
-      ["<ESC>"] = { [[<C-\><C-n>]], "Escape from terminal mode" },
-      ["<C-h>"] = { [[<Cmd> wincmd h <CR>]], "Move to window on the left" },
-      ["<C-j>"] = { [[<Cmd> wincmd j <CR>]], "Move to window below" },
-      ["<C-k>"] = { [[<Cmd> wincmd k <CR>]], "Move to window above" },
-      ["<C-l>"] = { [[<Cmd> wincmd l <CR>]], "Move to window on the right" },
-      ["<C-w>"] = { [[<C-\><C-n><C-w>]], "Switch back to the previous Neovim window" },
-    },
-  },
-
-  Neotree = {
-    n = {
-      ["<C-n>"] = { "<cmd>Neotree toggle<CR>", "Toggle the 'Neotree' file explorer sidebar" },
-    },
-  },
-
-  Ufo = {
-    n = {
-      ["<C-m><C-p>"] = {
-        function()
-          require("ufo").openAllFolds()
-        end,
-        "Open all folded code blocks",
-      },
-      ["<A-m><A-p>"] = {
-        function()
-          require("ufo").closeAllFolds()
-        end,
-        "Close all folded code blocks",
-      },
-    },
-  },
-
-  Trouble = {
-    n = {
-      ["<leader>xx"] = {
-        function()
-          require("trouble").toggle()
-        end,
-        "Toggle trouble.",
-      },
-      ["<leader>xw"] = {
-        function()
-          require("trouble").toggle "workspace_diagnostics"
-        end,
-        "Toggle workspace diagnostics.",
-      },
-      ["<leader>xd"] = {
-        function()
-          require("trouble").toggle "document_diagnostics"
-        end,
-        "Toggle document diagnostics.",
-      },
-      ["<leader>xq"] = {
-        function()
-          require("trouble").toggle "quickfix"
-        end,
-        "Toggle quickfix.",
-      },
-      ["<leader>xl"] = {
-        function()
-          require("trouble").toggle "loclist"
-        end,
-        "Toggle loclist.",
-      },
-      ["<C-S-F12>"] = {
-        function()
-          require("trouble").toggle "lsp_references"
-        end,
-        "Toggle lsp references.",
-      },
+      ["<C-n>"] = { "<cmd>NvimTreeToggle<CR>", "Toggle the 'NvimTree' file explorer sidebar" },
     },
   },
   LSP = {
     n = {
-      ["<C-F12>"] = {
-        vim.lsp.buf.implementation,
-        "Jump to the implementation of the symbol under the cursor",
-      },
+      ["<F12>"] = { vim.lsp.buf.definition, "Jump to the definition of the symbol under the cursor" },
+      ["<C-F12>"] = { vim.lsp.buf.declaration, "Jump to the definition of the symbol under the cursor" },
+      ["<C-S-F12>"] = { vim.lsp.buf.implementation, "Jump to the implementation of the symbol under the cursor" },
+      ["<S-F12>"] = { vim.lsp.buf.signature_help, "Show documentation for the symbol under the cursor" },
+      ["<leader>rn"] = { vim.lsp.buf.rename, "Rename the symbol under the cursor" },
+      ["<leader>ca"] = { vim.lsp.buf.code_action, "Execute code actions on the current line(s)" },
     },
   },
 }

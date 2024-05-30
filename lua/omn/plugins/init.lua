@@ -14,7 +14,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-  require "omn.plugins.neo-tree",
+  require "omn.plugins.nvim-tree",
+  require "omn.plugins.colorscheme",
   require "omn.plugins.nvim-treesitter",
   require "omn.plugins.mason",
   require "omn.plugins.telescope",
@@ -24,25 +25,21 @@ local plugins = {
   require "omn.plugins.nvim-cmp",
   require "omn.plugins.nvim-lsp",
   require "omn.plugins.conform",
-  require "omn.plugins.lspsaga",
   require "omn.plugins.gitsigns",
   require "omn.plugins.comment",
   require "omn.plugins.nvim-dap",
   require "omn.plugins.lualine",
-  require "omn.plugins.bufferline",
-  require "omn.plugins.tokyonight",
   require "omn.plugins.nvim-ts-autotag",
-  require "omn.plugins.move",
   require "omn.plugins.template-string",
   require "omn.plugins.nvim-lint",
-  require "omn.plugins.nvim-ufo",
-  require "omn.plugins.statuscol",
-  require "omn.plugins.eagle",
-  require "omn.plugins.trouble",
 }
 
 local opts = {
-  install = { colorscheme = { "tokyonight-night" } },
+  install = {
+    colorscheme = {
+      "tokyonight",
+    },
+  },
   ui = {
     icons = {
       ft = "",
