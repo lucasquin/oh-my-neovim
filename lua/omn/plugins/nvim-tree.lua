@@ -20,7 +20,7 @@ return {
         side = "left",
         width = 40,
         preserve_window_proportions = true,
-        signcolumn = "no",
+        signcolumn = "yes",
       },
       git = {
         enable = true,
@@ -86,5 +86,6 @@ return {
         },
       },
     }
+
   end,
 }

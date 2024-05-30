@@ -1,5 +1,3 @@
----@diagnostic disable: different-requires
-
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
@@ -24,7 +22,6 @@ local plugins = {
   require "omn.plugins.ccc",
   require "omn.plugins.nvim-cmp",
   require "omn.plugins.nvim-lsp",
-  require "omn.plugins.conform",
   require "omn.plugins.gitsigns",
   require "omn.plugins.comment",
   require "omn.plugins.nvim-dap",
@@ -32,6 +29,7 @@ local plugins = {
   require "omn.plugins.nvim-ts-autotag",
   require "omn.plugins.template-string",
   require "omn.plugins.nvim-lint",
+  require "omn.plugins.nvim-conform",
 }
 
 local opts = {
@@ -84,3 +82,5 @@ local opts = {
 }
 
 require("lazy").setup(plugins, opts)
+
+vim.cmd ":NvimTreeToggle"
