@@ -19,6 +19,7 @@ return {
         graphql = { "prettierd" },
         markdown = { "prettierd" },
         svelte = { "prettierd --plugin prettier-plugin-svelte" },
+        cs = { "csharpier" },
       },
     }
   end,

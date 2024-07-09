@@ -90,16 +90,16 @@ return {
     }
 
     dap.listeners.after.event_initialized["dapui_config"] = function()
-      vim.cmd ":NvimTreeClose"
+      vim.cmd ":Neotree close"
       dapui.open()
     end
     dap.listeners.before.event_terminated["dapui_config"] = function()
       dapui.close()
-      vim.cmd ":NvimTreeToggle"
+      vim.cmd ":Neotree"
     end
     dap.listeners.before.event_exited["dapui_config"] = function()
       dapui.close()
-      vim.cmd ":NvimTreeToggle"
+      vim.cmd ":Neotree"
     end
 
     -- Golang / delve

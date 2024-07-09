@@ -12,9 +12,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-  require "omn.plugins.nvim-tree",
   require "omn.plugins.colorscheme",
   require "omn.plugins.nvim-treesitter",
+  require "omn.plugins.neo-tree",
   require "omn.plugins.mason",
   require "omn.plugins.telescope",
   require "omn.plugins.nvim-autopairs",
@@ -82,5 +82,3 @@ local opts = {
 }
 
 require("lazy").setup(plugins, opts)
-
-vim.cmd ":NvimTreeToggle"
