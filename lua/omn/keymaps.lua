@@ -90,9 +90,9 @@ local maps = {
       ["<leader>fh"] = { "<cmd>Telescope help_tags<CR>", "Search help topics" },
     },
   },
-  NvimTree = {
+  Neotree = {
     n = {
-      ["<C-n>"] = { "<cmd>NvimTreeToggle<CR>", "Toggle the 'NvimTree' file explorer sidebar" },
+      ["<C-n>"] = { "<cmd>Neotree toggle<CR>", "Toggle the 'NvimTree' file explorer sidebar" },
     },
   },
   LSP = {
