@@ -19,7 +19,6 @@ local plugins = {
   require "omn.plugins.telescope",
   require "omn.plugins.nvim-autopairs",
   require "omn.plugins.indent-blankline",
-  require "omn.plugins.ccc",
   require "omn.plugins.nvim-cmp",
   require "omn.plugins.nvim-lsp",
   require "omn.plugins.gitsigns",
