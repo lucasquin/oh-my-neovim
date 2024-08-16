@@ -57,6 +57,7 @@ return {
       "html",
       "jsonls",
       "pylsp",
+      "phpactor",
     }
 
     for _, server in ipairs(simple_servers) do

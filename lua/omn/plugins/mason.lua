@@ -46,6 +46,8 @@ return {
         "gofumpt",
         "goimports",
         "shfmt",
+        "phpcbf",
+        "csharpier",
 
         -- Debug Adapters
         "delve",

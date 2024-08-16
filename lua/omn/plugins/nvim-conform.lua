@@ -20,6 +20,7 @@ return {
         markdown = { "prettierd" },
         svelte = { "prettierd --plugin prettier-plugin-svelte" },
         cs = { "csharpier" },
+        php = { "phpcbf" },
       },
     }
   end,
