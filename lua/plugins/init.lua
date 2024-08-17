@@ -32,6 +32,8 @@ local plugins = {
   require "plugins.lpssaga",
   require "plugins.tiny-devicons",
   require "plugins.ccc",
+  require "plugins.statuscol",
+  require "plugins.nvim-ufo",
 }
 
 local opts = {
