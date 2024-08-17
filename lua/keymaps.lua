@@ -7,13 +7,9 @@ map("n", "<C-n>", "<cmd>Neotree toggle<CR>", { desc = "Neotree toggle window" })
 map("n", "gcc", "gcc", { desc = "Toggle Comment", remap = true })
 map("v", "gc", "gc", { desc = "Toggle comment", remap = true })
 
--- LSP
-map("n", "<F12>", vim.lsp.buf.definition, { desc = "Jump to the definition of the symbol under the cursor" })
-map("n", "<C-F12>", vim.lsp.buf.declaration, { desc = "Jump to the declaration of the symbol under the cursor" })
-map("n", "<C-S-F12>", vim.lsp.buf.implementation, { desc = "Jump to the implementation of the symbol under the cursor" })
-map("n", "<S-F12>", vim.lsp.buf.signature_help, { desc = "Show documentation for the symbol under the cursor" })
-map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename the symbol under the cursor" })
-map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Execute code actions on the current line(s)" })
+-- Gitsign
+map("n", "[g", '<cmd>lua require"gitsigns".next_hunk()<CR>', { desc = "" })
+map("n", "]g", '<cmd>lua require"gitsigns".prev_hunk()<CR>', { desc = "" })
 
 -- Telescope
 map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "telescope help page" })
@@ -24,6 +20,19 @@ map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "telescope git 
 map("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", { desc = "telescope live grep" })
 map("n", "<leader>ff", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>", { desc = "telescope find all files" })
 map("n", "<leader>fb", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "telescope find in current buffer" })
+
+-- Lspsaga
+map("n", "<F12>", "<cmd>Lspsaga peek_definition<CR>", { desc = "Peek definition" })
+map("n", "<S-F12>", "<cmd>Lspsaga hover_doc<CR>", { desc = "Show documentation for the symbol under the cursor" })
+map("n", "<C-F12>", "<cmd>Lspsaga peek_definition<CR>", { desc = "Peek definition" })
+map("n", "<C-S-F12>", "<cmd>Lspsaga finder<CR>", { desc = "" })
+map("n", "[d", "<cmd>Lspsaga diagnostic_jump_next<CR>", { desc = "" })
+map("n", "]d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { desc = "" })
+map("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { desc = "Execute code actions on the current line(s)" })
+map("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", { desc = "Rename the symbol under the cursor" })
+map("n", "gp", "<cmd>Lspsaga goto_definition<CR>", { desc = "Jump to definition" })
+map("n", "<leader>dw", "<cmd>Lspsaga show_workspace_diagnostics<CR>", { desc = "" })
+map("n", "<leader>db", "<cmd>Lspsaga show_buf_diagnostics<CR>", { desc = "" })
 
 -- General
 map("n", "<Esc>", "<cmd>noh<CR>", { desc = "Clear highlights" })
@@ -42,11 +51,19 @@ map("i", "<S-Tab>", "<C-d>", { desc = "Move one indentation level back" })
 
 -- Conform
 map("n", "<leader>fm", function()
-  require("conform").format { lsp_fallback = true, async = false, timeout_ms = 1000 }
+  require("conform").format {
+    lsp_fallback = true,
+    async = false,
+    timeout_ms = 1000,
+  }
 end, { desc = "Format the current buffer" })
 
 map("v", "<leader>fb", function()
-  require("conform").format { lsp_fallback = true, async = false, timeout_ms = 1000 }
+  require("conform").format {
+    lsp_fallback = true,
+    async = false,
+    timeout_ms = 1000,
+  }
 end, { desc = "Range format the current visual selection" })
 
 -- DAP

@@ -1,4 +1,4 @@
-require "omn.settings"
-require "omn.autocmds"
-require "omn.keymaps"
-require "omn.plugins"
+require "settings"
+require "autocmds"
+require "keymaps"
+require "plugins"
