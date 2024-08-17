@@ -34,6 +34,7 @@ local plugins = {
   require "plugins.ccc",
   require "plugins.statuscol",
   require "plugins.nvim-ufo",
+  require "plugins.diagflow",
 }
 
 local opts = {
