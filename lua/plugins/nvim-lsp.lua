@@ -56,7 +56,6 @@ return {
       "cssls",
       "html",
       "jsonls",
-      "pylsp",
       "phpactor",
     }
 
@@ -135,6 +134,21 @@ return {
         Lua = {
           diagnostics = {
             globals = { "vim" },
+          },
+        },
+      },
+    }
+
+    -- Python
+    lspconfig.pylsp.setup {
+      capabilities = capabilities,
+      settings = {
+        pylsp = {
+          plugins = {
+            pycodestyle = {
+              ignore = { "W391" },
+              maxLineLength = 140,
+            },
           },
         },
       },
