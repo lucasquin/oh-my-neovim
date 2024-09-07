@@ -53,7 +53,6 @@ return {
       "tailwindcss",
       "vimls",
       "tsserver",
-      "cssls",
       "html",
       "jsonls",
       "phpactor",
@@ -146,12 +145,18 @@ return {
         pylsp = {
           plugins = {
             pycodestyle = {
-              ignore = { "W391" },
+              ignore = { "W391", "W503" },
               maxLineLength = 140,
             },
           },
         },
       },
+    }
+
+    -- CSS
+    lspconfig.cssls.setup {
+      capabilities = capabilities,
+      filetypes = { "css", "scss", "sass" },
     }
   end,
 }

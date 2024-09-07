@@ -31,11 +31,11 @@ local plugins = {
   require "plugins.nvim-conform",
   require "plugins.lpssaga",
   require "plugins.tiny-devicons",
-  require "plugins.ccc",
+  -- require "plugins.ccc",
   require "plugins.statuscol",
   require "plugins.nvim-ufo",
   require "plugins.diagflow",
-  require "plugins.local-highlight"
+  require "plugins.local-highlight",
 }
 
 local opts = {
