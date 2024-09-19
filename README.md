@@ -1,4 +1,4 @@
-<h1 align="center">oh-my-neovim</h1>
+<h1 align="center">Oh My Neovim</h1>
 
 <div align="center">
 
@@ -8,10 +8,42 @@
 
 </div>
 
-###  Whats is oh-my-neovim?
+## Whats is Oh My Neovim?
+
 Aesthetic configuration and a beautiful UI, enhancing your Neovim to an IDE layer
 
-### Thanks to all contributors
+## Install
+
+```shell
+# Linux / MacOS
+git clone https://github.com/lucasquin/oh-my-neovim ~/.config/nvim && nvim
+
+# Windows Prompt (CMD)
+git clone https://github.com/NvChad/starter %USERPROFILE%\AppData\Local\nvim && nvim
+
+# Windows PowerShell (pwsh)
+git clone https://github.com/NvChad/starter $ENV:USERPROFILE\AppData\Local\nvim && nvim
+```
+
+## Uninstall
+
+```shell
+# Linux / MacOS
+rm -rf ~/.config/nvim
+rm -rf ~/.local/state/nvim
+rm -rf ~/.local/share/nvim
+
+# Windows Prompt (CMD)
+rd -r ~\AppData\Local\nvim
+rd -r ~\AppData\Local\nvim-data
+
+# PowerShell (pwsh)
+rm -Force ~\AppData\Local\nvim
+rm -Force ~\AppData\Local\nvim-data
+```
+
+## Thanks to all contributors
+
 <div align="left"><p>
     <a href="https://github.com/lucasquin/oh-my-neovim/graphs/contributors">
       <img src="https://contrib.rocks/image?repo=lucasquin/oh-my-neovim" />
