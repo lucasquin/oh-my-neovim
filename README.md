@@ -19,10 +19,10 @@ Aesthetic configuration and a beautiful UI, enhancing your Neovim to an IDE laye
 git clone https://github.com/lucasquin/oh-my-neovim ~/.config/nvim && nvim
 
 # Windows Prompt (CMD)
-git clone https://github.com/NvChad/starter %USERPROFILE%\AppData\Local\nvim && nvim
+git clone https://github.com/lucasquin/oh-my-neovim %USERPROFILE%\AppData\Local\nvim && nvim
 
 # Windows PowerShell (pwsh)
-git clone https://github.com/NvChad/starter $ENV:USERPROFILE\AppData\Local\nvim && nvim
+git clone https://github.com/lucasquin/oh-my-neovim $ENV:USERPROFILE\AppData\Local\nvim && nvim
 ```
 
 ## Uninstall
