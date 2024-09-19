@@ -52,7 +52,7 @@ return {
       "docker_compose_language_service",
       "tailwindcss",
       "vimls",
-      "tsserver",
+      "ts_ls",
       "html",
       "jsonls",
       "phpactor",
