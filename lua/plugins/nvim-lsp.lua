@@ -52,11 +52,9 @@ return {
       "docker_compose_language_service",
       "tailwindcss",
       "vimls",
-      "tsserver",
-      "cssls",
+      "ts_ls",
       "html",
       "jsonls",
-      "pylsp",
       "phpactor",
     }
 
@@ -138,6 +136,27 @@ return {
           },
         },
       },
+    }
+
+    -- Python
+    lspconfig.pylsp.setup {
+      capabilities = capabilities,
+      settings = {
+        pylsp = {
+          plugins = {
+            pycodestyle = {
+              ignore = { "W391", "W503" },
+              maxLineLength = 140,
+            },
+          },
+        },
+      },
+    }
+
+    -- CSS
+    lspconfig.cssls.setup {
+      capabilities = capabilities,
+      filetypes = { "css", "scss", "sass" },
     }
   end,
 }
