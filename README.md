@@ -25,6 +25,32 @@ git clone https://github.com/lucasquin/oh-my-neovim %USERPROFILE%\AppData\Local\
 git clone https://github.com/lucasquin/oh-my-neovim $ENV:USERPROFILE\AppData\Local\nvim && nvim
 ```
 
+## Update
+
+```shell
+# Linux / MacOS
+git -C ~/.config/nvim pull || \
+git clone https://github.com/lucasquin/oh-my-neovim ~/.config/nvim && \
+nvim
+
+# Windows Command Prompt (CMD)
+if exist "%LOCALAPPDATA%\nvim" (
+    cd /d "%LOCALAPPDATA%\nvim" && git pull
+) else (
+    git clone https://github.com/lucasquin/oh-my-neovim "%LOCALAPPDATA%\nvim"
+) && nvim
+
+# Windows PowerShell
+if (Test-Path "$env:LOCALAPPDATA\nvim") {
+    Set-Location "$env:LOCALAPPDATA\nvim"
+    git pull
+    Set-Location -
+} else {
+    git clone https://github.com/lucasquin/oh-my-neovim "$env:LOCALAPPDATA\nvim"
+}
+nvim
+```
+
 ## Uninstall
 
 ```shell
