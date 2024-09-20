@@ -3,9 +3,9 @@
 
 <div align="center">
 
-[![Latest release](https://img.shields.io/github/v/release/lucasquin/oh-my-neovim)](https://github.com/lucasquin/oh-my-neovim/releases/latest)
-[![Latest commit](https://img.shields.io/github/last-commit/lucasquin/oh-my-neovim)](https://github.com/lucasquin/oh-my-neovim/pulse)
-[![GitHub issues](https://img.shields.io/github/issues/lucasquin/oh-my-neovim)](https://github.com/lucasquin/oh-my-neovim/issues)
+![Latest Release](https://img.shields.io/github/v/release/lucasquin/oh-my-neovim?style=for-the-badge&color=07B6CE&labelColor=0D0E14)
+![Latest commit](https://img.shields.io/github/last-commit/lucasquin/oh-my-neovim?style=for-the-badge&color=15BE91&labelColor=0D0E14)
+![GitHub issues](https://img.shields.io/github/issues/lucasquin/oh-my-neovim?style=for-the-badge&color=20C463&labelColor=0D0E14)
 
 </div>
 
