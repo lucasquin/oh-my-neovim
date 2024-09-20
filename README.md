@@ -1,4 +1,5 @@
-<h1 align="center">Oh My Neovim</h1>
+![image](https://github.com/user-attachments/assets/2aae3847-1c2b-41f7-8e8f-50a90e6e733b)
+
 
 <div align="center">
 
@@ -8,9 +9,9 @@
 
 </div>
 
-## Whats is Oh My Neovim?
+## About
 
-Aesthetic configuration and a beautiful UI, enhancing your Neovim to an IDE layer
+This configuration transforms Neovim into a powerful, feature-rich development environment. It includes popular plugins, custom keybindings, and optimizations to enhance your coding experience.
 
 ## Install
 
