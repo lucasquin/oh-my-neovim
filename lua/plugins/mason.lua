@@ -30,7 +30,7 @@ return {
         "ltex",
         "tailwindcss",
         "vimls",
-        "tsserver",
+        "ts_ls",
         "robotframework_ls",
         "pylsp",
 
