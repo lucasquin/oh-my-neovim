@@ -29,7 +29,7 @@ local plugins = {
   require "plugins.template-string",
   require "plugins.nvim-lint",
   require "plugins.nvim-conform",
-  require "plugins.lpssaga",
+  require "plugins.lspsaga",
   require "plugins.tiny-devicons",
   -- require "plugins.ccc",
   require "plugins.statuscol",

@@ -33,6 +33,7 @@ return {
         "ts_ls",
         "robotframework_ls",
         "pylsp",
+        "pbls",
 
         -- Linters
         "golangci-lint",
@@ -48,6 +49,7 @@ return {
         "shfmt",
         "phpcbf",
         "csharpier",
+        "buf",
 
         -- Debug Adapters
         "delve",

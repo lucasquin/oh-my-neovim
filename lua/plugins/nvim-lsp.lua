@@ -42,7 +42,6 @@ return {
     local simple_servers = {
       "cmake",
       "cssmodules_ls",
-      "clangd",
       "gopls",
       "templ",
       "bashls",
@@ -56,6 +55,7 @@ return {
       "html",
       "jsonls",
       "phpactor",
+      "pbls",
     }
 
     for _, server in ipairs(simple_servers) do
@@ -157,6 +157,12 @@ return {
     lspconfig.cssls.setup {
       capabilities = capabilities,
       filetypes = { "css", "scss", "sass" },
+    }
+
+    -- C / C++
+    lspconfig.clangd.setup {
+      capabilities = capabilities,
+      filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
     }
   end,
 }

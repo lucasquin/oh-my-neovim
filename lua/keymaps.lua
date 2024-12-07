@@ -31,17 +31,17 @@ local normal_maps = {
   ["<leader>fb"] = { "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Telescope find in current buffer" } },
 
   -- Lspsaga
-  ["<F12>"] = { "<cmd>Lspsaga peek_definition<CR>", { desc = "Peek definition" } },
-  ["<S-F12>"] = { "<cmd>Lspsaga hover_doc<CR>", { desc = "Show documentation for the symbol under the cursor" } },
-  ["<C-F12>"] = { "<cmd>Lspsaga peek_definition<CR>", { desc = "Peek definition" } },
-  ["<C-S-F12>"] = { "<cmd>Lspsaga finder<CR>", { desc = "Lspsaga finder" } },
   ["[d"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", { desc = "Jump to next diagnostic" } },
   ["]d"] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", { desc = "Jump to previous diagnostic" } },
-  ["<leader>ca"] = { "<cmd>Lspsaga code_action<CR>", { desc = "Execute code actions on the current line(s)" } },
-  ["<leader>rn"] = { "<cmd>Lspsaga rename<CR>", { desc = "Rename the symbol under the cursor" } },
-  ["gp"] = { "<cmd>Lspsaga goto_definition<CR>", { desc = "Jump to definition" } },
-  ["<leader>dw"] = { "<cmd>Lspsaga show_workspace_diagnostics<CR>", { desc = "Show workspace diagnostics" } },
-  ["<leader>db"] = { "<cmd>Lspsaga show_buf_diagnostics<CR>", { desc = "Show buffer diagnostics" } },
+  ["K"] = { "<cmd>Lspsaga hover_doc<CR>", { desc = "Show hover documentation" } },
+  ["ca"] = { "<cmd>Lspsaga code_action<CR>", { desc = "Show code actions" } },
+  ["rn"] = { "<cmd>Lspsaga rename<CR>", { desc = "Rename symbol" } },
+  ["gd"] = { "<cmd>Lspsaga peek_definition<CR>", { desc = "Peek definition" } },
+  ["gp"] = { "<cmd>Lspsaga goto_definition<CR>", { desc = "Go to definition" } },
+  ["gh"] = { "<cmd>Lspsaga finder<CR>", { desc = "Show reference finder" } },
+  ["<Leader>o"] = { "<cmd>Lspsaga outline<CR>", { desc = "Show document outline" } },
+  ["<Leader>dw"] = { "<cmd>Lspsaga show_workspace_diagnostics<CR>", { desc = "Show workspace diagnostics" } },
+  ["<Leader>db"] = { "<cmd>Lspsaga show_buf_diagnostics<CR>", { desc = "Show buffer diagnostics" } },
 
   -- General
   ["<Esc>"] = { "<cmd>noh<CR>", { desc = "Clear highlights" } },
