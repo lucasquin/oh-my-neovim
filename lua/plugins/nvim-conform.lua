@@ -21,6 +21,7 @@ return {
         svelte = { "prettierd --plugin prettier-plugin-svelte" },
         cs = { "csharpier" },
         php = { "phpcbf" },
+        proto = { "buf" },
       },
     }
   end,

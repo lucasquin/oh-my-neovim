@@ -8,20 +8,24 @@ return {
       code_action = {
         keys = {
           exec = "<CR>",
-          quit = { "q", "<ESC>" },
+          quit = { "<ESC>" },
         },
       },
       definition = {
         keys = {
           edit = "<CR>",
-          quit = { "q", "<ESC>" },
+          quit = { "<ESC>" },
         },
       },
       rename = {
-        in_select = false,
         keys = {
           exec = "<CR>",
-          quit = "<ESC>",
+          quit = { "<ESC>" },
+        },
+      },
+      finder = {
+        keys = {
+          quit = { "<ESC>" },
         },
       },
       ui = {
