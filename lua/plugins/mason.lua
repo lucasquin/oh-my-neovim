@@ -8,7 +8,16 @@ return {
     "neovim/nvim-lspconfig",
   },
   config = function()
-    require("mason").setup {}
+    require("mason").setup {
+      max_concurrent_installers = 10,
+      ui = {
+        icons = {
+          package_pending = " ",
+          package_installed = " ",
+          package_uninstalled = " ",
+        },
+      },
+    }
     require("mason-tool-installer").setup {
       ensure_installed = {
         -- LSP

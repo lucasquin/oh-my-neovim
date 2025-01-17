@@ -18,6 +18,7 @@ return {
           end
         end,
         additional_vim_regex_highlighting = false,
+        use_languagetree = true,
       },
     }
   end,

@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-  require "plugins.colorscheme",
+  require "plugins.tokyonight",
   require "plugins.nvim-treesitter",
   require "plugins.neo-tree",
   require "plugins.mason",
@@ -26,15 +26,9 @@ local plugins = {
   require "plugins.nvim-dap",
   require "plugins.lualine",
   require "plugins.nvim-ts-autotag",
-  require "plugins.template-string",
   require "plugins.nvim-lint",
   require "plugins.nvim-conform",
   require "plugins.lspsaga",
-  require "plugins.tiny-devicons",
-  -- require "plugins.ccc",
-  require "plugins.statuscol",
-  require "plugins.nvim-ufo",
-  require "plugins.diagflow",
   require "plugins.local-highlight",
 }
 
