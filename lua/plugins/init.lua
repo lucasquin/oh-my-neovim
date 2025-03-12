@@ -13,6 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
   require "plugins.colorscheme",
+  require "plugins.snacks-nvim",
   require "plugins.nvim-treesitter",
   require "plugins.neo-tree",
   require "plugins.mason",
