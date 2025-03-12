@@ -17,16 +17,4 @@ return {
     --   vim.cmd [[colorscheme vscode]]
     -- end,
   },
-  {
-    "thedenisnikulin/vim-cyberpunk",
-    -- config = function()
-    --   vim.cmd [[colorscheme cyberpunk]]
-    -- end,
-  },
-  {
-    "git@github.com:catppuccin/nvim.git",
-    -- config = function()
-    --   vim.cmd [[colorscheme cyberpunk]]
-    -- end,
-  },
 }
