@@ -1,4 +1,5 @@
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
     "git",
@@ -9,41 +10,32 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   }
 end
+
 vim.opt.rtp:prepend(lazypath)
 
-local plugins = {
-  require "plugins.colorscheme",
-  require "plugins.snacks-nvim",
-  require "plugins.nvim-treesitter",
-  require "plugins.neo-tree",
-  require "plugins.mason",
-  require "plugins.telescope",
-  require "plugins.nvim-autopairs",
-  require "plugins.indent-blankline",
-  require "plugins.nvim-cmp",
-  require "plugins.nvim-lsp",
-  require "plugins.gitsigns",
-  require "plugins.comment",
-  require "plugins.nvim-dap",
-  require "plugins.lualine",
-  require "plugins.nvim-ts-autotag",
-  require "plugins.template-string",
-  require "plugins.nvim-lint",
-  require "plugins.nvim-conform",
-  require "plugins.lspsaga",
-  require "plugins.tiny-devicons",
-  -- require "plugins.ccc",
-  require "plugins.statuscol",
-  require "plugins.nvim-ufo",
-  require "plugins.diagflow",
-  require "plugins.local-highlight",
-}
+local function load_plugins(directory)
+  local plugins = {}
+  local plugin_files = vim.fn.globpath(directory, "*.lua", false, true)
+  for _, file in ipairs(plugin_files) do
+    local plugin_name = vim.fn.fnamemodify(file, ":t:r")
+    if plugin_name ~= "init" then
+      local status, plugin = pcall(require, "plugins." .. plugin_name)
+      if status then
+        table.insert(plugins, plugin)
+      else
+        vim.notify("Failed to load plugin: " .. plugin_name, vim.log.levels.ERROR)
+      end
+    end
+  end
+
+  return plugins
+end
+
+local plugins = load_plugins(vim.fn.stdpath "config" .. "/lua/plugins")
 
 local opts = {
   install = {
-    colorscheme = {
-      "tokyonight",
-    },
+    colorscheme = { "tokyonight" },
   },
   ui = {
     icons = {
