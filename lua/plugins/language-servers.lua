@@ -1,6 +1,6 @@
 return {
   "williamboman/mason.nvim",
-  dependencies = { "williamboman/mason-lspconfig.nvim", "neovim/nvim-lspconfig" },
+  dependencies = { "williamboman/mason-lspconfig.nvim", "neovim/nvim-lspconfig", "Hoffs/omnisharp-extended-lsp.nvim" },
   config = function()
     -- Setup Mason
     require("mason").setup {
@@ -16,7 +16,7 @@ return {
 
     -- Setup Mason LSP Config
     require("mason-lspconfig").setup {
-      ensure_installed = { "lua_ls" },
+      ensure_installed = { "lua_ls", "marksman" },
       automatic_installation = true,
     }
 
@@ -188,6 +188,43 @@ return {
     -- Angular
     setup_server("angularls", {
       root_dir = lspconfig.util.root_pattern("angular.json", "nx.json", "package.json"),
+    })
+
+    -- C#
+    setup_server("omnisharp", {
+      cmd = { "dotnet", vim.fn.stdpath "data" .. "/mason/packages/omnisharp/libexec/OmniSharp.dll" },
+      handlers = {
+        ["textDocument/definition"] = require('omnisharp_extended').definition_handler,
+        ["textDocument/references"] = require('omnisharp_extended').references_handler,
+        ["textDocument/implementation"] = require('omnisharp_extended').implementation_handler,
+        ["textDocument/hover"] = function(_, result, ctx, config)
+          if result == nil then
+            vim.notify("No information available", vim.log.levels.INFO)
+            return
+          end
+
+          vim.lsp.handlers["textDocument/hover"](nil, result, ctx, config)
+        end
+      },
+      filetypes = { 'cs', 'csproj', 'sln' },
+      settings = {
+        FormattingOptions = {
+          EnableEditorConfigSupport = true,
+          OrganizeImports = nil,
+        },
+        MsBuild = {
+          LoadProjectsOnDemand = nil,
+        },
+        RoslynExtensionsOptions = {
+          EnableAnalyzersSupport = nil,
+          EnableImportCompletion = nil,
+          AnalyzeOpenDocumentsOnly = nil,
+          EnableDecompilationSupport = true
+        },
+        Sdk = {
+          IncludePrereleases = true,
+        },
+      },
     })
   end,
 }
