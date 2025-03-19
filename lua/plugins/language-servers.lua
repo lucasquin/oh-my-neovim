@@ -17,6 +17,7 @@ return {
     -- Setup Mason LSP Config
     require("mason-lspconfig").setup {
       ensure_installed = { "lua_ls" },
+      automatic_installation = true,
     }
 
     -- LSP Config
@@ -78,7 +79,7 @@ return {
         if client.workspace_folders then
           local path = client.workspace_folders[1].name
           if
-            path ~= vim.fn.stdpath "config" and (vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc"))
+              path ~= vim.fn.stdpath "config" and (vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc"))
           then
             return
           end
@@ -182,6 +183,11 @@ return {
     -- C / C++
     setup_server("clangd", {
       filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
+    })
+
+    -- Angular
+    setup_server("angularls", {
+      root_dir = lspconfig.util.root_pattern("angular.json", "nx.json", "package.json"),
     })
   end,
 }
