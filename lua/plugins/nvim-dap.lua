@@ -12,7 +12,8 @@ return {
     vim.fn.sign_define("DapBreakpoint", { text = "⬤", texthl = "DiagnosticError", linehl = "", numhl = "" })
     vim.fn.sign_define("DapBreakpointRejected", { text = "", texthl = "DiagnosticWarn", linehl = "", numhl = "" })
     vim.fn.sign_define("DapBreakpointCondition", { text = "", texthl = "", linehl = "DiagnosticInfo", numhl = "" })
-    vim.fn.sign_define("DapStopped", { text = "󰁕 ", texthl = "DiagnosticWarn", linehl = "DapStoppedLine", numhl = "DapStoppedLine" })
+    vim.fn.sign_define("DapStopped",
+      { text = "󰁕 ", texthl = "DiagnosticWarn", linehl = "DapStoppedLine", numhl = "DapStoppedLine" })
     vim.fn.sign_define("DapLogPoint", { text = ".>", texthl = "", linehl = "", numhl = "" })
 
     require("nvim-dap-virtual-text").setup()
@@ -38,17 +39,17 @@ return {
           layouts = {
             {
               elements = {
-                { id = "scopes", size = 0.33 },
+                { id = "scopes",      size = 0.33 },
                 { id = "breakpoints", size = 0.17 },
-                { id = "stacks", size = 0.25 },
-                { id = "watches", size = 0.25 },
+                { id = "stacks",      size = 0.25 },
+                { id = "watches",     size = 0.25 },
               },
               size = 0.33,
               position = "right",
             },
             {
               elements = {
-                { id = "repl", size = 0.45 },
+                { id = "repl",    size = 0.45 },
                 { id = "console", size = 0.55 },
               },
               size = 0.27,
@@ -99,7 +100,7 @@ return {
       vim.cmd ":Neotree"
     end
 
-    -- Golang / delve
+    -- Golang / Delve
     local function getMainGoFilePath()
       local main_path = vim.fn.getcwd() .. "/main.go"
       local dir_entry = vim.loop.fs_stat(main_path)
@@ -110,33 +111,28 @@ return {
       end
     end
 
-    dap.adapters = {
-      go = function(callback)
-        local handle
-        local port = 38697
-        handle = vim.loop.spawn("dlv", {
-          args = { "dap", "-l", "127.0.0.1:" .. port },
-          detached = true,
-        }, function(_)
-          handle:close()
-        end)
-        vim.defer_fn(function()
-          callback { type = "server", host = "127.0.0.1", port = port }
-        end, 100)
-      end,
+
+    dap.adapters.delve = {
+      type = "server",
+      host = "127.0.0.1",
+      port = "8086",
+      executable = {
+        command = "dlv",
+        args = { "dap", "-l", "127.0.0.1:8086", "--log" },
+      },
     }
 
     dap.configurations = {
       go = {
         {
-          type = "go",
-          name = "Launch",
+          type = "delve",
+          name = "Debug",
           request = "launch",
           program = getMainGoFilePath,
           repl_lang = "go",
         },
         {
-          type = "go",
+          type = "delve",
           name = "Launch test",
           request = "launch",
           mode = "test",
