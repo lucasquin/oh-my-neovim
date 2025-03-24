@@ -25,16 +25,16 @@ return {
     local capabilities = vim.lsp.protocol.make_client_capabilities()
 
     -- Define diagnostic signs
-    local signs = {
-      { name = "DiagnosticSignError", text = "" },
-      { name = "DiagnosticSignWarn", text = "" },
-      { name = "DiagnosticSignHint", text = "" },
-      { name = "DiagnosticSignInfo", text = "" },
+    vim.diagnostic.config {
+      signs = {
+        text = {
+          [vim.diagnostic.severity.ERROR] = "",
+          [vim.diagnostic.severity.WARN] = "",
+          [vim.diagnostic.severity.HINT] = "",
+          [vim.diagnostic.severity.INFO] = "",
+        },
+      },
     }
-
-    for _, sign in ipairs(signs) do
-      vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-    end
 
     -- Function to setup LSP servers with common settings
     local function setup_server(server, config)
@@ -79,7 +79,7 @@ return {
         if client.workspace_folders then
           local path = client.workspace_folders[1].name
           if
-              path ~= vim.fn.stdpath "config" and (vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc"))
+            path ~= vim.fn.stdpath "config" and (vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc"))
           then
             return
           end
@@ -194,9 +194,9 @@ return {
     setup_server("omnisharp", {
       cmd = { "dotnet", vim.fn.stdpath "data" .. "/mason/packages/omnisharp/libexec/OmniSharp.dll" },
       handlers = {
-        ["textDocument/definition"] = require('omnisharp_extended').definition_handler,
-        ["textDocument/references"] = require('omnisharp_extended').references_handler,
-        ["textDocument/implementation"] = require('omnisharp_extended').implementation_handler,
+        ["textDocument/definition"] = require("omnisharp_extended").definition_handler,
+        ["textDocument/references"] = require("omnisharp_extended").references_handler,
+        ["textDocument/implementation"] = require("omnisharp_extended").implementation_handler,
         ["textDocument/hover"] = function(_, result, ctx, config)
           if result == nil then
             vim.notify("No information available", vim.log.levels.INFO)
@@ -204,9 +204,9 @@ return {
           end
 
           vim.lsp.handlers["textDocument/hover"](nil, result, ctx, config)
-        end
+        end,
       },
-      filetypes = { 'cs', 'csproj', 'sln' },
+      filetypes = { "cs", "csproj", "sln" },
       settings = {
         FormattingOptions = {
           EnableEditorConfigSupport = true,
@@ -219,7 +219,7 @@ return {
           EnableAnalyzersSupport = nil,
           EnableImportCompletion = nil,
           AnalyzeOpenDocumentsOnly = nil,
-          EnableDecompilationSupport = true
+          EnableDecompilationSupport = true,
         },
         Sdk = {
           IncludePrereleases = true,
