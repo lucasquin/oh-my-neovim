@@ -12,8 +12,7 @@ return {
     vim.fn.sign_define("DapBreakpoint", { text = "⬤", texthl = "DiagnosticError", linehl = "", numhl = "" })
     vim.fn.sign_define("DapBreakpointRejected", { text = "", texthl = "DiagnosticWarn", linehl = "", numhl = "" })
     vim.fn.sign_define("DapBreakpointCondition", { text = "", texthl = "", linehl = "DiagnosticInfo", numhl = "" })
-    vim.fn.sign_define("DapStopped",
-      { text = "󰁕 ", texthl = "DiagnosticWarn", linehl = "DapStoppedLine", numhl = "DapStoppedLine" })
+    vim.fn.sign_define("DapStopped", { text = "󰁕 ", texthl = "DiagnosticWarn", linehl = "DapStoppedLine", numhl = "DapStoppedLine" })
     vim.fn.sign_define("DapLogPoint", { text = ".>", texthl = "", linehl = "", numhl = "" })
 
     require("nvim-dap-virtual-text").setup()
@@ -39,17 +38,17 @@ return {
           layouts = {
             {
               elements = {
-                { id = "scopes",      size = 0.33 },
+                { id = "scopes", size = 0.33 },
                 { id = "breakpoints", size = 0.17 },
-                { id = "stacks",      size = 0.25 },
-                { id = "watches",     size = 0.25 },
+                { id = "stacks", size = 0.25 },
+                { id = "watches", size = 0.25 },
               },
               size = 0.33,
               position = "right",
             },
             {
               elements = {
-                { id = "repl",    size = 0.45 },
+                { id = "repl", size = 0.45 },
                 { id = "console", size = 0.55 },
               },
               size = 0.27,
@@ -100,7 +99,7 @@ return {
       vim.cmd ":Neotree"
     end
 
-    -- Golang / Delve
+    -- Golang
     local function getMainGoFilePath()
       local main_path = vim.fn.getcwd() .. "/main.go"
       local dir_entry = vim.loop.fs_stat(main_path)
@@ -111,7 +110,6 @@ return {
       end
     end
 
-
     dap.adapters.delve = {
       type = "server",
       host = "127.0.0.1",
@@ -121,24 +119,64 @@ return {
         args = { "dap", "-l", "127.0.0.1:8086", "--log" },
       },
     }
+    dap.configurations.go = {
+      {
+        type = "delve",
+        name = "Debug",
+        request = "launch",
+        program = getMainGoFilePath,
+        repl_lang = "go",
+      },
+      {
+        type = "delve",
+        name = "Launch test",
+        request = "launch",
+        mode = "test",
+        program = getMainGoFilePath,
+        repl_lang = "go",
+      },
+    }
 
-    dap.configurations = {
-      go = {
-        {
-          type = "delve",
-          name = "Debug",
-          request = "launch",
-          program = getMainGoFilePath,
-          repl_lang = "go",
+    -- C#
+    dap.adapters.coreclr = {
+      type = "executable",
+      command = vim.fn.stdpath "data" .. "/mason/bin/netcoredbg",
+      args = { "--interpreter=vscode" },
+    }
+
+    dap.configurations.cs = {
+      {
+        type = "coreclr",
+        name = "Attach to .NET Process (by Port)",
+        request = "attach",
+        symbolOptions = {
+          searchPaths = {
+            "${workspaceFolder}/bin/Debug/net9.0/",
+          },
         },
-        {
-          type = "delve",
-          name = "Launch test",
-          request = "launch",
-          mode = "test",
-          program = getMainGoFilePath,
-          repl_lang = "go",
-        },
+        processId = function()
+          local port = vim.fn.input "Enter the port number: "
+          if not port or port == "" then
+            return nil
+          end
+
+          local handle = io.popen("lsof -i :" .. port .. " -sTCP:LISTEN -t")
+          if not handle then
+            print "Failed to run lsof"
+            return nil
+          end
+
+          local pid = handle:read("*a"):match "%d+"
+          handle:close()
+
+          if not pid then
+            print("No process found listening on port " .. port)
+            return nil
+          end
+
+          print("Attaching to PID: " .. pid)
+          return tonumber(pid)
+        end,
       },
     }
   end,
