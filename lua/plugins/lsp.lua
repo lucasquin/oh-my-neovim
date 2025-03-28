@@ -75,30 +75,27 @@ return {
 
     -- Lua
     setup_server("lua_ls", {
-      on_init = function(client)
-        if client.workspace_folders then
-          local path = client.workspace_folders[1].name
-          if
-            path ~= vim.fn.stdpath "config" and (vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc"))
-          then
-            return
-          end
+      on_init = function(client, _)
+        if client.supports_method "textDocument/semanticTokens" then
+          client.server_capabilities.semanticTokensProvider = nil
         end
-        client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
-          runtime = {
-            version = "LuaJIT",
-          },
-          workspace = {
-            checkThirdParty = false,
-            library = {
-              vim.env.VIMRUNTIME,
-              "${3rd}/luv/library",
-            },
-          },
-        })
       end,
       settings = {
-        Lua = {},
+        Lua = {
+          diagnostics = {
+            globals = { "vim" },
+          },
+          workspace = {
+            library = {
+              vim.fn.expand "$VIMRUNTIME/lua",
+              vim.fn.expand "$VIMRUNTIME/lua/vim/lsp",
+              vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy",
+              "${3rd}/luv/library",
+            },
+            maxPreload = 100000,
+            preloadFileSize = 10000,
+          },
+        },
       },
     })
 
@@ -210,14 +207,14 @@ return {
       settings = {
         FormattingOptions = {
           EnableEditorConfigSupport = true,
-          OrganizeImports = nil,
+          OrganizeImports = true,
         },
         MsBuild = {
           LoadProjectsOnDemand = nil,
         },
         RoslynExtensionsOptions = {
           EnableAnalyzersSupport = nil,
-          EnableImportCompletion = nil,
+          EnableImportCompletion = true,
           AnalyzeOpenDocumentsOnly = nil,
           EnableDecompilationSupport = true,
         },
