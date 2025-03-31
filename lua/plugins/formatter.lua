@@ -19,7 +19,7 @@ return {
         graphql = { "prettier" },
         markdown = { "prettier" },
         svelte = { "prettier --plugin prettier-plugin-svelte" },
-        cs = { "csharpier --print-width 140" },
+        cs = { "csharpier --print-width 120" },
         php = { "phpcbf" },
         proto = { "buf" },
       },
