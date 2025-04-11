@@ -5,9 +5,8 @@ return {
       go = { "golangcilint" },
       markdown = { "markdownlint" },
       json = { "jsonlint" },
-      lua = { "luacheck" }
     }
-    vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+    vim.api.nvim_create_autocmd({ "BufWritePost" }, {
       callback = function()
         require("lint").try_lint()
       end,
