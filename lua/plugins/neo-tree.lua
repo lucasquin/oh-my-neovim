@@ -28,6 +28,10 @@ return {
 
     require("neo-tree").setup {
       default_component_configs = {
+        indent = {
+          with_markers = false,
+          indent_size = 1,
+        },
         icon = {
           folder_closed = "",
           folder_open = "",
