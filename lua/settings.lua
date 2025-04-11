@@ -1,7 +1,11 @@
 local o = vim.opt
 local g = vim.g
 
--- Sets the leader key to the space bar. Leader key combinations are used to execute custom commands or mappings for efficiency.
+vim.diagnostic.config {
+  virtual_text = { current_line = true },
+}
+
+-- Sets the leader key to the space bar.
 g.mapleader = " "
 
 -- No wrap lines
@@ -25,8 +29,8 @@ o.softtabstop = 2
 -- Disables the startup message in Neovim.
 o.shortmess:append "sI"
 
--- Uses spaces to visually mark the end of a buffer.
-o.fillchars = { eob = " " }
+-- Clean fillchars
+o.fillchars = { eob = " ", vert = " ", horiz = " " }
 
 -- Always show the status line at the bottom of the window.
 o.laststatus = 3
