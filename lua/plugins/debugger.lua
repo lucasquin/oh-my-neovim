@@ -152,8 +152,11 @@ return {
         symbolOptions = {
           searchPaths = {
             "${workspaceFolder}/bin/Debug/net9.0/",
+            searchMicrosoftSymbolServer = true,
+            searchNuGetOrgSymbolServer = true,
           },
         },
+        justMyCode = false,
         processId = function()
           local port = vim.fn.input "Enter the port number: "
           if not port or port == "" then
