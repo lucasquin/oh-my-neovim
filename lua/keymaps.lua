@@ -29,19 +29,12 @@ local normal_maps = {
   ["<leader>fg"] = { "<cmd>Telescope live_grep<CR>", { desc = "Telescope live grep" } },
   ["<leader>ff"] = { "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>", { desc = "Telescope find all files" } },
   ["<leader>fb"] = { "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Telescope find in current buffer" } },
-
-  -- Lspsaga
-  ["[d"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", { desc = "Jump to next diagnostic" } },
-  ["]d"] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", { desc = "Jump to previous diagnostic" } },
-  ["K"] = { "<cmd>Lspsaga hover_doc<CR>", { desc = "Show hover documentation" } },
-  ["ca"] = { "<cmd>Lspsaga code_action<CR>", { desc = "Show code actions" } },
-  ["rn"] = { "<cmd>Lspsaga rename<CR>", { desc = "Rename symbol" } },
-  ["gd"] = { "<cmd>Lspsaga peek_definition<CR>", { desc = "Peek definition" } },
-  ["gp"] = { "<cmd>Lspsaga goto_definition<CR>", { desc = "Go to definition" } },
-  ["gh"] = { "<cmd>Lspsaga finder<CR>", { desc = "Show reference finder" } },
-  ["<Leader>o"] = { "<cmd>Lspsaga outline<CR>", { desc = "Show document outline" } },
-  ["<Leader>dw"] = { "<cmd>Lspsaga show_workspace_diagnostics<CR>", { desc = "Show workspace diagnostics" } },
-  ["<Leader>db"] = { "<cmd>Lspsaga show_buf_diagnostics<CR>", { desc = "Show buffer diagnostics" } },
+  ["<Leader>ca"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", { desc = "Show code actions" } },
+  ["<Leader>rn"] = { "<cmd>lua vim.lsp.buf.rename()<CR>", { desc = "Rename symbol" } },
+  ["<Leader>gd"] = { "<cmd>Telescope lsp_implementations<CR>", { desc = "Show implementations finder" } },
+  ["<Leader>gh"] = { "<cmd>Telescope lsp_references<CR>", { desc = "Show reference finder" } },
+  ["<Leader>dw"] = { "<cmd>Telescope diagnostics<CR>", { desc = "Show workspace diagnostics" } },
+  ["<Leader>db"] = { "<cmd>Telescope diagnostics bufnr=0<CR>", { desc = "Show buffer diagnostics" } },
 
   -- General
   ["<Esc>"] = { "<cmd>noh<CR>", { desc = "Clear highlights" } },
