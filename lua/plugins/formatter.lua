@@ -22,6 +22,7 @@ return {
         cs = { "csharpier --print-width 120" },
         php = { "phpcbf" },
         proto = { "buf" },
+        python = {"pylsp"}
       },
     }
   end,
