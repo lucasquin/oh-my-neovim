@@ -30,7 +30,32 @@ o.softtabstop = 2
 o.shortmess:append "sI"
 
 -- Clean fillchars
-o.fillchars = { eob = " ", vert = " ", horiz = " " }
+o.fillchars = { -- Enhanced UI characters with Unicode
+  horiz = "─", -- :split horizontal line (box drawing)
+  horizup = "┴", -- upper horizontal split (better visual connection)
+  horizdown = "┬", -- lower horizontal split (better visual connection)
+  vert = "│", -- :vsplit vertical line (box drawing)
+  vertleft = "┤", -- left vertical split (better visual connection)
+  vertright = "├", -- right vertical split (better visual connection)
+  verthoriz = "┼", -- cross split (proper intersection)
+  --
+  -- UI elements (refined)
+  stl = " ", -- statusline (current window)
+  stlnc = " ", -- statusline (non-current windows)
+  wbr = " ", -- window bar
+  eob = "·", -- end-of-buffer lines (less distracting than ~)
+  lastline = "…", -- truncated line indicator (ellipsis)
+
+  -- Folding (expressive symbols)
+  fold = "·", -- fold filler (subtle dot)
+  foldopen = "▼", -- open fold (down triangle)
+  foldclose = "▶", -- closed fold (right triangle)
+  foldsep = "│", -- fold separator (consistent with vert)
+  --
+  -- Others
+  diff = "—", -- diff deleted lines (em dash)
+  msgsep = "━", -- message separator (horizontal bar)
+}
 
 -- Always show the status line at the bottom of the window.
 o.laststatus = 3
