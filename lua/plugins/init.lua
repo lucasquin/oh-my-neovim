@@ -35,7 +35,7 @@ local plugins = load_plugins(vim.fn.stdpath "config" .. "/lua/plugins")
 
 local opts = {
   install = {
-    colorscheme = { "tokyonight" },
+    colorscheme = { "tokyonight-night" },
   },
   ui = {
     icons = {
