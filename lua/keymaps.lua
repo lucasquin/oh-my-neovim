@@ -1,127 +1,93 @@
+-- Initialize keymap function
 local map = vim.keymap.set
 
-local function map_keys(mode, keys)
-  for lhs, rhs in pairs(keys) do
-    local opts = rhs[2] or {}
-    opts.desc = opts.desc or ""
-    map(mode, lhs, rhs[1], opts)
-  end
-end
-
 -- Normal mode mappings
-local normal_maps = {
-  -- Neotree
-  ["<C-n>"] = { "<cmd>Neotree toggle<CR>", { desc = "Neotree toggle window" } },
+-- Neotree
+map("n", "<C-n>", "<cmd>Neotree toggle<CR>", { desc = "Neotree toggle window" })
 
-  -- Comment
-  ["gcc"] = { "gcc", { desc = "Toggle Comment", remap = true } },
+-- Comment
+map("n", "gcc", "gcc", { desc = "Toggle Comment", remap = true })
 
-  -- Gitsigns
-  ["]g"] = { '<cmd>lua require"gitsigns".next_hunk()<CR>', { desc = "Next git hunk" } },
-  ["[g"] = { '<cmd>lua require"gitsigns".prev_hunk()<CR>', { desc = "Previous git hunk" } },
+-- Gitsigns
+map("n", "]g", '<cmd>lua require"gitsigns".next_hunk()<CR>', { desc = "Next git hunk" })
+map("n", "[g", '<cmd>lua require"gitsigns".prev_hunk()<CR>', { desc = "Previous git hunk" })
 
-  -- Telescope
-  ["<leader>fh"] = { "<cmd>Telescope help_tags<CR>", { desc = "Telescope help page" } },
-  ["<leader>ma"] = { "<cmd>Telescope marks<CR>", { desc = "Telescope find marks" } },
-  ["<leader>fo"] = { "<cmd>Telescope oldfiles<CR>", { desc = "Telescope find oldfiles" } },
-  ["<leader>cm"] = { "<cmd>Telescope git_commits<CR>", { desc = "Telescope git commits" } },
-  ["<leader>gt"] = { "<cmd>Telescope git_status<CR>", { desc = "Telescope git status" } },
-  ["<leader>fg"] = { "<cmd>Telescope live_grep<CR>", { desc = "Telescope live grep" } },
-  ["<leader>ff"] = { "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>", { desc = "Telescope find all files" } },
-  ["<leader>fb"] = { "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Telescope find in current buffer" } },
-  ["<Leader>ca"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", { desc = "Show code actions" } },
-  ["<Leader>rn"] = { "<cmd>lua vim.lsp.buf.rename()<CR>", { desc = "Rename symbol" } },
-  ["<Leader>gd"] = { "<cmd>Telescope lsp_implementations<CR>", { desc = "Show implementations finder" } },
-  ["<Leader>gh"] = { "<cmd>Telescope lsp_references<CR>", { desc = "Show reference finder" } },
-  ["<Leader>dw"] = { "<cmd>Telescope diagnostics<CR>", { desc = "Show workspace diagnostics" } },
-  ["<Leader>db"] = { "<cmd>Telescope diagnostics bufnr=0<CR>", { desc = "Show buffer diagnostics" } },
+-- Telescope
+map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "Telescope help page" })
+map("n", "<leader>ma", "<cmd>Telescope marks<CR>", { desc = "Telescope find marks" })
+map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "Telescope find oldfiles" })
+map("n", "<leader>cm", "<cmd>Telescope git_commits<CR>", { desc = "Telescope git commits" })
+map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "Telescope git status" })
+map("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", { desc = "Telescope live grep" })
+map("n", "<leader>ff", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>", { desc = "Telescope find all files" })
+map("n", "<leader>fb", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Telescope find in current buffer" })
 
-  -- General
-  ["<Esc>"] = { "<cmd>noh<CR>", { desc = "Clear highlights" } },
-  ["<C-Up>"] = { "<cmd>resize -2<CR>", { desc = "Resize window up" } },
-  ["<C-Down>"] = { "<cmd>resize +2<CR>", { desc = "Resize window down" } },
-  ["<C-Left>"] = { "<cmd>vertical resize -2<CR>", { desc = "Resize window left" } },
-  ["<C-Right>"] = { "<cmd>vertical resize +2<CR>", { desc = "Resize window right" } },
-  ["<C-h>"] = { "<C-w>h", { desc = "Move to window on the left" } },
-  ["<C-j>"] = { "<C-w>j", { desc = "Move to window below" } },
-  ["<C-k>"] = { "<C-w>k", { desc = "Move to window above" } },
-  ["<C-l>"] = { "<C-w>l", { desc = "Move to window on the right" } },
-  ["<C-a>"] = { "ggVG", { desc = "Select all text" } },
-  ["<C-s>"] = { "<cmd>w<CR>", { desc = "Save the current file" } },
-  ["<leader>b"] = { "<cmd>enew<CR>", { desc = "Create a new buffer" } },
+-- LSP
+map("n", "K", "<cmd>Lspsaga hover_doc<CR>", { desc = "Show hover information" })
+map("n", "<Leader>gd", "<cmd>Lspsaga goto_definition<CR>", { desc = "Go to declaration" })
+map("n", "<Leader>gD", "<cmd>Lspsaga peek_definition<CR>", { desc = "Peek definition" })
+map("n", "<Leader>gi", "<cmd>Lspsaga finder imp<CR>", { desc = "Go to implementation" })
+map("n", "<Leader>gt", "<cmd>Lspsaga goto_type_definition<CR>", { desc = "Go to type definition" })
+map("n", "<Leader>gs", "<cmd>Lspsaga signature_help<CR>", { desc = "Show signature help" })
+map("n", "<Leader>gh", "<cmd>Lspsaga finder ref<CR>", { desc = "Show references" })
+map("i", "<C-k>", "<cmd>Lspsaga signature_help<CR>", { desc = "Show signature help in insert mode" })
+map("n", "<Leader>rn", "<cmd>Lspsaga rename<CR>", { desc = "Rename symbol" })
+map("n", "<Leader>ca", "<cmd>Lspsaga code_action<CR>", { desc = "Show code actions" })
+map("v", "<Leader>ca", "<cmd>Lspsaga code_action<CR>", { desc = "Show code actions for selection" })
 
-  -- Conform
-  ["<leader>fm"] = {
-    function()
-      require("conform").format {
-        lsp_fallback = true,
-        async = false,
-        timeout_ms = 1000,
-      }
-    end,
-    { desc = "Format the current buffer" },
-  },
+-- General
+map("n", "<Esc>", "<cmd>noh<CR>", { desc = "Clear highlights" })
+map("n", "<C-Up>", "<cmd>resize -2<CR>", { desc = "Resize window up" })
+map("n", "<C-Down>", "<cmd>resize +2<CR>", { desc = "Resize window down" })
+map("n", "<C-Left>", "<cmd>vertical resize -2<CR>", { desc = "Resize window left" })
+map("n", "<C-Right>", "<cmd>vertical resize +2<CR>", { desc = "Resize window right" })
+map("n", "<C-h>", "<C-w>h", { desc = "Move to window on the left" })
+map("n", "<C-j>", "<C-w>j", { desc = "Move to window below" })
+map("n", "<C-k>", "<C-w>k", { desc = "Move to window above" })
+map("n", "<C-l>", "<C-w>l", { desc = "Move to window on the right" })
+map("n", "<C-a>", "ggVG", { desc = "Select all text" })
+map("n", "<C-s>", "<cmd>w<CR>", { desc = "Save the current file" })
+map("n", "<leader>b", "<cmd>enew<CR>", { desc = "Create a new buffer" })
 
-  -- DAP
-  ["<F5>"] = {
-    function()
-      require("dap").continue()
-    end,
-    { desc = "Continue debugging" },
-  },
-  ["<S-F5>"] = {
-    function()
-      require("dap").terminate()
-    end,
-    { desc = "Terminate the debugging session" },
-  },
-  ["<F9>"] = {
-    function()
-      require("dap").toggle_breakpoint()
-    end,
-    { desc = "Toggle a breakpoint at the current line" },
-  },
-  ["<F10>"] = {
-    function()
-      require("dap").step_over()
-    end,
-    { desc = "Step over the next line" },
-  },
-  ["<F11>"] = {
-    function()
-      require("dap").step_into()
-    end,
-    { desc = "Step into the next function call" },
-  },
-  ["<S-F11>"] = {
-    function()
-      require("dap").step_out()
-    end,
-    { desc = "Step out of the current function" },
-  },
-}
+-- Conform
+map("n", "<leader>fm", function()
+  require("conform").format {
+    lsp_fallback = true,
+    async = false,
+    timeout_ms = 1000,
+  }
+end, { desc = "Format the current buffer" })
+
+-- DAP
+map("n", "<F5>", function()
+  require("dap").continue()
+end, { desc = "Continue debugging" })
+
+map("n", "<S-F5>", function()
+  require("dap").terminate()
+end, { desc = "Terminate the debugging session" })
+
+map("n", "<F9>", function()
+  require("dap").toggle_breakpoint()
+end, { desc = "Toggle a breakpoint at the current line" })
+
+map("n", "<F10>", function()
+  require("dap").step_over()
+end, { desc = "Step over the next line" })
+
+map("n", "<F11>", function()
+  require("dap").step_into()
+end, { desc = "Step into the next function call" })
+
+map("n", "<S-F11>", function()
+  require("dap").step_out()
+end, { desc = "Step out of the current function" })
 
 -- Visual mode mappings
-local visual_maps = {
-  ["gc"] = { "gc", { desc = "Toggle comment", remap = true } },
-  ["<leader>fb"] = {
-    function()
-      require("conform").format {
-        lsp_fallback = true,
-        async = false,
-        timeout_ms = 1000,
-      }
-    end,
-    { desc = "Range format the current visual selection" },
-  },
-}
+map("v", "gc", "gc", { desc = "Toggle comment", remap = true })
+map("v", "<leader>fm", function()
+  require("conform").format { lsp_fallback = true, async = false, timeout_ms = 1000 }
+end, { desc = "Range format the current visual selection" })
 
 -- Insert mode mappings
-local insert_maps = {
-  ["<S-Tab>"] = { "<C-d>", { desc = "Move one indentation level back" } },
-}
-
--- Apply all mappings
-map_keys("n", normal_maps)
-map_keys("v", visual_maps)
-map_keys("i", insert_maps)
+map("i", "<S-Tab>", "<C-d>", { desc = "Move one indentation level back" })
