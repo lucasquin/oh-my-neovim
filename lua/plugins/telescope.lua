@@ -17,6 +17,20 @@ return {
     telescope.setup {
       defaults = {
         prompt_prefix = "   ",
+        file_ignore_patterns = {
+          "^.git/",
+          "^node_modules/",
+          "^__pycache__/",
+          "%.class$",
+          "%.pyc$",
+          "%.lock$",
+          "package%-lock%.json$",
+          "yarn%.lock$",
+          "pnpm%-lock%.yaml$",
+          "Cargo%.lock$",
+          "Gemfile%.lock$",
+          "poetry%.lock$",
+        },
         mappings = {
           i = {
             ["<C-L>"] = actions.cycle_history_next,
