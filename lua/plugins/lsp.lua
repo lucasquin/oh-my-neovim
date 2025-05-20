@@ -189,6 +189,9 @@ return {
     -- C#
     setup_server("omnisharp", {
       cmd = { "dotnet", vim.fn.stdpath "data" .. "/mason/packages/omnisharp/libexec/OmniSharp.dll" },
+      on_attach = function(client, _)
+        client.server_capabilities.semanticTokensProvider = nil
+      end,
       handlers = {
         ["textDocument/definition"] = require("omnisharp_extended").definition_handler,
         ["textDocument/references"] = require("omnisharp_extended").references_handler,
@@ -209,16 +212,28 @@ return {
           OrganizeImports = true,
         },
         MsBuild = {
-          LoadProjectsOnDemand = nil,
+          LoadProjectsOnDemand = true,
         },
         RoslynExtensionsOptions = {
-          EnableAnalyzersSupport = nil,
+          EnableAnalyzersSupport = false,
           EnableImportCompletion = true,
-          AnalyzeOpenDocumentsOnly = nil,
+          AnalyzeOpenDocumentsOnly = false,
           EnableDecompilationSupport = true,
+        },
+        CacheDirectory = vim.fn.stdpath "cache" .. "/omnisharp",
+        CachingOptions = {
+          EnableLspCaching = true,
+          TypeCacheSizeInMb = 200,
         },
         Sdk = {
           IncludePrereleases = true,
+        },
+        init_options = {
+          AutomaticWorkspaceInit = true,
+          EnableMsBuildLoadProjectsOnDemand = true,
+          EnableImportCompletion = true,
+          EnableAnalyzersSupport = false,
+          HighlightScope = false,
         },
       },
     })
