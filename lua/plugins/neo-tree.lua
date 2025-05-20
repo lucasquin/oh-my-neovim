@@ -10,11 +10,6 @@ return {
     },
   },
   config = function()
-    vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
-    vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
-    vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
-    vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
-
     require("window-picker").setup {
       filter_rules = {
         include_current_win = false,
@@ -27,10 +22,11 @@ return {
     }
 
     require("neo-tree").setup {
+      enable_diagnostics = false,
       default_component_configs = {
         indent = {
-          with_markers = false,
-          indent_size = 1,
+          with_markers = true,
+          indent_size = 2,
         },
         icon = {
           folder_closed = "",
