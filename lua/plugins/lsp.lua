@@ -1,8 +1,7 @@
 return {
   "williamboman/mason.nvim",
-  dependencies = { "williamboman/mason-lspconfig.nvim", "neovim/nvim-lspconfig", "Hoffs/omnisharp-extended-lsp.nvim" },
+  dependencies = { "williamboman/mason-lspconfig.nvim", "Hoffs/omnisharp-extended-lsp.nvim" },
   config = function()
-    -- Setup Mason
     require("mason").setup {
       max_concurrent_installers = 10,
       ui = {
@@ -14,95 +13,76 @@ return {
       },
     }
 
-    -- Setup Mason LSP Config
     require("mason-lspconfig").setup {
       ensure_installed = { "lua_ls", "marksman" },
       automatic_installation = true,
     }
 
-    -- LSP Config
-    local lspconfig = require "lspconfig"
     local capabilities = vim.lsp.protocol.make_client_capabilities()
+    local lsp = vim.lsp.config
 
-    -- Define diagnostic signs
-    vim.diagnostic.config {
-      signs = {
-        text = {
-          [vim.diagnostic.severity.ERROR] = "",
-          [vim.diagnostic.severity.WARN] = "",
-          [vim.diagnostic.severity.HINT] = "",
-          [vim.diagnostic.severity.INFO] = "",
-        },
-      },
-    }
-
-    -- Function to setup LSP servers with common settings
-    local function setup_server(server, config)
-      local ok, err = pcall(function()
-        lspconfig[server].setup(vim.tbl_extend("force", {
-          capabilities = capabilities,
-        }, config or {}))
-      end)
-      if not ok then
-        vim.notify("Failed to setup " .. server .. ": " .. err, vim.log.levels.ERROR)
-      end
-    end
-
-    -- List of simple servers that don't require additional configuration
-    local simple_servers = {
-      "cmake",
-      "cssmodules_ls",
-      "gopls",
-      "templ",
-      "bashls",
-      "marksman",
-      "yamlls",
-      "dockerls",
-      "docker_compose_language_service",
-      "tailwindcss",
-      "vimls",
-      "ts_ls",
-      "html",
-      "jsonls",
-      "phpactor",
-      "pbls",
-    }
-
-    -- Setup simple servers
-    for _, server in ipairs(simple_servers) do
-      setup_server(server)
-    end
+    -- Simple servers configuration
+    lsp("cmake", { capabilities = capabilities })
+    lsp("cssmodules_ls", { capabilities = capabilities })
+    lsp("gopls", { capabilities = capabilities })
+    lsp("templ", { capabilities = capabilities })
+    lsp("bashls", { capabilities = capabilities })
+    lsp("marksman", { capabilities = capabilities })
+    lsp("yamlls", { capabilities = capabilities })
+    lsp("dockerls", { capabilities = capabilities })
+    lsp("docker_compose_language_service", { capabilities = capabilities })
+    lsp("tailwindcss", { capabilities = capabilities })
+    lsp("vimls", { capabilities = capabilities })
+    lsp("ts_ls", { capabilities = capabilities })
+    lsp("html", { capabilities = capabilities })
+    lsp("jsonls", { capabilities = capabilities })
+    lsp("phpactor", { capabilities = capabilities })
+    lsp("pbls", { capabilities = capabilities })
 
     -- Lua
-    setup_server("lua_ls", {
-      on_init = function(client, _)
-        if client.supports_method "textDocument/semanticTokens" then
-          client.server_capabilities.semanticTokensProvider = nil
+    lsp("lua_ls", {
+      capabilities = capabilities,
+      on_init = function(client)
+        if client.workspace_folders then
+          local path = client.workspace_folders[1].name
+          if path ~= vim.fn.stdpath "config" and (vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc")) then
+            return
+          end
         end
-      end,
-      settings = {
-        Lua = {
-          diagnostics = {
-            globals = { "vim" },
+
+        client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+          runtime = {
+            version = "LuaJIT",
+            path = {
+              "lua/?.lua",
+              "lua/?/init.lua",
+            },
           },
           workspace = {
+            checkThirdParty = false,
             library = {
-              vim.fn.expand "$VIMRUNTIME/lua",
-              vim.fn.expand "$VIMRUNTIME/lua/vim/lsp",
-              vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy",
+              vim.env.VIMRUNTIME,
               "${3rd}/luv/library",
+              "${3rd}/busted/library",
             },
-            maxPreload = 100000,
-            preloadFileSize = 10000,
           },
-        },
+        })
+      end,
+      settings = {
+        Lua = {},
       },
     })
 
     -- Svelte
-    setup_server("svelte", {
+    lsp("svelte", {
+      capabilities = capabilities,
       filetypes = { "svelte" },
-      root_dir = lspconfig.util.root_pattern("svelte.config.cjs", "svelte.config.js"),
+      root_dir = function(fname)
+        return vim.fs.dirname(vim.fs.find({ "svelte.config.cjs", "svelte.config.js" }, {
+          upward = true,
+          path = vim.fs.dirname(fname),
+        })[1] or "")
+      end,
       settings = {
         svelte = {
           plugin = {
@@ -119,7 +99,8 @@ return {
     })
 
     -- Robot Framework
-    setup_server("robotframework_ls", {
+    lsp("robotframework_ls", {
+      capabilities = capabilities,
       filetypes = { "robot", "resource" },
       settings = {
         robot = {
@@ -137,7 +118,8 @@ return {
     })
 
     -- LTeX
-    setup_server("ltex", {
+    lsp("ltex", {
+      capabilities = capabilities,
       settings = {
         ltex = {
           language = { "en-US" },
@@ -159,7 +141,8 @@ return {
     })
 
     -- Python
-    setup_server("pylsp", {
+    lsp("pylsp", {
+      capabilities = capabilities,
       settings = {
         pylsp = {
           plugins = {
@@ -172,22 +155,31 @@ return {
     })
 
     -- CSS
-    setup_server("cssls", {
+    lsp("cssls", {
+      capabilities = capabilities,
       filetypes = { "css", "scss", "sass" },
     })
 
     -- C / C++
-    setup_server("clangd", {
+    lsp("clangd", {
+      capabilities = capabilities,
       filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
     })
 
     -- Angular
-    setup_server("angularls", {
-      root_dir = lspconfig.util.root_pattern("angular.json", "nx.json", "package.json"),
+    lsp("angularls", {
+      capabilities = capabilities,
+      root_dir = function(fname)
+        return vim.fs.dirname(vim.fs.find({ "angular.json", "nx.json", "package.json" }, {
+          upward = true,
+          path = vim.fs.dirname(fname),
+        })[1] or "")
+      end,
     })
 
     -- C#
-    setup_server("omnisharp", {
+    lsp("omnisharp", {
+      capabilities = capabilities,
       cmd = { "dotnet", vim.fn.stdpath "data" .. "/mason/packages/omnisharp/libexec/OmniSharp.dll" },
       on_attach = function(client, _)
         client.server_capabilities.semanticTokensProvider = nil
@@ -205,7 +197,7 @@ return {
           vim.lsp.handlers["textDocument/hover"](nil, result, ctx, config)
         end,
       },
-      filetypes = { "cs", "csproj", "sln" },
+      filetypes = { "cs", "vb", "csproj", "sln" },
       settings = {
         FormattingOptions = {
           EnableEditorConfigSupport = true,
@@ -223,7 +215,7 @@ return {
         CacheDirectory = vim.fn.stdpath "cache" .. "/omnisharp",
         CachingOptions = {
           EnableLspCaching = true,
-          TypeCacheSizeInMb = 200,
+          TypeCacheSizeInMb = 300,
         },
         Sdk = {
           IncludePrereleases = true,

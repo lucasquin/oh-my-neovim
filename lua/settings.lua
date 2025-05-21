@@ -1,15 +1,20 @@
 local o = vim.opt
 local g = vim.g
-local vf = vim.fn
 
 vim.diagnostic.config {
   virtual_text = { current_line = true },
 }
 
-vf.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })
-vf.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" })
-vf.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo" })
-vf.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
+vim.diagnostic.config {
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "",
+      [vim.diagnostic.severity.WARN] = "",
+      [vim.diagnostic.severity.HINT] = "",
+      [vim.diagnostic.severity.INFO] = "",
+    },
+  },
+}
 
 -- Sets the leader key to the space bar.
 g.mapleader = " "
