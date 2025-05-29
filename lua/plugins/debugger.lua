@@ -2,14 +2,52 @@ return {
   "mfussenegger/nvim-dap",
   dependencies = {
     { "igorlfs/nvim-dap-view" },
+    { "theHamsta/nvim-dap-virtual-text" },
+    { "LiadOz/nvim-dap-repl-highlights" },
   },
   config = function()
-    local dap, dv = require "dap", require "dap-view"
+    local dap = require "dap"
+    local dap_view = require "dap-view"
+    local dap_virtual_text = require "nvim-dap-virtual-text"
+    local dap_highlight = require "nvim-dap-repl-highlights"
 
-    dv.setup {
+    dap_highlight.setup()
+
+    dap_virtual_text.setup {
+      highlight_changed_variables = true,
+      virt_text_pos = 'eol',
+      virt_lines = false,
+    }
+
+    dap_view.setup {
       winbar = {
-        sections = { "scopes", "watches", "exceptions", "breakpoints", "repl" },
+        sections = { "scopes", "watches", "exceptions", "breakpoints", "threads", "repl" },
         default_section = "scopes",
+        controls = {
+          enabled = true,
+          position = "right",
+          buttons = {
+            "play",
+            "step_into",
+            "step_over",
+            "step_out",
+            "step_back",
+            "run_last",
+            "terminate",
+            "disconnect",
+          },
+          icons = {
+            pause = "",
+            play = "",
+            step_into = "",
+            step_over = "",
+            step_out = "",
+            step_back = "",
+            run_last = "",
+            terminate = "",
+            disconnect = "",
+          },
+        },
       },
       windows = {
         height = 20,
@@ -22,23 +60,24 @@ return {
     vim.fn.sign_define("DapBreakpoint", { text = "⬤", texthl = "DiagnosticError", linehl = "", numhl = "" })
     vim.fn.sign_define("DapBreakpointRejected", { text = "", texthl = "DiagnosticWarn", linehl = "", numhl = "" })
     vim.fn.sign_define("DapBreakpointCondition", { text = "", texthl = "", linehl = "DiagnosticInfo", numhl = "" })
-    vim.fn.sign_define("DapStopped", { text = "󰁕 ", texthl = "DiagnosticWarn", linehl = "DapStoppedLine", numhl = "DiagnosticWarn" })
+    vim.fn.sign_define("DapStopped",
+      { text = "󰁕 ", texthl = "DiagnosticWarn", linehl = "DapStoppedLine", numhl = "DiagnosticWarn" })
     vim.fn.sign_define("DapLogPoint", { text = ".>", texthl = "", linehl = "", numhl = "" })
 
     dap.listeners.before.attach["dap-view-config"] = function()
       vim.cmd ":Neotree close"
-      dv.open()
+      dap_view.open()
+      vim.cmd ":Neotree show"
     end
     dap.listeners.before.launch["dap-view-config"] = function()
       vim.cmd ":Neotree close"
-      dv.open()
+      dap_view.open()
+      vim.cmd ":Neotree show"
     end
     dap.listeners.before.event_terminated["dap-view-config"] = function()
-      dv.close(true)
       vim.cmd ":Neotree show"
     end
     dap.listeners.before.event_exited["dap-view-config"] = function()
-      dv.close(true)
       vim.cmd ":Neotree show"
     end
 
@@ -89,6 +128,7 @@ return {
 
     dap.configurations.cs = {
       {
+        repl_lang = "c_sharp",
         type = "coreclr",
         name = "Attach to .NET Process (by Port)",
         request = "attach",
