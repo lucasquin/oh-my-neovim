@@ -11,6 +11,13 @@ vf.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWar
 vf.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo" })
 vf.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
 
+vim.opt.fillchars = {
+  fold = " ",
+  foldopen = "▼",
+  foldclose = "▶",
+  foldsep = " ",
+}
+
 -- Sets the leader key to the space bar.
 g.mapleader = " "
 
