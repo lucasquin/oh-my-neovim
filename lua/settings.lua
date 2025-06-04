@@ -1,5 +1,6 @@
 local o = vim.opt
 local g = vim.g
+-- local d = vim.diagnostic
 local vf = vim.fn
 
 vim.diagnostic.config {
@@ -10,6 +11,17 @@ vf.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignEr
 vf.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" })
 vf.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo" })
 vf.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
+
+-- vim.diagnostic.config {
+--   signs = {
+--     text = {
+--       [vim.diagnostic.ERROR] = "",
+--       [vim.diagnostic.WARN] = "",
+--       [vim.diagnostic.HINT] = "",
+--       [vim.diagnostic.INFO] = "",
+--     },
+--   },
+-- }
 
 vim.opt.fillchars = {
   fold = " ",
