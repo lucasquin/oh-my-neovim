@@ -1,8 +1,11 @@
 return {
   "williamboman/mason.nvim",
-  dependencies = { "williamboman/mason-lspconfig.nvim", "neovim/nvim-lspconfig", "Hoffs/omnisharp-extended-lsp.nvim" },
+  dependencies = {
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
+    "Hoffs/omnisharp-extended-lsp.nvim",
+    "WhoIsSethDaniel/mason-tool-installer.nvim" },
   config = function()
-    -- Setup Mason
     require("mason").setup {
       max_concurrent_installers = 10,
       ui = {
@@ -14,29 +17,45 @@ return {
       },
     }
 
-    -- Setup Mason LSP Config
-    require("mason-lspconfig").setup {
-      ensure_installed = { "lua_ls", "marksman" },
-      automatic_installation = true,
-    }
+    require("mason-lspconfig").setup()
 
-    -- LSP Config
-    local lspconfig = require "lspconfig"
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    local e = vim.fn.executable
 
-    -- Define diagnostic signs
-    vim.diagnostic.config {
-      signs = {
-        text = {
-          [vim.diagnostic.severity.ERROR] = "",
-          [vim.diagnostic.severity.WARN] = "",
-          [vim.diagnostic.severity.HINT] = "",
-          [vim.diagnostic.severity.INFO] = "",
-        },
+    require('mason-tool-installer').setup {
+      ensure_installed = {
+        { 'bash-language-server',       auto_update = true },
+        { 'bash-language-server',       auto_update = true },
+
+        { 'prettier',                   condition = function() return e('npm') == 1 end },
+        { 'typescript-language-server', condition = function() return e('npm') == 1 end },
+        { 'cssmodules-language-server', condition = function() return e('npm') == 1 end },
+        { 'marksman',                   condition = function() return e('npm') == 1 end },
+        { 'markdownlint',               condition = function() return e('npm') == 1 end },
+        { 'jsonlint',                   condition = function() return e('npm') == 1 end },
+
+        { 'gopls',                      condition = function() return e('go') == 1 end },
+        { 'delve',                      condition = function() return e('go') == 1 end },
+        { 'gofumpt',                    condition = function() return e('go') == 1 end },
+        { 'goimports',                  condition = function() return e('go') == 1 end },
+        { 'golangci-lint',              condition = function() return e('go') == 1 end },
+
+        { 'omnisharp',                  condition = function() return e('dotnet') == 1 end },
+        { 'netcoredbg',                 condition = function() return e('dotnet') == 1 end },
+      },
+      auto_update = false,
+      run_on_start = true,
+      start_delay = 3000,
+      debounce_hours = 5,
+      integrations = {
+        ['mason-lspconfig'] = true,
+        ['mason-null-ls'] = false,
+        ['mason-nvim-dap'] = true,
       },
     }
 
-    -- Function to setup LSP servers with common settings
+    local lspconfig = require "lspconfig"
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+
     local function setup_server(server, config)
       local ok, err = pcall(function()
         lspconfig[server].setup(vim.tbl_extend("force", {
