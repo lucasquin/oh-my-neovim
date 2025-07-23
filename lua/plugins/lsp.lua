@@ -1,8 +1,12 @@
 return {
   "williamboman/mason.nvim",
-  dependencies = { "williamboman/mason-lspconfig.nvim", "neovim/nvim-lspconfig", "Hoffs/omnisharp-extended-lsp.nvim" },
+  dependencies = {
+    "williamboman/mason-lspconfig.nvim",
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    "neovim/nvim-lspconfig",
+    "Hoffs/omnisharp-extended-lsp.nvim",
+  },
   config = function()
-    -- Setup Mason
     require("mason").setup {
       max_concurrent_installers = 10,
       ui = {
@@ -14,10 +18,33 @@ return {
       },
     }
 
-    -- Setup Mason LSP Config
-    require("mason-lspconfig").setup {
-      ensure_installed = { "lua_ls", "marksman" },
-      automatic_installation = true,
+    require("mason-lspconfig").setup {}
+
+    require("mason-tool-installer").setup {
+      {
+        "lua_ls",
+        condition = function()
+          return vim.fn.executable "lua" == 1
+        end,
+      },
+      {
+        "gopls",
+        condition = function()
+          return vim.fn.executable "go" == 1
+        end,
+      },
+      {
+        "cssmodules-language-server",
+        condition = function()
+          return vim.fn.executable "npm" == 1
+        end,
+      },
+      {
+        "marksman",
+        condition = function()
+          return vim.fn.executable "npm" == 1
+        end,
+      },
     }
 
     -- LSP Config
@@ -183,15 +210,47 @@ return {
 
     -- Angular
     setup_server("angularls", {
-      root_dir = lspconfig.util.root_pattern("angular.json", "nx.json", "package.json"),
+      root_dir = lspconfig.util.root_pattern("angular.json", "nx.json"),
     })
 
     -- C#
+    local function get_omnisharp_cmd()
+      return vim.fn.stdpath "data" .. "/mason/packages/omnisharp/OmniSharp"
+    end
+
+    local function get_root_dir()
+      return require("lspconfig.util").root_pattern("*.sln", "*.csproj", ".git")
+    end
+
+    local function get_cmd()
+      local omnisharp_cmd = get_omnisharp_cmd()
+      local root_dir = get_root_dir()
+
+      return {
+        omnisharp_cmd,
+        "-s",
+        root_dir,
+        "--hostPID",
+        tostring(vim.fn.getpid()),
+        "--encoding",
+        "utf-8",
+        "--languageserver",
+      }
+    end
+
     setup_server("omnisharp", {
-      cmd = { "dotnet", vim.fn.stdpath "data" .. "/mason/packages/omnisharp/libexec/OmniSharp.dll" },
+      cmd = get_cmd(),
       on_attach = function(client, _)
         client.server_capabilities.semanticTokensProvider = nil
       end,
+      settings = {
+        MSBuild = {
+          enable = true,
+        },
+        RoslynExtensionOptions = {
+          enableDecompilationSupport = true,
+        },
+      },
       handlers = {
         ["textDocument/definition"] = require("omnisharp_extended").definition_handler,
         ["textDocument/references"] = require("omnisharp_extended").references_handler,
@@ -204,37 +263,6 @@ return {
 
           vim.lsp.handlers["textDocument/hover"](nil, result, ctx, config)
         end,
-      },
-      filetypes = { "cs", "csproj", "sln" },
-      settings = {
-        FormattingOptions = {
-          EnableEditorConfigSupport = true,
-          OrganizeImports = true,
-        },
-        MsBuild = {
-          LoadProjectsOnDemand = true,
-        },
-        RoslynExtensionsOptions = {
-          EnableAnalyzersSupport = false,
-          EnableImportCompletion = true,
-          AnalyzeOpenDocumentsOnly = false,
-          EnableDecompilationSupport = true,
-        },
-        CacheDirectory = vim.fn.stdpath "cache" .. "/omnisharp",
-        CachingOptions = {
-          EnableLspCaching = true,
-          TypeCacheSizeInMb = 200,
-        },
-        Sdk = {
-          IncludePrereleases = true,
-        },
-        init_options = {
-          AutomaticWorkspaceInit = true,
-          EnableMsBuildLoadProjectsOnDemand = true,
-          EnableImportCompletion = true,
-          EnableAnalyzersSupport = false,
-          HighlightScope = false,
-        },
       },
     })
   end,

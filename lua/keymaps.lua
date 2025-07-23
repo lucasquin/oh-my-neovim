@@ -91,3 +91,11 @@ end, { desc = "Range format the current visual selection" })
 
 -- Insert mode mappings
 map("i", "<S-Tab>", "<C-d>", { desc = "Move one indentation level back" })
+
+map("n", "<leader>tt", function()
+  require("neotest").watch.toggle(vim.fn.expand "%")
+end, { desc = "Toggle watch mode" })
+
+map("n", "<leader>ta", function()
+  require("neotest").watch.toggle(vim.fn.getcwd())
+end, { desc = "Toggle watch all tests" })
