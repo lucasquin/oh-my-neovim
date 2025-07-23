@@ -214,24 +214,15 @@ return {
     })
 
     -- C#
-    local function get_omnisharp_cmd()
-      return vim.fn.stdpath "data" .. "/mason/packages/omnisharp/OmniSharp"
-    end
-
-    local function get_root_dir()
-      return require("lspconfig.util").root_pattern("*.sln", "*.csproj", ".git")
-    end
-
     local function get_cmd()
-      local omnisharp_cmd = get_omnisharp_cmd()
-      local root_dir = get_root_dir()
+      local omnisharp_cmd = vim.fn.stdpath "data" .. "/mason/packages/omnisharp/OmniSharp"
 
       return {
         omnisharp_cmd,
-        "-s",
-        root_dir,
+        "-z",
         "--hostPID",
         tostring(vim.fn.getpid()),
+        "DotNet:enablePackageRestore=false",
         "--encoding",
         "utf-8",
         "--languageserver",
@@ -244,25 +235,26 @@ return {
         client.server_capabilities.semanticTokensProvider = nil
       end,
       settings = {
-        MSBuild = {
-          enable = true,
+        {
+          FormattingOptions = {
+            EnableEditorConfigSupport = true,
+          },
+          MsBuild = {
+            enable = true,
+          },
+          RenameOptions = {},
+          RoslynExtensionsOptions = {
+            enableDecompilationSupport = true,
+          },
+          Sdk = {
+            IncludePrereleases = true,
+          },
+          handlers = {
+            ["textDocument/definition"] = require("omnisharp_extended").definition_handler,
+            ["textDocument/references"] = require("omnisharp_extended").references_handler,
+            ["textDocument/implementation"] = require("omnisharp_extended").implementation_handler,
+          },
         },
-        RoslynExtensionOptions = {
-          enableDecompilationSupport = true,
-        },
-      },
-      handlers = {
-        ["textDocument/definition"] = require("omnisharp_extended").definition_handler,
-        ["textDocument/references"] = require("omnisharp_extended").references_handler,
-        ["textDocument/implementation"] = require("omnisharp_extended").implementation_handler,
-        ["textDocument/hover"] = function(_, result, ctx, config)
-          if result == nil then
-            vim.notify("No information available", vim.log.levels.INFO)
-            return
-          end
-
-          vim.lsp.handlers["textDocument/hover"](nil, result, ctx, config)
-        end,
       },
     })
   end,
