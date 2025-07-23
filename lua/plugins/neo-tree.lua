@@ -22,7 +22,7 @@ return {
     }
 
     require("neo-tree").setup {
-      enable_diagnostics = false,
+      enable_diagnostics = true,
       default_component_configs = {
         indent = {
           with_markers = true,
