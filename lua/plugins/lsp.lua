@@ -4,7 +4,6 @@ return {
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     "neovim/nvim-lspconfig",
-    "Hoffs/omnisharp-extended-lsp.nvim",
   },
   config = function()
     require("mason").setup {
@@ -214,26 +213,8 @@ return {
     })
 
     -- C#
-    local function get_cmd()
-      local omnisharp_cmd = vim.fn.stdpath "data" .. "/mason/packages/omnisharp/OmniSharp"
-
-      return {
-        omnisharp_cmd,
-        "-z",
-        "--hostPID",
-        tostring(vim.fn.getpid()),
-        "DotNet:enablePackageRestore=false",
-        "--encoding",
-        "utf-8",
-        "--languageserver",
-      }
-    end
-
     setup_server("omnisharp", {
-      cmd = get_cmd(),
-      on_attach = function(client, _)
-        client.server_capabilities.semanticTokensProvider = nil
-      end,
+      cmd = { vim.fn.stdpath "data" .. "/mason/packages/omnisharp/OmniSharp" },
       settings = {
         {
           FormattingOptions = {
@@ -248,11 +229,6 @@ return {
           },
           Sdk = {
             IncludePrereleases = true,
-          },
-          handlers = {
-            ["textDocument/definition"] = require("omnisharp_extended").definition_handler,
-            ["textDocument/references"] = require("omnisharp_extended").references_handler,
-            ["textDocument/implementation"] = require("omnisharp_extended").implementation_handler,
           },
         },
       },
