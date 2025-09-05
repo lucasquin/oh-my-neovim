@@ -1,11 +1,16 @@
 return {
   "nvim-treesitter/nvim-treesitter",
+  dependencies = {
+    "nvim-treesitter/nvim-treesitter-context",
+    "LiadOz/nvim-dap-repl-highlights",
+  },
   event = { "BufReadPost", "BufNewFile" },
   cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
   build = ":TSUpdate",
   config = function()
+    require("nvim-dap-repl-highlights").setup()
     require("nvim-treesitter.configs").setup {
-      ensure_installed = { "lua", "vim", "vimdoc", "typescript", "javascript", "html", "css" },
+      ensure_installed = { "lua", "vim", "vimdoc", "typescript", "javascript", "html", "css", "dap_repl" },
       sync_install = false,
       auto_install = true,
       highlight = {
