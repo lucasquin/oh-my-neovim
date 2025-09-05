@@ -23,13 +23,11 @@ map("n", "<leader>ff", "<cmd>Telescope find_files follow=true no_ignore=true hid
 map("n", "<leader>fb", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Telescope find in current buffer" })
 
 -- LSP
-map("n", "K", "<cmd>Lspsaga hover_doc<CR>", { desc = "Show hover information" })
-map("n", "<Leader>gd", "<cmd>Lspsaga goto_definition<CR>", { desc = "Go to declaration" })
-map("n", "<Leader>gD", "<cmd>Lspsaga peek_definition<CR>", { desc = "Peek definition" })
-map("n", "<Leader>gi", "<cmd>Lspsaga finder imp<CR>", { desc = "Go to implementation" })
-map("n", "<Leader>gt", "<cmd>Lspsaga goto_type_definition<CR>", { desc = "Go to type definition" })
-map("n", "<Leader>gs", "<cmd>Lspsaga signature_help<CR>", { desc = "Show signature help" })
+map("n", "<Leader>gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+map("n", "<Leader>gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
 map("n", "<Leader>gh", "<cmd>Lspsaga finder ref<CR>", { desc = "Show references" })
+map("n", "K", "<cmd>Lspsaga hover_doc<CR>", { desc = "Show hover information" })
+map("n", "<Leader>gs", "<cmd>Lspsaga signature_help<CR>", { desc = "Show signature help" })
 map("i", "<C-k>", "<cmd>Lspsaga signature_help<CR>", { desc = "Show signature help in insert mode" })
 map("n", "<Leader>rn", "<cmd>Lspsaga rename<CR>", { desc = "Rename symbol" })
 map("n", "<Leader>ca", "<cmd>Lspsaga code_action<CR>", { desc = "Show code actions" })
@@ -51,11 +49,7 @@ map("n", "<leader>b", "<cmd>enew<CR>", { desc = "Create a new buffer" })
 
 -- Conform
 map("n", "<leader>fm", function()
-  require("conform").format {
-    lsp_fallback = true,
-    async = false,
-    timeout_ms = 1000,
-  }
+  require("conform").format { lsp_fallback = true, async = false, timeout_ms = 1000 }
 end, { desc = "Format the current buffer" })
 
 -- DAP
@@ -99,3 +93,20 @@ end, { desc = "Toggle watch mode" })
 map("n", "<leader>ta", function()
   require("neotest").watch.toggle(vim.fn.getcwd())
 end, { desc = "Toggle watch all tests" })
+
+-- Neotest keymaps
+map("n", "<leader>tt", function()
+  require("neotest").run.run()
+end, { desc = "Run nearest test" })
+
+map("n", "<leader>td", function()
+  require("neotest").run.run { strategy = "dap" }
+end, { desc = "Debug nearest test" })
+
+map("n", "<leader>tf", function()
+  require("neotest").run.run(vim.fn.expand "%")
+end, { desc = "Run tests in current file" })
+
+map("n", "<leader>ta", function()
+  require("neotest").run.run(vim.fn.getcwd())
+end, { desc = "Run all tests" })

@@ -14,7 +14,7 @@ return {
       windows = {
         height = 20,
         terminal = {
-          hide = { "delve", "coreclr" },
+          hide = { "delve", "netcoredbg" },
         },
       },
     }
@@ -28,18 +28,18 @@ return {
     dap.listeners.before.attach["dap-view-config"] = function()
       vim.cmd ":Neotree close"
       dv.open()
+      vim.cmd ":Neotree show"
     end
     dap.listeners.before.launch["dap-view-config"] = function()
       vim.cmd ":Neotree close"
       dv.open()
+      vim.cmd ":Neotree show"
     end
     dap.listeners.before.event_terminated["dap-view-config"] = function()
       dv.close(true)
-      vim.cmd ":Neotree show"
     end
     dap.listeners.before.event_exited["dap-view-config"] = function()
       dv.close(true)
-      vim.cmd ":Neotree show"
     end
 
     -- Golang
@@ -81,7 +81,7 @@ return {
     }
 
     -- C#
-    dap.adapters.coreclr = {
+    dap.adapters.netcoredbg = {
       type = "executable",
       command = vim.fn.stdpath "data" .. "/mason/bin/netcoredbg",
       args = { "--interpreter=vscode" },
@@ -89,7 +89,7 @@ return {
 
     dap.configurations.cs = {
       {
-        type = "coreclr",
+        type = "netcoredbg",
         name = "Attach to .NET Process (by Port)",
         request = "attach",
         symbolOptions = {
