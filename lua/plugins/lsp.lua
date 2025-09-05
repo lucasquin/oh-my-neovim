@@ -4,6 +4,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     "neovim/nvim-lspconfig",
+    "Hoffs/omnisharp-extended-lsp.nvim",
   },
   config = function()
     require("mason").setup {
@@ -215,6 +216,12 @@ return {
     -- C#
     setup_server("omnisharp", {
       cmd = { vim.fn.stdpath "data" .. "/mason/packages/omnisharp/OmniSharp" },
+      handlers = {
+        ["textDocument/definition"] = require("omnisharp_extended").definition_handler,
+        ["textDocument/typeDefinition"] = require("omnisharp_extended").type_definition_handler,
+        ["textDocument/references"] = require("omnisharp_extended").references_handler,
+        ["textDocument/implementation"] = require("omnisharp_extended").implementation_handler,
+      },
       settings = {
         {
           FormattingOptions = {
@@ -223,9 +230,12 @@ return {
           MsBuild = {
             enable = true,
           },
+          EnableRoslynAnalyzers = false,
           RenameOptions = {},
           RoslynExtensionsOptions = {
+            enableAnalyzersSupport = false,
             enableDecompilationSupport = true,
+            enableImportCompletion = true,
           },
           Sdk = {
             IncludePrereleases = true,
