@@ -1,9 +1,6 @@
 return {
   {
     "Mofiqul/dracula.nvim",
-    -- config = function()
-    --   vim.cmd [[colorscheme dracula]]
-    -- end,
   },
   {
     "folke/tokyonight.nvim",
@@ -12,9 +9,8 @@ return {
     end,
   },
   {
-    "Mofiqul/vscode.nvim",
-    -- config = function()
-    --   vim.cmd [[colorscheme vscode]]
-    -- end,
+    "rockyzhang24/arctic.nvim",
+    branch = "v2",
+    dependencies = { "rktjmp/lush.nvim" },
   },
 }
