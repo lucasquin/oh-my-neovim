@@ -90,6 +90,37 @@ return {
     dap.configurations.cs = {
       {
         type = "netcoredbg",
+        name = "Launch .NET Project",
+        request = "launch",
+        program = function()
+          print "Building project..."
+          local build_result = vim.fn.system("dotnet build " .. vim.fn.getcwd())
+
+          if vim.v.shell_error ~= 0 then
+            vim.notify("Build failed!\n" .. build_result, vim.log.levels.ERROR)
+            return nil
+          end
+
+          print "Build successful!"
+
+          local dll_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t") .. ".dll"
+          local dll_path = vim.fn.getcwd() .. "/bin/Debug/net9.0/" .. dll_name
+
+          if vim.fn.filereadable(dll_path) == 0 then
+            vim.notify("DLL not found: " .. dll_path, vim.log.levels.ERROR)
+            return nil
+          end
+
+          return dll_path
+        end,
+        cwd = "${workspaceFolder}",
+        stopAtEntry = false,
+        console = "integratedTerminal",
+        justMyCode = false,
+        enableStepFiltering = true,
+      },
+      {
+        type = "netcoredbg",
         name = "Attach to .NET Process (by Port)",
         request = "attach",
         symbolOptions = {
