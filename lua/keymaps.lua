@@ -8,6 +8,10 @@ map("n", "<C-n>", "<cmd>Neotree toggle<CR>", { desc = "Neotree toggle window" })
 -- Comment
 map("n", "gcc", "gcc", { desc = "Toggle Comment", remap = true })
 
+map("n", "<leader>e", function()
+  vim.diagnostic.open_float { focusable = true }
+end, { desc = "Expand an Error into a float" })
+
 -- Gitsigns
 map("n", "]g", '<cmd>lua require"gitsigns".next_hunk()<CR>', { desc = "Next git hunk" })
 map("n", "[g", '<cmd>lua require"gitsigns".prev_hunk()<CR>', { desc = "Previous git hunk" })
