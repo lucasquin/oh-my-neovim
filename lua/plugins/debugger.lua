@@ -62,6 +62,13 @@ return {
         args = { "dap", "-l", "127.0.0.1:8086", "--log" },
       },
     }
+
+    dap.adapters.delve_remote = {
+      type = "server",
+      host = "127.0.0.1",
+      port = 2345,
+    }
+
     dap.configurations.go = {
       {
         type = "delve",
@@ -77,6 +84,19 @@ return {
         mode = "test",
         program = getMainGoFilePath,
         repl_lang = "go",
+      },
+      -- Nova configuração para conectar ao Docker
+      {
+        type = "delve_remote",
+        name = "Attach to Docker",
+        request = "attach",
+        mode = "remote",
+        substitutePath = {
+          {
+            from = "${workspaceFolder}",
+            to = "/app",
+          },
+        },
       },
     }
 
