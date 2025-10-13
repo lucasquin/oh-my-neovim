@@ -5,6 +5,7 @@ return {
     return {
       setopt = true,
       segments = {
+        { text = { " " }},
         { text = { builtin.foldfunc }, click = "v:lua.ScFa" },
         { text = { "%s" }, click = "v:lua.ScSa" },
         {
