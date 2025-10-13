@@ -85,12 +85,12 @@ return {
         program = getMainGoFilePath,
         repl_lang = "go",
       },
-      -- Nova configuração para conectar ao Docker
       {
         type = "delve_remote",
         name = "Attach to Docker",
         request = "attach",
         mode = "remote",
+        repl_lang = "go",
         substitutePath = {
           {
             from = "${workspaceFolder}",
