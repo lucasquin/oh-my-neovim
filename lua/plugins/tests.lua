@@ -9,7 +9,7 @@ return {
   },
   config = function()
     require("neotest").setup {
-      log_level = 1, -- For verbose logs
+      log_level = 1,
       adapters = {
         require "neotest-vstest",
       },
