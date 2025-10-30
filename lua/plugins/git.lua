@@ -4,7 +4,7 @@ return {
   config = function()
     require("gitsigns").setup {
       current_line_blame = false,
-      signcolumn = false,
+      signcolumn = true,
       signs = {
         delete = { text = "󰍵" },
         changedelete = { text = "󱕖" },
