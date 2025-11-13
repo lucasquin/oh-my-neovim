@@ -272,6 +272,7 @@ return {
 
       angularls = {
         cmd = { "ngserver", "--stdio", "--tsProbeLocations", "", "--ngProbeLocations", "" },
+
         filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx", "component.html" },
       },
     }
