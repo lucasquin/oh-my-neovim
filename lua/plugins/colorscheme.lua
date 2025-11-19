@@ -6,7 +6,7 @@ return {
     "folke/tokyonight.nvim",
   },
   {
-    "rockyzhang24/arctic.nvim",
+    "lucasquin/arctic.nvim",
     branch = "v2",
     dependencies = { "rktjmp/lush.nvim" },
     config = function()
