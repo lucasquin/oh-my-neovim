@@ -3,7 +3,7 @@ return {
   enabled = vim.fn.executable "git" == 1,
   config = function()
     require("gitsigns").setup {
-      current_line_blame = false,
+      current_line_blame = true,
       signcolumn = true,
       signs = {
         delete = { text = "󰍵" },
