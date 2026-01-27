@@ -12,7 +12,6 @@ return {
         default_section = "scopes",
       },
       windows = {
-        height = 20,
         terminal = {
           hide = { "delve", "netcoredbg" },
         },
