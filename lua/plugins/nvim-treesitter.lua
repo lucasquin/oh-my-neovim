@@ -1,5 +1,6 @@
 return {
   "nvim-treesitter/nvim-treesitter",
+  branch = "master",
   dependencies = {
     "nvim-treesitter/nvim-treesitter-context",
     "LiadOz/nvim-dap-repl-highlights",
