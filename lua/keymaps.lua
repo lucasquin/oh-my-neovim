@@ -5,9 +5,6 @@ local map = vim.keymap.set
 -- Neotree
 map("n", "<C-n>", "<cmd>Neotree toggle<CR>", { desc = "Neotree toggle window" })
 
--- Comment
-map("n", "gcc", "gcc", { desc = "Toggle Comment", remap = true })
-
 map("n", "<leader>e", function()
   vim.diagnostic.open_float { focusable = true }
 end, { desc = "Expand an Error into a float" })
@@ -82,21 +79,12 @@ map("n", "<S-F11>", function()
 end, { desc = "Step out of the current function" })
 
 -- Visual mode mappings
-map("v", "gc", "gc", { desc = "Toggle comment", remap = true })
 map("v", "<leader>fm", function()
   require("conform").format { lsp_fallback = true, async = false, timeout_ms = 1000 }
 end, { desc = "Range format the current visual selection" })
 
 -- Insert mode mappings
 map("i", "<S-Tab>", "<C-d>", { desc = "Move one indentation level back" })
-
-map("n", "<leader>tt", function()
-  require("neotest").watch.toggle(vim.fn.expand "%")
-end, { desc = "Toggle watch mode" })
-
-map("n", "<leader>ta", function()
-  require("neotest").watch.toggle(vim.fn.getcwd())
-end, { desc = "Toggle watch all tests" })
 
 -- Neotest keymaps
 map("n", "<leader>tt", function()
@@ -114,3 +102,11 @@ end, { desc = "Run tests in current file" })
 map("n", "<leader>ta", function()
   require("neotest").run.run(vim.fn.getcwd())
 end, { desc = "Run all tests" })
+
+map("n", "<leader>tw", function()
+  require("neotest").watch.toggle(vim.fn.expand "%")
+end, { desc = "Toggle watch mode for current file" })
+
+map("n", "<leader>tW", function()
+  require("neotest").watch.toggle(vim.fn.getcwd())
+end, { desc = "Toggle watch all tests" })
