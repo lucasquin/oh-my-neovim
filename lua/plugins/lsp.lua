@@ -62,18 +62,8 @@ return {
       },
     }
 
-    local function on_attach(client, _)
-      if client.supports_method "textDocument/semanticTokens" then
-        client.server_capabilities.semanticTokensProvider = nil
-      end
-      -- if client.supports_method "textDocument/inlayHint" then
-      --   vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-      -- end
-    end
-
     vim.lsp.config("*", {
       capabilities = capabilities,
-      on_attach = on_attach,
     })
 
     local servers = {
@@ -209,7 +199,6 @@ return {
         filetypes = { "html", "css", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact", "svelte", "vue" },
         root_dir = function(bufnr, on_dir)
           local root_files = {
-            -- Generic
             "tailwind.config.js",
             "tailwind.config.cjs",
             "tailwind.config.mjs",
@@ -218,13 +207,11 @@ return {
             "postcss.config.cjs",
             "postcss.config.mjs",
             "postcss.config.ts",
-            -- Django
             "theme/static_src/tailwind.config.js",
             "theme/static_src/tailwind.config.cjs",
             "theme/static_src/tailwind.config.mjs",
             "theme/static_src/tailwind.config.ts",
             "theme/static_src/postcss.config.js",
-            -- Fallback for tailwind v4, where tailwind.config.* is not required anymore
             ".git",
           }
           local fname = vim.api.nvim_buf_get_name(bufnr)
@@ -244,11 +231,6 @@ return {
           provideFormatter = true,
         },
       },
-
-      -- pbls = {
-      --   cmd = { "pbls" },
-      --   filetypes = { "proto" },
-      -- },
 
       roslyn = {},
 
@@ -271,19 +253,54 @@ return {
         },
       },
 
-      cmake = {
-        cmd = { "cmake-language-server" },
-        filetypes = { "cmake" },
-        init_options = {
-          buildDirectory = "build",
+      -- cmake = {
+      --   cmd = { "cmake-language-server" },
+      --   filetypes = { "cmake" },
+      --   init_options = {
+      --     buildDirectory = "build",
+      --   },
+      -- },
+
+      rust_analyzer = {
+        cmd = { "rust-analyzer" },
+        filetypes = { "rust" },
+        settings = {
+          ["rust-analyzer"] = {
+            checkOnSave = {
+              command = "clippy",
+            },
+            cargo = {
+              allFeatures = true,
+            },
+            procMacro = {
+              enable = true,
+            },
+            inlayHints = {
+              lifetimeElisionHints = {
+                enable = "always",
+              },
+            },
+          },
         },
       },
 
-      -- angularls = {
-      --   cmd = { "ngserver", "--stdio", "--tsProbeLocations", "", "--ngProbeLocations", "" },
-      --
-      --   filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx", "component.html" },
-      -- },
+      clangd = {
+        cmd = {
+          "clangd",
+          "--background-index",
+          "--clang-tidy",
+          "--header-insertion=iwyu",
+          "--completion-style=detailed",
+          "--function-arg-placeholders",
+          "--fallback-style=llvm",
+        },
+        filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+        init_options = {
+          usePlaceholders = true,
+          completeUnimported = true,
+          clangdFileStatus = true,
+        },
+      },
     }
 
     require("mason-lspconfig").setup {
@@ -298,6 +315,7 @@ return {
       "goimports",
       "shfmt",
       "prettier",
+      "codelldb",
     })
 
     require("mason-tool-installer").setup { ensure_installed = ensure_installed }

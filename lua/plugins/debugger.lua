@@ -13,7 +13,7 @@ return {
       },
       windows = {
         terminal = {
-          hide = { "delve", "netcoredbg" },
+          hide = { "delve", "netcoredbg", "codelldb" },
         },
       },
     }
@@ -44,7 +44,7 @@ return {
     -- Golang
     local function getMainGoFilePath()
       local main_path = vim.fn.getcwd() .. "/main.go"
-      local dir_entry = vim.loop.fs_stat(main_path)
+      local dir_entry = vim.uv.fs_stat(main_path)
       if dir_entry and dir_entry.type == "file" then
         return main_path
       else
@@ -96,6 +96,134 @@ return {
             to = "/app",
           },
         },
+      },
+    }
+
+    -- C/C++
+    dap.adapters.codelldb = {
+      type = "server",
+      port = "${port}",
+      executable = {
+        command = vim.fn.stdpath "data" .. "/mason/bin/codelldb",
+        args = { "--port", "${port}" },
+      },
+    }
+
+    local function build_c_cpp()
+      local cwd = vim.fn.getcwd()
+
+      if vim.fn.filereadable(cwd .. "/Makefile") == 1 then
+        print "Building with make..."
+        local result = vim.fn.system("make -C " .. cwd)
+        if vim.v.shell_error ~= 0 then
+          vim.notify("Build failed!\n" .. result, vim.log.levels.ERROR)
+          return nil
+        end
+        print "Build successful!"
+        return vim.fn.input("Path to executable: ", cwd .. "/", "file")
+      end
+
+      if vim.fn.filereadable(cwd .. "/CMakeLists.txt") == 1 then
+        print "Building with cmake..."
+        if vim.fn.isdirectory(cwd .. "/build") == 0 then
+          vim.fn.system("cmake -S " .. cwd .. " -B " .. cwd .. "/build -DCMAKE_BUILD_TYPE=Debug")
+        end
+        local result = vim.fn.system("cmake --build " .. cwd .. "/build")
+        if vim.v.shell_error ~= 0 then
+          vim.notify("Build failed!\n" .. result, vim.log.levels.ERROR)
+          return nil
+        end
+        print "Build successful!"
+        return vim.fn.input("Path to executable: ", cwd .. "/build/", "file")
+      end
+
+      local file, compiler
+      if vim.fn.filereadable(cwd .. "/main.cpp") == 1 then
+        file = cwd .. "/main.cpp"
+        compiler = "g++"
+      elseif vim.fn.filereadable(cwd .. "/main.c") == 1 then
+        file = cwd .. "/main.c"
+        compiler = "gcc"
+      else
+        vim.notify("main.c or main.cpp not found", vim.log.levels.ERROR)
+        return nil
+      end
+
+      local output = cwd .. "/" .. "main"
+
+      print("Building with " .. compiler .. "...")
+      local result = vim.fn.system(compiler .. " -g -o " .. output .. " " .. file)
+      if vim.v.shell_error ~= 0 then
+        vim.notify("Build failed!\n" .. result, vim.log.levels.ERROR)
+        return nil
+      end
+
+      print "Build successful!"
+      return output
+    end
+
+    dap.configurations.c = {
+      {
+        type = "codelldb",
+        name = "Debug",
+        request = "launch",
+        program = build_c_cpp,
+        cwd = "${workspaceFolder}",
+        stopOnEntry = false,
+      },
+    }
+
+    dap.configurations.cpp = dap.configurations.c
+
+    -- Rust
+    local function build_rust()
+      local cwd = vim.fn.getcwd()
+      local main_path = cwd .. "/src/main.rs"
+      local dir_entry = vim.uv.fs_stat(main_path)
+
+      if not dir_entry or dir_entry.type ~= "file" then
+        return vim.fn.input("Path to executable: ", cwd .. "/", "file")
+      end
+
+      print "Building project with cargo..."
+      local result = vim.fn.system("cargo build 2>&1")
+      if vim.v.shell_error ~= 0 then
+        vim.notify("Build failed!\n" .. result, vim.log.levels.ERROR)
+        return nil
+      end
+
+      print "Build successful!"
+
+      local project_name = vim.fn.fnamemodify(cwd, ":t")
+      return cwd .. "/target/debug/" .. project_name
+    end
+
+    dap.configurations.rust = {
+      {
+        type = "codelldb",
+        name = "Debug",
+        request = "launch",
+        program = build_rust,
+        cwd = "${workspaceFolder}",
+        stopOnEntry = false,
+      },
+      {
+        type = "codelldb",
+        name = "Debug test",
+        request = "launch",
+        program = function()
+          print "Building tests with cargo..."
+          local result = vim.fn.system("cargo test --no-run 2>&1")
+          if vim.v.shell_error ~= 0 then
+            vim.notify("Build failed!\n" .. result, vim.log.levels.ERROR)
+            return nil
+          end
+
+          print "Build successful!"
+          return vim.fn.input("Path to test executable: ", vim.fn.getcwd() .. "/target/debug/deps/", "file")
+        end,
+        cwd = "${workspaceFolder}",
+        stopOnEntry = false,
       },
     }
 

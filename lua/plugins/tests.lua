@@ -6,12 +6,14 @@ return {
     "antoinemadec/FixCursorHold.nvim",
     "nvim-treesitter/nvim-treesitter",
     "nsidorenco/neotest-vstest",
+    "fredrikaverpil/neotest-golang",
   },
   config = function()
     require("neotest").setup {
       log_level = 1,
       adapters = {
         require "neotest-vstest",
+        require "neotest-golang",
       },
       icons = {
         expanded = "",

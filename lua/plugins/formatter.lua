@@ -18,11 +18,17 @@ return {
         yaml = { "prettier" },
         graphql = { "prettier" },
         markdown = { "prettier" },
-        svelte = { "prettier --plugin prettier-plugin-svelte" },
-        cs = { "csharpier --print-width 120" },
+        svelte = { "prettier" },
+        cs = { "csharpier" },
         php = { "phpcbf" },
         proto = { "buf" },
-        python = {"pylsp"}
+        python = { "black" },
+        rust = { "rustfmt" },
+      },
+      format_on_save = {
+        lsp_fallback = true,
+        async = false,
+        timeout_ms = 1000,
       },
     }
   end,
