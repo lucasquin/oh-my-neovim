@@ -67,7 +67,5 @@ return {
         },
       },
     }
-
-    vim.cmd [[Neotree reveal]]
   end,
 }
