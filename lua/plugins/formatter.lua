@@ -24,12 +24,11 @@ return {
         proto = { "buf" },
         python = { "black" },
         rust = { "rustfmt" },
+        elixir = { "mix" },
+        eelixir = { "mix" },
+        heex = { "mix" },
       },
-      format_on_save = {
-        lsp_fallback = true,
-        async = false,
-        timeout_ms = 1000,
-      },
+      format_on_save = false,
     }
   end,
 }

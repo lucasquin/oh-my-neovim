@@ -7,6 +7,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     "nsidorenco/neotest-vstest",
     "fredrikaverpil/neotest-golang",
+    "jfpedroza/neotest-elixir",
   },
   config = function()
     require("neotest").setup {
@@ -14,6 +15,7 @@ return {
       adapters = {
         require "neotest-vstest",
         require "neotest-golang",
+        require "neotest-elixir",
       },
       icons = {
         expanded = "",
