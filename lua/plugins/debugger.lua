@@ -227,6 +227,36 @@ return {
       },
     }
 
+    -- Elixir
+    dap.adapters.mix_task = {
+      type = "executable",
+      command = vim.fn.stdpath "data" .. "/mason/packages/elixir-ls/debug_adapter.sh",
+      args = {},
+    }
+
+    dap.configurations.elixir = {
+      {
+        type = "mix_task",
+        name = "mix test",
+        task = "test",
+        taskArgs = { "--trace" },
+        request = "launch",
+        startApps = true,
+        projectDir = "${workspaceFolder}",
+        requireFiles = {
+          "test/**/test_helper.exs",
+          "test/**/*_test.exs",
+        },
+      },
+      {
+        type = "mix_task",
+        name = "phx.server",
+        task = "phx.server",
+        request = "launch",
+        projectDir = "${workspaceFolder}",
+      },
+    }
+
     -- C#
     dap.adapters.netcoredbg = {
       type = "executable",
@@ -240,25 +270,31 @@ return {
         name = "Launch .NET Project",
         request = "launch",
         program = function()
+          local cwd = vim.fn.getcwd()
+
           print "Building project..."
-          local build_result = vim.fn.system("dotnet build " .. vim.fn.getcwd())
+          local build_result = vim.fn.system("dotnet build " .. cwd)
 
           if vim.v.shell_error ~= 0 then
             vim.notify("Build failed!\n" .. build_result, vim.log.levels.ERROR)
-            return nil
+            return dap.ABORT
           end
 
           print "Build successful!"
 
-          local dll_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t") .. ".dll"
-          local dll_path = vim.fn.getcwd() .. "/bin/Debug/net9.0/" .. dll_name
+          local dll_name = vim.fn.fnamemodify(cwd, ":t") .. ".dll"
+          local debug_dir = cwd .. "/bin/Debug/"
+          local frameworks = vim.fn.glob(debug_dir .. "net*/", false, true)
 
-          if vim.fn.filereadable(dll_path) == 0 then
-            vim.notify("DLL not found: " .. dll_path, vim.log.levels.ERROR)
-            return nil
+          for _, fw_dir in ipairs(frameworks) do
+            local dll_path = fw_dir .. dll_name
+            if vim.fn.filereadable(dll_path) == 1 then
+              return dll_path
+            end
           end
 
-          return dll_path
+          vim.notify("DLL not found in " .. debug_dir, vim.log.levels.ERROR)
+          return dap.ABORT
         end,
         cwd = "${workspaceFolder}",
         stopAtEntry = false,

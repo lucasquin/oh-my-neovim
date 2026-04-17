@@ -6,6 +6,9 @@ return {
     "folke/tokyonight.nvim",
   },
   {
+    "ellisonleao/gruvbox.nvim",
+  },
+  {
     "lucasquin/arctic.nvim",
     branch = "v2",
     dependencies = { "rktjmp/lush.nvim" },

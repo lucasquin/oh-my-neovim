@@ -284,6 +284,19 @@ return {
         },
       },
 
+      elixirls = {
+        cmd = { "elixir-ls" },
+        filetypes = { "elixir", "eelixir", "heex", "surface" },
+        settings = {
+          elixirLS = {
+            dialyzerEnabled = true,
+            fetchDeps = false,
+            enableTestLenses = false,
+            suggestSpecs = false,
+          },
+        },
+      },
+
       clangd = {
         cmd = {
           "clangd",
