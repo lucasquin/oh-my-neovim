@@ -13,7 +13,7 @@ return {
     branch = "v2",
     dependencies = { "rktjmp/lush.nvim" },
     config = function()
-      vim.cmd [[colorscheme tokyonight]]
+      vim.cmd [[colorscheme arctic]]
     end,
   },
 }

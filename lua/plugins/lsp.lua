@@ -5,6 +5,17 @@ return {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     {
       "seblyng/roslyn.nvim",
+      init = function()
+        -- Roslyn's native .NET app host only searches DOTNET_ROOT/system paths, so it
+        -- can't find the asdf-managed runtime (exit 131, ".NET location: Not found").
+        -- Point it at the current asdf install; `asdf where` tracks version updates.
+        if vim.env.DOTNET_ROOT == nil and vim.fn.executable("asdf") == 1 then
+          local root = vim.trim(vim.fn.system { "asdf", "where", "dotnet" })
+          if vim.v.shell_error == 0 and root ~= "" then
+            vim.env.DOTNET_ROOT = root
+          end
+        end
+      end,
       opts = {
         lock_target = true,
         ignore_target = function(target)
