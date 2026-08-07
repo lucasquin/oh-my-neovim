@@ -2,6 +2,34 @@ return {
   "romus204/tree-sitter-manager.nvim",
   dependencies = {},
   config = function()
-    require("tree-sitter-manager").setup()
+    require("tree-sitter-manager").setup {
+      auto_install = true,
+      ensure_installed = {
+        "bash",
+        "c",
+        "c_sharp",
+        "css",
+        "dockerfile",
+        "eex",
+        "elixir",
+        "go",
+        "gomod",
+        "gosum",
+        "heex",
+        "html",
+        "javascript",
+        "json",
+        "lua",
+        "markdown",
+        "markdown_inline",
+        "query",
+        "sql",
+        "tsx",
+        "typescript",
+        "vim",
+        "vimdoc",
+        "yaml",
+      },
+    }
   end,
 }
