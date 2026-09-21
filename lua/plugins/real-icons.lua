@@ -4,7 +4,7 @@ return {
   opts = {
     pack = "material",
     integrations = {
-      bufferline = true,
+      bufferline = false,
       lualine = true,
       mini_files = false,
       neo_tree = true,

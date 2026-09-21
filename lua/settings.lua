@@ -62,6 +62,22 @@ o.showmode = false
 -- Enables access to the system clipboard for copying and pasting.
 o.clipboard = "unnamedplus"
 
+-- WSL without a native clipboard tool: bridge to the Windows clipboard (see :help clipboard-wsl).
+local has_native_clipboard = vim.iter({ "win32yank.exe", "wl-copy", "xclip", "xsel" }):any(function(bin)
+  return vim.fn.executable(bin) == 1
+end)
+
+if vim.fn.has "wsl" == 1 and not has_native_clipboard and vim.fn.executable "clip.exe" == 1 and vim.fn.executable "powershell.exe" == 1 then
+  local paste = [[powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))]]
+
+  vim.g.clipboard = {
+    name = "WslClipboard",
+    copy = { ["+"] = "clip.exe", ["*"] = "clip.exe" },
+    paste = { ["+"] = paste, ["*"] = paste },
+    cache_enabled = 0,
+  }
+end
+
 -- Highlights the current cursor line for visual clarity.
 o.cursorline = false
 
