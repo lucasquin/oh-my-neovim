@@ -9,7 +9,7 @@ return {
         -- Roslyn's native .NET app host only searches DOTNET_ROOT/system paths, so it
         -- can't find the asdf-managed runtime (exit 131, ".NET location: Not found").
         -- Point it at the current asdf install; `asdf where` tracks version updates.
-        if vim.env.DOTNET_ROOT == nil and vim.fn.executable("asdf") == 1 then
+        if vim.env.DOTNET_ROOT == nil and vim.fn.executable "asdf" == 1 then
           local root = vim.trim(vim.fn.system { "asdf", "where", "dotnet" })
           if vim.v.shell_error == 0 and root ~= "" then
             vim.env.DOTNET_ROOT = root
@@ -76,6 +76,19 @@ return {
     vim.lsp.config("*", {
       capabilities = capabilities,
     })
+
+    -- bash-language-server indexes every executable on $PATH; the /mnt/* entries WSL appends
+    -- (Windows dirs over 9P) make its startup take ~30s, so give it a PATH without them.
+    local bashls_env
+    if vim.fn.has "wsl" == 1 then
+      local linux_path = vim
+        .iter(vim.split(vim.env.PATH, ":"))
+        :filter(function(dir)
+          return not vim.startswith(dir, "/mnt/")
+        end)
+        :join ":"
+      bashls_env = { PATH = linux_path }
+    end
 
     local servers = {
       lua_ls = {
@@ -182,6 +195,7 @@ return {
 
       bashls = {
         cmd = { "bash-language-server", "start" },
+        cmd_env = bashls_env,
         filetypes = { "sh", "bash", "zsh" },
       },
 
@@ -340,6 +354,9 @@ return {
       "shfmt",
       "prettier",
       "codelldb",
+      "delve",
+      "netcoredbg",
+      "tree-sitter-cli",
     })
 
     require("mason-tool-installer").setup { ensure_installed = ensure_installed }
